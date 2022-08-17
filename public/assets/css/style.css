@@ -1628,3 +1628,78 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100;
+  height: 100vh;
+  background-image: url(../img/login_cadastro/background.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.in-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 70vh;
+  width: 28vw;
+  margin-top: 11vh;
+  background-color: rgba(2, 173, 2, 0.66);
+  box-shadow: 10px 10px 08px green;
+  color: #000;
+  transition: 1.5s;
+}
+
+.in-header:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  overflow: hidden;
+  transition: 2.0s;
+}
+
+.ipn-login {
+  width: 20vw;
+  height: 6vh;
+  background-color: white;
+  border: green solid;
+  border-radius: 18px;
+  gap: 20px;
+}
+
+.ipn-login::placeholder{
+  text-align: center;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.ipn-login:focus{
+  outline: 0;
+}
+.btn-login {
+  background-color: white;
+  border: green solid;
+  border-radius: 15px;
+  width: 10vw;
+}
+
+.btn-login:focus{
+  outline: 0;
+}
+
+.inputslogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
