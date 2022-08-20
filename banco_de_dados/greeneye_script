@@ -1,0 +1,81 @@
+CREATE DATABASE Greeneye;
+
+USE Greeneye;
+
+CREATE TABLE Empresa (
+idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+cnpj CHAR(14),
+nomeEmpresa varchar(30)
+);
+
+CREATE TABLE Usuario (
+idUsuario INT,
+fkEmpresa INT,
+nome VARCHAR(30),
+sobrenome VARCHAR(30),
+email VARCHAR(45),
+chave VARCHAR(15),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa),
+PRIMARY KEY(idUsuario,fkEmpresa)
+);
+
+
+CREATE TABLE Computador (
+idComputador INT,
+fkEmpresa INT,
+serial VARCHAR(30),
+cpu_modelo VARCHAR(45),
+disco_modelo VARCHAR(45),
+ram_modelo VARCHAR(45),
+gpu_modelo VARCHAR(45),
+placamae_modelo VARCHAR(45),
+sistema_operacional VARCHAR(45),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa (idEmpresa),
+PRIMARY KEY(idComputador, fkEmpresa)
+);
+
+INSERT INTO Computador VALUES (1, 2, 12345678, 'I5 7400', 'seagate barracuda', '8 gb hyperx', 'gtx 1050', 'H170-M', 'LINUX MINT');
+
+CREATE TABLE DadosDinamicos (
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+fkComputador INT,
+fkEmpresa INT,
+momento DATETIME,
+ram_uso DECIMAL(4,2),
+disco_uso DECIMAL(4,2),
+cpu_freq DECIMAL(6,2),
+cpu_uso DECIMAL(4,2),
+cpu_media DECIMAL(4,2),
+cpu_percentual DECIMAL(4,2),
+FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
+);
+
+CREATE TABLE DadosEstaticos (
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+fkComputador INT NOT NULL,
+fkEmpresa INT NOT NULL,
+momento DATETIME,
+cpu_freqmax DECIMAL(6,2),
+cpu_nucleototal INT,
+cpu_nucleofisico INT,
+ram_total INT,
+hd_total DECIMAL(6,2),
+FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
+);
+
+SELECT * FROM Empresa;
+SELECT * FROM DadosDinamicos;
+SELECT NOW();
+
+INSERT INTO Empresa VALUES (NULL, '12345678912345', 'Judas');
+
+SELECT * FROM DadosDinamicos;
+SELECT * FROM DadosEstaticos;
+DROP TABLE DadosDinamicos;
+
+
+
+
+
