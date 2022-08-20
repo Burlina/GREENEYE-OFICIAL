@@ -11,7 +11,9 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  text-align: justify;
 }
+
 
 a {
   color: #5c9f24;
@@ -1020,9 +1022,11 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+
+
 .team {
   background: #fff;
-  padding: 60px 0;
+  padding: 10px 0;
 }
 
 .team .member {
@@ -1646,6 +1650,16 @@ section {
   background-repeat: no-repeat;
 }
 
+.div_con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .in-header {
   display: flex;
   flex-direction: column;
@@ -1655,10 +1669,11 @@ section {
   height: 70vh;
   width: 28vw;
   margin-top: 11vh;
-  background-color: rgba(2, 173, 2, 0.66);
+  background-color: rgba(0, 125, 0, 0.66);
   box-shadow: 10px 10px 08px green;
   color: #000;
   transition: 1.5s;
+  border-radius: 25px;
 }
 
 .in-header:hover {
@@ -1672,19 +1687,31 @@ section {
   width: 20vw;
   height: 6vh;
   background-color: white;
-  border: green solid;
-  border-radius: 18px;
+  border: 0 none;
+  border-bottom: white solid;
   gap: 20px;
+  background-color: rgba(0, 0, 0, 0.0);
+  outline: 0;
 }
 
 .ipn-login::placeholder{
   text-align: center;
   font-weight: bolder;
   font-size: 14px;
+  color: white;
+  border: 0 none;
+  
+}
+
+.ipn-login, textarea {
+  border-bottom: white solid;
+  color: white;
 }
 
 .ipn-login:focus{
   outline: 0;
+  border: 0 none;
+  border-bottom: white solid;
 }
 .btn-login {
   background-color: white;
