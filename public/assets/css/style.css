@@ -1636,97 +1636,57 @@ section {
 /*--------------------------------------------------------------
 # Login
 --------------------------------------------------------------*/
-
-.container-login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100;
-  height: 100vh;
+.login{
   background-image: url(../img/login_cadastro/background.jpg);
-  background-position: center;
-  background-size: contain;
   background-repeat: no-repeat;
-}
-
-.div_con {
+  min-height: 100vh;
+  min-width: 100vw;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.in-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  height: 70vh;
-  width: 28vw;
-  margin-top: 11vh;
-  background-color: rgba(0, 125, 0, 0.66);
-  box-shadow: 10px 10px 08px green;
-  color: #000;
-  transition: 1.5s;
-  border-radius: 25px;
+main.container{
+  background: #18d26e;
+  max-width: 300px;
+  min-height: 40vh;
+  padding: 2rem;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
-.in-header:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  overflow: hidden;
-  transition: 2.0s;
+main h2{
+  font-weight: 600;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.ipn-login {
-  width: 20vw;
-  height: 6vh;
-  background-color: white;
-  border: 0 none;
-  border-bottom: white solid;
-  gap: 20px;
-  background-color: rgba(0, 0, 0, 0.0);
-  outline: 0;
+main h2::before{
+  content: '';
+  position: relative;
+  height: 4px;
+  width: 25px;
+  bottom: 3px;
+  left: 0;
+  border-radius: 0px;
+  background: linear-gradient(45deg, #18d26e, #1d1d1d);
 }
 
-.ipn-login::placeholder{
-  text-align: center;
-  font-weight: bolder;
-  font-size: 14px;
-  color: white;
-  border: 0 none;
-  
+.input-field{
+  position: relative;
 }
 
-.ipn-login, textarea {
-  border-bottom: white solid;
-  color: white;
+.input-field input{
+  outline: none;
+  font-size: 0.9rem;
+  color: rgb(0, 0, 0, 0.7);
 }
 
-.ipn-login:focus{
-  outline: 0;
-  border: 0 none;
-  border-bottom: white solid;
-}
-.btn-login {
-  background-color: white;
-  border: green solid;
-  border-radius: 15px;
-  width: 10vw;
+.input-field input::placeholder{
+  color: rgb(0, 0, 0, 0.5);
 }
 
-.btn-login:focus{
-  outline: 0;
-}
-
-.inputslogin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+form input[type="submit"]{
+  margin-top: 2rem;
+  padding: 0.4rem;
 }
