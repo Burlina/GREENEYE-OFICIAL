@@ -1639,8 +1639,8 @@ section {
 .login{
   background-image: url(../img/login_cadastro/background.jpg);
   background-repeat: no-repeat;
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1648,29 +1648,49 @@ section {
   flex-direction: column;
 }
 
-.filter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-main.container_login{
-  background: white;
-  max-width: 290px;
+main.container{
+  background: #18d26e;
+  max-width: 300px;
   min-height: 40vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container_login2{
+  background: white;
+  width: 380px;
+  height: 70vh;
+  padding: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+main.container_login3{
+  background: white;
+  width: 380px;
+  height: 73vh;
+  padding: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
 }
 
 main h2{
   font-weight: 600;
   margin-bottom: 2rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 main h2::before{
@@ -1691,6 +1711,7 @@ form{
 
 .input-field{
   position: relative;
+  align-self: center;
 }
 
 .input-field input{
@@ -1703,7 +1724,7 @@ form{
   color: rgb(0, 0, 0, 0.5);
 }
 
-form input[type="submit"] {
+form input[type="submit"]{
   margin-top: 2rem;
   padding: 0.4rem; 
   background: linear-gradient(to left, 	#32CD32, #00FF00); 
