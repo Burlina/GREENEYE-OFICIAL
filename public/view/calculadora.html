@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/cadastro.css">
+  <link rel="stylesheet" href="../assets/css/calStyle.css">
 </head>
 
 <body>
@@ -75,7 +75,7 @@
   <div class="containercalc">
     <div class="filter">
       <div class="calc_box">
-        <h3 style="text-align:center;">SIMULADOR</h3>
+        <h3 class="titulo" style="text-align:center;">SIMULADOR</h3>
         <P>Insira a quantidade física que você possui dos seguintes hardwares:</P>
         <div class="calc_text">
           <input class="calc_inp" placeholder="Disco Rígido" type="text"></p>
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div class="popup-wrapper" id="pw">
+  <div class="popup-wrapper" onclick="fechar()" id="pw">
     <div class="popup">
       <div class="popup-closer" onclick="fechar()" style="color: red; font-size: 35px;">X</div>
       <div class="popup-content">
@@ -130,8 +130,7 @@
 
 <script>
   function popup() {
-    pw.style.display = 'inline'
-    pw.style.display = 'block'
+    pw.style.display = 'flex'
   }
 
   function fechar() {

@@ -265,7 +265,7 @@ h6 {
 */
 .mobile-nav-toggle {
   color: #fff;
-  font-size: 28px;
+  font-size: 40px;
   cursor: pointer;
   display: none;
   line-height: 0;
@@ -277,6 +277,7 @@ h6 {
 }
 
 @media (max-width: 991px) {
+  
   .mobile-nav-toggle {
     display: block;
   }
@@ -1025,6 +1026,8 @@ section {
 
 
 .team {
+  display: flex;
+  flex-direction: row;
   background: #fff;
   padding: 10px 0;
 }

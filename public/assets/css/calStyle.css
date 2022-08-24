@@ -114,7 +114,7 @@
     font-size: 15px;
     text-align: center;
     width: 100%;
-    max-width: 70vw;
+    max-width: 80vw;
     margin: 10% auto;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -163,7 +163,73 @@
     height: 100%;
     width: 100%;
     display: flex;
-    align-items: left;
     justify-content: center;
     gap: 1vw;
+}
+
+@media (min-height: 700px) { 
+    a {
+        font-size: 60px;
+    }
+    #header{
+        height: 10vh;
+    }
+  .calc_box {
+    height: 55vh;
+    width: 75vw;
+    font-size: 35px;
+  }
+  .calc_inp{
+    margin-top: 40px;
+    height: 3vh;
+    width: 40vw;
+  }
+  .calc_inp::placeholder{
+    font-size: 30px;
+  }
+
+  .navbar-mobile a,
+  .navbar-mobile a:focus
+  {
+    gap: 20px;
+    font-size: 40px;
+    color: #2a2a2a;
+  }
+  .mobile-nav-toggle{
+    font-size: 80px;
+  }
+
+  .bi-x::before { 
+    left: 0;
+    right: 0;
+    
+    font-size: 160px;
+    padding-bottom: 50px;
+ }
+
+  .calc_btn{
+  width: 30vw;
+  font-size: 30px;
+  height: 6vh;
+  }
+  .titulo {
+    font-size: 40px;
+  }
+  .popup-up, .popup-wrapper{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .inp_results{
+    width: 100%;
+    gap: 0.5vw;
+    flex-direction: column;
+  }
+  .popup-content {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    padding: 0;
+    font-size: 35px;
+  }
 }
