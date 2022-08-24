@@ -31,21 +31,21 @@
 </head>
 
 <body>
-  <header id="header" class="fixed-top d-flex align-items-center">
+  <!-- <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <h1 class="logo"><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1> -->
+  <!-- Uncomment below if you prefer to use an image logo -->
+  <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <!-- <li><a class="nav-link scrollto active" href="index.html">Home</a></li> -->
-          <!-- <li><a class="nav-link scrollto" href="index.html#about">Sobre nós</a></li>
+  <!-- <nav id="navbar" class="navbar">
+        <ul> -->
+  <!-- <li><a class="nav-link scrollto active" href="index.html">Home</a></li> -->
+  <!-- <li><a class="nav-link scrollto" href="index.html#about">Sobre nós</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">Valores</a></li> -->
-          <!-- <li><a class="nav-link scrollto " href="calculadora.html">Calculadora</a></li> -->
-          <!-- <li><a class="nav-link scrollto" href="index.html#team">Equipe</a></li> -->
-          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+  <!-- <li><a class="nav-link scrollto " href="calculadora.html">Calculadora</a></li> -->
+  <!-- <li><a class="nav-link scrollto" href="index.html#team">Equipe</a></li> -->
+  <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -62,41 +62,40 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          <!-- <li><a class="nav-link scrollto" href="#contact">Contato</a></li> -->
-          <li><a class="getstarted scrollto" href="index.html">Voltar</a></li>
+  <!-- <li><a class="nav-link scrollto" href="#contact">Contato</a></li> -->
+  <!-- <li><a class="getstarted scrollto" href="index.html">Voltar</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>.navbar -->
 
-    </div>
-  </header><!-- End Header -->
+  <!-- </div>
+  </header>End Header -->
 
   <div class="login">
-    <main class="container-login">
-      <h2>Login</h2>
-      <form action="">
-        <div class="inputs-fields">
-          <input type="text" name="email" id="email" placeholder="Digite seu email">
-          <div class="underline"></div>
-        </div>
+    <div class="filter">
+      <main class="container_login">
+        <h2>Login</h2>
+        <form action="">
+          <div class="input-field">
+            <input type="text" name="email" id="email" placeholder="Digite seu email">
+            <div class="underline"></div>
+          </div><br>
 
-        <div class="inputs-fields">
-          <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-          <div class="underline"></div>
-        </div>
+          <div class="input-field">
+            <input type="password" name="chave" id="chave" placeholder="Chave de acesso">
+            <div class="underline"></div>
+          </div>
 
-        <input type="submit" value="Continue">
-      </form>
-    </main>
+          <input type="submit" value="Continue"><br><br>
+
+          <footer>
+            <span>Não fez o cadástro ainda? <a href="./cadastro.html" class="link_cadastro"
+                style="color: blue; ">Clique aqui</a></span>
+          </footer>
+        </form>
+      </main>
+    </div>
   </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -116,14 +115,3 @@
 
 
 </html>
-
-<script>
-  function exibircadastro() {
-    login.style.display = 'none'
-    cadastro.style.display = 'flex'
-  }
-  function exibirlogin() {
-    login.style.display = 'flex'
-    cadastro.style.display = 'none'
-  }
-</script>
