@@ -1651,13 +1651,23 @@ section {
   flex-direction: column;
 }
 
-main.container{
-  background: #18d26e;
-  max-width: 300px;
-  min-height: 40vh;
+.filter {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+}
+
+main.container_login{
+  background: white;
+  max-width: 500px;
+  min-height: 50vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 10px;
   color: #000;
   display: flex;
   flex-direction: column;
@@ -1666,10 +1676,10 @@ main.container{
 main.container_login2{
   background: white;
   width: 380px;
-  height: 70vh;
+  height: 69vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 10px;
   color: #000;
   display: flex;
   flex-direction: column;
@@ -1678,7 +1688,7 @@ main.container_login2{
 main.container_login3{
   background: white;
   width: 380px;
-  height: 73vh;
+  height: 72vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -1727,6 +1737,22 @@ form{
   color: rgb(0, 0, 0, 0.5);
 }
 
+.input-field2{
+  position: relative;
+  align-self: center;
+}
+
+.input-field2 input{
+  outline: none;
+  font-size: 1rem;
+  color: rgb(0, 0, 0, 0.7);
+  width: 306px;
+}
+
+.input-field2 input::placeholder{
+  color: rgb(0, 0, 0, 0.5);
+}
+
 form input[type="submit"]{
   margin-top: 2rem;
   padding: 0.4rem; 
@@ -1744,14 +1770,14 @@ form input[type="submit"]:hover{
     background: linear-gradient(to right, 	#32CD32, #00FF00); 
 }
 
-.footer{
+.footer_login{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-top: 1rem;
 }
 
-.footer span{
+.footer_login span{
   color: rgba(0, 0, 0, 0.7);
   font-size: 0.1rem;
-  text-align: center;
 }
