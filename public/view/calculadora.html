@@ -78,11 +78,11 @@
         <h3 class="titulo" style="text-align:center;">SIMULADOR</h3>
         <P>Insira a quantidade física que você possui dos seguintes hardwares:</P>
         <div class="calc_text">
-          <input class="calc_inp" placeholder="Disco Rígido" type="text"></p>
-          <input class="calc_inp" placeholder="Pentes de Memória RAM" type="text"></P>
-          <input class="calc_inp" placeholder="Processadores" type="text"></P>
+          <input id="in_disco" class="calc_inp" placeholder="Disco Rígido" type="text"></p>
+          <input id="in_ram" class="calc_inp" placeholder="Pentes de Memória RAM" type="text"></P>
+          <input id="in_processador" class="calc_inp" placeholder="Processadores" type="text"></P>
         </div>
-        <button class="calc_btn" onclick="popup()">SIMULAR</button>
+        <button class="calc_btn" onclick="popup(), calcular()">SIMULAR</button>
       </div>
     </div>
   </div>
@@ -103,12 +103,12 @@
           <p>Tempo Médio de Troca:<br><input class="inp_valor" id="valor1" placeholder="4 Anos" type="text" readonly>
           </p>
         </div>
-        <p>
-          Com nosso sistema em 8 anos você deixaria de comprar X Discos Rígidos, X Memórias RAMS, X Processadores, com
-          isso você deixaria de perder R$ Y apenas gastando R$ X com o nosso plano por 8 anos, totalizando uma Economia
-          de:
+        <p id="resultado">
+          Com nosso sistema em 8 anos você deixaria de comprar X Discos Rígidos, X Memórias RAMS, X Processadores, se
+          baseando nos preços médios de HD (R$ 280,00),PROCESSADOR (R$ 1000,00) E RAM (R$ 250,00) estimamos que você
+          deixaria de perder:
         </p>
-        <p>Sua Economia:<br><input class="inp_valor" id="valor1" type="text" readonly></p> <br>
+        <p id="resultado_produto">Sua Economia:<br><input class="inp_valor" id="valor55" type="text" readonly></p> <br>
         FONTES:
 
       </div>
@@ -135,5 +135,22 @@
 
   function fechar() {
     pw.style.display = 'none'
+  }
+
+  function calcular() {
+
+    let processador = in_processador.value
+    let ram = in_ram.value
+    let disco = in_disco.value
+    let processador_valor = processador * 1000
+    let ram_valor = ram * 250
+    let disco_valor = disco * 280
+    
+    let economia_total = Number(processador_valor + ram_valor + disco_valor)
+    let plano = 8 * 200
+    resultado.innerHTML = ` Com nosso sistema em 8 anos você deixaria de comprar ${disco/2} Discos Rígidos, X Memórias RAMS, X Processadores, se
+          baseando nos preços médios de HD (R$ 280,00),PROCESSADOR (R$ 1000,00) E RAM (R$ 250,00) estimamos que você deixaria de perder: R$${economia_total}`
+    valor55.placeholder = `R$:${economia_total - plano}`
+    valor55.placeholder.color = 'green'
   }
 </script>
