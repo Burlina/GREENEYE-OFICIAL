@@ -20,11 +20,11 @@ if con.is_connected :
 
 #Envio de dados dinamicos ao banco e exibição de dados ao usuário
 media_cpu = 0
-tempoparar = 10
+tempoparar = float(input(" Quantas vezes você deseja capturar os dados?")
 dados_cpu = []
 i = 1
 
-while tempoparar == 10:
+while tempoparar != 0:
  tempo = float(input("   Qual o tempo que você deseja em segundos?"))
  componente = (input("   Qual componente você deseja capturar os dados?"))
  contador = 0
