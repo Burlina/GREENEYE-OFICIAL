@@ -3,25 +3,25 @@ CREATE DATABASE Greeneye;
 USE Greeneye;
 
 CREATE TABLE Empresa (
-idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
 cnpj CHAR(14),
 nomeEmpresa varchar(30)
 );
 
 CREATE TABLE Usuario (
-idUsuario INT,
+id INT,
 fkEmpresa INT,
 nome VARCHAR(30),
 sobrenome VARCHAR(30),
 email VARCHAR(45),
 chave VARCHAR(15),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa),
-PRIMARY KEY(idUsuario,fkEmpresa)
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id),
+PRIMARY KEY(id,fkEmpresa)
 );
 
 
 CREATE TABLE Computador (
-idComputador INT,
+id INT,
 fkEmpresa INT,
 serial VARCHAR(30),
 cpu_modelo VARCHAR(45),
@@ -30,14 +30,14 @@ ram_modelo VARCHAR(45),
 gpu_modelo VARCHAR(45),
 placamae_modelo VARCHAR(45),
 sistema_operacional VARCHAR(45),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa (idEmpresa),
-PRIMARY KEY(idComputador, fkEmpresa)
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa (id),
+PRIMARY KEY(id, fkEmpresa)
 );
 
 INSERT INTO Computador VALUES (1, 2, 12345678, 'I5 7400', 'seagate barracuda', '8 gb hyperx', 'gtx 1050', 'H170-M', 'LINUX MINT');
 
 CREATE TABLE DadosDinamicos (
-idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
 fkComputador INT,
 fkEmpresa INT,
 momento DATETIME,
@@ -47,12 +47,12 @@ cpu_freq DECIMAL(6,2),
 cpu_uso DECIMAL(4,2),
 cpu_media DECIMAL(4,2),
 cpu_percentual DECIMAL(4,2),
-FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
+FOREIGN KEY(fkComputador) REFERENCES Computador(id),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE DadosEstaticos (
-idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+id INT PRIMARY KEY AUTO_INCREMENT,
 fkComputador INT NOT NULL,
 fkEmpresa INT NOT NULL,
 momento DATETIME,
@@ -61,8 +61,8 @@ cpu_nucleototal INT,
 cpu_nucleofisico INT,
 ram_total INT,
 hd_total DECIMAL(6,2),
-FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
+FOREIGN KEY(fkComputador) REFERENCES Computador(id),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id)
 );
 
 SELECT * FROM Empresa;
