@@ -1868,3 +1868,27 @@ form input[type="submit"]:hover{
   width: 30px;
   height: 30px;
 }
+
+@media (max-width: 700px) {
+  .index_equipe{
+    flex-direction: column;
+    height: 200vh;
+  }
+
+  .membro{
+    width: 70vw;
+    height: 50%;
+  }
+  }
+
+  @media (min-height: 912px) {
+    .index_equipe{
+      flex-direction: column;
+      height: 200vh;
+    }
+  
+    .membro{
+      width: 50vw;
+      height: 100%;
+    }
+    }

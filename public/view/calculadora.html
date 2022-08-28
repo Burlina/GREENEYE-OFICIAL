@@ -108,7 +108,7 @@
           baseando nos preços médios de HD (R$ 280,00),PROCESSADOR (R$ 1000,00) E RAM (R$ 250,00) estimamos que você
           deixaria de perder:
         </p>
-        <p id="resultado_produto">Sua Economia:<br><input class="inp_valor" id="valor55" type="text" readonly></p> <br>
+        <p id="resultado_produto">Sua Economia(Com o preço do produto incluso):<br><input class="inp_valor" id="valor55" type="text" readonly></p> <br>
         FONTES:
 
       </div>
@@ -148,7 +148,7 @@
     
     let economia_total = Number(processador_valor + ram_valor + disco_valor)
     let plano = 8 * 200
-    resultado.innerHTML = ` Com nosso sistema em 8 anos você deixaria de comprar ${disco/2} Discos Rígidos, X Memórias RAMS, X Processadores, se
+    resultado.innerHTML = ` Com nosso sistema em 8 anos você deixaria de comprar ${(disco/2).toFixed(0)} Discos Rígidos, ${(ram/2).toFixed(0)} Memórias RAMS, ${(processador/2).toFixed(0)} Processadores, se
           baseando nos preços médios de HD (R$ 280,00),PROCESSADOR (R$ 1000,00) E RAM (R$ 250,00) estimamos que você deixaria de perder: R$${economia_total}`
     valor55.placeholder = `R$:${economia_total - plano}`
     valor55.placeholder.color = 'green'
