@@ -38,4 +38,6 @@ function mostrar2() {
   function sumir5(){
     mem5.style.display = 'none'
   }
-  
+  function redirecionar() {
+    window.open('https://www.instagram.com/juliab.pereira/?igshid=YmMyMTA2M2Y%3D', '_blank');
+  }

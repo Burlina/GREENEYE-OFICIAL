@@ -1798,7 +1798,7 @@ form input[type="submit"]:hover{
   width: 16.5vw;
   height: 40vh;
   border: solid green 5px;
-  border-radius: 50px;
+  border-radius: 15px;
   z-index: 99;
 }
 
@@ -1849,7 +1849,8 @@ form input[type="submit"]:hover{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.45);
-  border-radius: 44px;
+  border-radius: 6px;
+  z-index: 1;
 }
 
 .mems_hover:hover {
@@ -1863,3 +1864,7 @@ form input[type="submit"]:hover{
   text-align: center;
 }
 
+.img_hover{
+  width: 30px;
+  height: 30px;
+}
