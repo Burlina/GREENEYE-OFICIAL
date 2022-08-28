@@ -1,3 +1,10 @@
+#GRUPO 04
+#Gabriel Cavalcanti 
+#Julia Barboza Pereira
+#Leandro Vieira
+#Michelly Mendes
+#Pedro Moretti
+
 import psutil
 import time
 from datetime import datetime
@@ -20,7 +27,7 @@ if con.is_connected :
 
 #Envio de dados dinamicos ao banco e exibição de dados ao usuário
 media_cpu = 0
-tempoparar = float(input(" Quantas vezes você deseja capturar os dados?")
+tempoparar = float(input(" Quantas vezes você deseja capturar os dados?"))
 dados_cpu = []
 i = 1
 
