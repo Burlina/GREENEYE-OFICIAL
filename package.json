@@ -1,1 +1,26 @@
-{"type":"module","name":"SPRINT-2-Semestre","version":"1.0.0","description":"Repositório SPRINT 2º Semestre","main":"index.js","dependencies":{"express":"^4.18.1","nodemon":"^2.0.19"},"scripts":{"test":"echo \"Error: no test specified\" && exit 1","start":"nodemon server.js"},"repository":{"type":"git","url":"git+https://github.com/LeandroVCosta/SPRINT-2-Semestre.git"},"keywords":[],"author":"","license":"ISC","bugs":{"url":"https://github.com/LeandroVCosta/SPRINT-2-Semestre/issues"},"homepage":"https://github.com/LeandroVCosta/SPRINT-2-Semestre#readme"}
+{
+  "type": "module",
+  "name": "SPRINT-2-Semestre",
+  "version": "1.0.0",
+  "description": "Repositório SPRINT 2º Semestre",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeandroVCosta/SPRINT-2-Semestre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeandroVCosta/SPRINT-2-Semestre/issues"
+  },
+  "homepage": "https://github.com/LeandroVCosta/SPRINT-2-Semestre#readme"
+}
