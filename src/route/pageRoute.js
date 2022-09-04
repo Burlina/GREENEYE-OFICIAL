@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/login', (req, res) {
+router.get('/login', (req, res) => {
     res.sendFile(path.resolve('public/view/login.html'))
 })
 

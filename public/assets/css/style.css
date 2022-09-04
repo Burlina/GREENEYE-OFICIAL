@@ -1449,6 +1449,18 @@ section {
   }
 }
 
+.input_contact {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.btn_contact {
+  width: 40%;
+  margin: 0 auto;
+}
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
