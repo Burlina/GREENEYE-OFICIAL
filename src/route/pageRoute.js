@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     res.sendFile(path.resolve('public/view/index.html'))
 })
 
-
 router.get('/login', (req, res) => {
     res.sendFile(path.resolve('public/view/login.html'))
 })

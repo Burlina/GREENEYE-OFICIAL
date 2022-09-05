@@ -11,12 +11,12 @@ from datetime import datetime
 import mysql.connector
 
 #Troque o user e a senha do MYSQL para utilizar.
-con = mysql.connector.connect(host='localhost', database='Greeneye', user='seu_user', password='sua_senha')
+con = mysql.connector.connect(host='localhost', database='Greeneye', user='pedro', password='12830615tT-')
 
 #Envio de dados estáticos ao banco
 if con.is_connected :
     print('Conectou no MYSQL')    
-    dados_estaticos = str(psutil.cpu_freq()[2]) + ', ' + str(psutil.cpu_count()) + ', ' + str(psutil.cpu_count(logical=False)) + ', ' + str(psutil.virtual_memory()[0]*10**-9) + ', ' + str(psutil.disk_usage('C:\\')[0]*10**-9) + ');'
+    dados_estaticos = str(psutil.cpu_freq()[2]) + ', ' + str(psutil.cpu_count()) + ', ' + str(psutil.cpu_count(logical=False)) + ', ' + str(psutil.virtual_memory()[0]*10**-9) + ', ' + str(psutil.disk_usage('/')[0]*10**-9) + ');'
     insert_sintax = 'INSERT INTO DadosEstaticos VALUES(NULL, 1, 2, NOW(), '
     sql = insert_sintax + dados_estaticos
 
@@ -53,7 +53,7 @@ while tempoparar != 0:
    if con.is_connected :
     print('Conectou no MYSQL')    
     
-    dados_dinamicos= str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('C:\\').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', '+str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+    dados_dinamicos= str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', '+str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
     insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 2, NOW(), '
     sql = insert_sintax + dados_dinamicos
 
@@ -85,7 +85,7 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')    
     
-        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('C:\\').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
         insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 2, NOW(), '
         sql = insert_sintax + dados_dinamicos
 
@@ -97,7 +97,7 @@ while tempoparar != 0:
       print()
       print("Medida", i, "-", datahora)
       print()
-      print("\nUso de Disco:", psutil.disk_usage('C:\\').percent,'%', "\nSistema de Arquivo:", psutil.disk_partitions()[0][2], "\nPartições:", psutil.disk_partitions()[0][1])
+      print("\nUso de Disco:", psutil.disk_usage('/').percent,'%', "\nSistema de Arquivo:", psutil.disk_partitions()[0][2], "\nPartições:", psutil.disk_partitions()[0][1])
       print()
       i+=1
       time.sleep(tempo)
@@ -116,7 +116,7 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')    
     
-        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('C:\\').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
         insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 2, NOW(), '
         sql = insert_sintax + dados_dinamicos
 
@@ -150,7 +150,7 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')    
     
-        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('C:\\').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(psutil.cpu_percent()) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
         insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 2, NOW(), '
         sql = insert_sintax + dados_dinamicos
 
@@ -170,7 +170,7 @@ while tempoparar != 0:
       print()
       print("Medida", i, "-", datahora)
       print()
-      print("\nUso de Disco:", psutil.disk_usage('C:\\').percent,'%',"\nSistema de Arquivo:", psutil.disk_partitions()[0][2], "\nPartições:", psutil.disk_partitions()[0][1])
+      print("\nUso de Disco:", psutil.disk_usage('/').percent,'%',"\nSistema de Arquivo:", psutil.disk_partitions()[0][2], "\nPartições:", psutil.disk_partitions()[0][1])
       print()
       print('_____MEMÓRIA_____')
       print()
