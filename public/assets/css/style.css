@@ -1697,7 +1697,7 @@ main.container_login{
 main.container_login2{
   background: white;
   width: 380px;
-  height: 69vh;
+  height: 95vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -1709,7 +1709,7 @@ main.container_login2{
 main.container_login3{
   background: white;
   width: 380px;
-  height: 72vh;
+  height: 55vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -1767,7 +1767,7 @@ form{
   outline: none;
   font-size: 1rem;
   color: rgb(0, 0, 0, 0.7);
-  width: 306px;
+  width: 300px;
 }
 
 .input-field2 input::placeholder{
@@ -1775,7 +1775,7 @@ form{
 }
 
 form input[type="submit"]{
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 0.4rem; 
   background: linear-gradient(to left, 	#32CD32, #00FF00); 
   cursor: pointer;

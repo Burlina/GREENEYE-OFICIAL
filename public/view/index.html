@@ -95,7 +95,7 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Nossa Empresa</h2>
                 <p class="animate__animated animate__fadeInUp carrousel_text">
-                  Somos uma empresa que trabalha com monitoramento de hardware e o TI verde.</p>
+                  Somos uma empresa que trabalha com monitoramento de hardware segindo os parâmetros da TI verde.</p>
                 <div>
                   <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Saiba Mais</a>
                 </div>
@@ -125,7 +125,7 @@
                 <h2 class="animate__animated animate__fadeInDown">Calculadora Financeira</h2>
                 <p class="animate__animated animate__fadeInUp carrousel_text">Clique Aqui e utilize nosso simulador para estimar qual sera o seu ganho com o nosso produto e como te ajudamos a economizar seus equipamentos.</p>
                 <div>
-                  <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">SIMULAR</a>
+                  <a href="../view/calculadora.html" class="btn-get-started animate__animated animate__fadeInUp scrollto">SIMULAR</a>
                 </div>
               </div>
             </div>
@@ -660,7 +660,7 @@
 
         </div>
 
-        <form action="https://api.staticforms.xyz/submit" method="post">
+        <form action="https://api.staticforms.xyz/submit" method="post" name="formulario">
           <input class="input_contact" type="text" name="name" placeholder="Seu nome">
           <input class="input_contact" type="text" name="email" placeholder="Seu e-mail" />
           <textarea class="input_contact" name="message" placeholder="Sua mensagem"></textarea>
@@ -669,7 +669,7 @@
           <input type="hidden" name="subject" value="Contact us from - example.com" />
           <input type="hidden" name="replyTo" value="@">
           <input type="hidden" name="redirectTo" value="localhost:8080/index.html">
-          <input type="submit" class="btn_contact" value="Submit"/>
+          <input type="submit" class="btn_contact" value="Submit" onclick="validar()"/>
       </form>
 
       </div>
@@ -764,6 +764,35 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <script>
+    function validar(){
+      const nome = formulario.name
+      const email = formulario.email
+      const menssagem = formulario.message
+
+      if (nome.value == ""){
+        alert("Campos obrigatórios vazios")
+
+        nome.focus() 
+        return 
+      }
+      
+      if (email.value == ""){
+        alert("Campos obrigatórios vazios")
+
+        email.focus()
+        return
+      }
+      
+      if (menssagem.value == ""){
+        alert("Campos obrigatórios vazios")
+
+        menssagem.focus()
+        return
+      }
+    }
+  </script>
 
 </body>
 
