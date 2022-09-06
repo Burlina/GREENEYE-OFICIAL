@@ -32,6 +32,9 @@
 
 </head>
 <body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
@@ -173,18 +176,14 @@
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Componentes descartados</h4>
+                                <p class="category">Número mensal de componentes que foram descartados</p>
                             </div>
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-
+                                    <div>
+                                        <canvas id="myChartComponents"></canvas>
+                                  </div>                                  
                                 <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
@@ -197,20 +196,22 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Uso de componentes</h4>
+                                <p class="category">Últimas 24 horas</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
+                                <div>
+                                    <canvas id="myChartUsage" style="height: 40px; width: 20%"></canvas>
+                                </div>
                                 <div class="footer">
                                     <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
+                                        <button class="btn btn-dark">Máquina 1</button> 
+                                        <button class="btn btn-dark">Máquina 2</button>
+                                        <button class="btn btn-dark">Máquina 3</button>
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        <i class="fa fa-history"></i> Atualizado 15 minutos atrás
                                     </div>
                                 </div>
                             </div>
@@ -224,20 +225,18 @@
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">2014 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Descarte por componentes</h4>
+                                <p class="category">Descarte mensal por componentes</p>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
 
                                 <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                    <div>
+                                        <canvas id="myChartPer"></canvas>
                                     </div>
                                     <hr>
                                     <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
+                                        <i class="fa fa-check"></i> Mês de Setembro
                                     </div>
                                 </div>
                             </div>
@@ -247,8 +246,8 @@
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">Tasks</h4>
-                                <p class="category">Backend development</p>
+                                <h4 class="title">Objetivos</h4>
+                                <p class="category">Objetivos ecológicos</p>
                             </div>
                             <div class="content">
                                 <div class="table-full-width">
@@ -261,7 +260,7 @@
 						  							  	<label for="checkbox1"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                                <td>Descarte de no máximo 100 cpu's.</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -278,7 +277,7 @@
 						  							  	<label for="checkbox2"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                                <td>Emitir menos de x kg's de CO²</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -295,7 +294,7 @@
 						  							  	<label for="checkbox3"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                                <td>----------------
 												</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
@@ -313,7 +312,7 @@
 						  							  	<label for="checkbox4"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                                <td>-------------------</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -330,7 +329,7 @@
 						  							  	<label for="checkbox5"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Read "Following makes Medium better"</td>
+                                                <td>---------------------</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -347,7 +346,7 @@
 						  							  	<label for="checkbox6"></label>
 					  						  		</div>
                                                 </td>
-                                                <td>Unfollow 5 enemies from twitter</td>
+                                                <td>--------------------------</td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
                                                         <i class="fa fa-edit"></i>
@@ -432,21 +431,107 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
-    	});
-	</script>
-
 </html>
+
+<script>
+
+    const labelsComponents = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+  ];
+
+    const dataComponents = {
+        labels: labelsComponents,
+        datasets: [{
+        label: 'Componentes descartados',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [10, 5, 2, 20, 30, 45],
+        }]
+    };
+
+    const configComponents = {
+        type: 'line',
+        data: dataComponents,
+        options: {}
+    };
+
+    const myChartComponents = new Chart(
+        document.getElementById('myChartComponents'),
+        configComponents
+    );
+
+    const labelsUsage = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'
+    ]
+
+    const dataUsage = {
+        labels: labelsUsage,
+        datasets: [{
+        label: 'Uso da RAM',
+        backgroundColor: 'rgb(0, 99, 132)',
+        borderColor: 'rgb(0, 200, 200)',
+        data: [20, 21, 18, 20, 22, 20],
+        },
+        {
+        label: 'Uso do Disco HD',
+        backgroundColor: 'rgb(250, 50, 50)',
+        borderColor: 'rgb(250, 50, 50)',
+        data: [30, 30, 31, 32, 35, 40]
+        },
+        {
+        label: 'Uso do Processador',
+        backgroundColor: 'rgb(250, 200, 0)',
+        borderColor: 'rgb(250, 200, 0)',
+        data: [20, 21, 22, 25, 22, 15]
+        }
+        ]
+    }
+
+    const configUsage = {
+        type: 'line',
+        data: dataUsage,
+        options: {}
+    }
+
+    const myChartUsage = new Chart(
+        document.getElementById('myChartUsage'),
+        configUsage
+    )
+
+    const labelsPer = [
+        'Processador',
+        'RAM',
+        'Disco HD'
+    ]    
+
+    const dataPer = {
+        labels:labelsPer,
+        datasets: [{
+            label: ['Processador', 'RAM', 'Disco HD'],
+            backgroundColor: ['rgb(100, 100, 200)', 'rgb(200, 200, 100', 'rgb(150, 50, 300)'],
+            borderColor: 'rgb(100, 100, 0)',
+            data: [50, 30, 70]
+        }]
+    }
+
+    const configPer = {
+        type: 'doughnut',
+        data: dataPer,
+        options: {}
+    }
+
+    const myChartPer = new Chart(
+        document.getElementById('myChartPer'),
+        configPer
+    )
+</script>
