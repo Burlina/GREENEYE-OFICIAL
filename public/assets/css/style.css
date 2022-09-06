@@ -1459,6 +1459,7 @@ section {
 .btn_contact {
   width: 40%;
   margin: 0 auto;
+  color: #5c9f24;
 }
 
 /*--------------------------------------------------------------
@@ -1684,7 +1685,7 @@ section {
 
 main.container_login{
   background: white;
-  max-width: 500px;
+  max-width: 600px;
   min-height: 50vh;
   padding: 2rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -1775,7 +1776,7 @@ form{
 }
 
 form input[type="submit"]{
-  margin-top: 1rem;
+  margin-top: 2%;
   padding: 0.4rem; 
   background: linear-gradient(to left, 	#32CD32, #00FF00); 
   cursor: pointer;
