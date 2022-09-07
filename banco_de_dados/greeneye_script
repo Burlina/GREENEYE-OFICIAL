@@ -3,25 +3,24 @@ CREATE DATABASE Greeneye;
 USE Greeneye;
 
 CREATE TABLE Empresa (
-id INT PRIMARY KEY AUTO_INCREMENT,
+idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 cnpj CHAR(14),
 nomeEmpresa varchar(30)
 );
 
 CREATE TABLE Usuario (
-id INT,
+idUsuario INT,
 fkEmpresa INT,
 nome VARCHAR(30),
 sobrenome VARCHAR(30),
 email VARCHAR(45),
 chave VARCHAR(15),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id),
-PRIMARY KEY(id,fkEmpresa)
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa),
+PRIMARY KEY(idUsuario,fkEmpresa)
 );
 
-
 CREATE TABLE Computador (
-id INT,
+idComputador INT,
 fkEmpresa INT,
 serial VARCHAR(30),
 cpu_modelo VARCHAR(45),
@@ -30,29 +29,26 @@ ram_modelo VARCHAR(45),
 gpu_modelo VARCHAR(45),
 placamae_modelo VARCHAR(45),
 sistema_operacional VARCHAR(45),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa (id),
-PRIMARY KEY(id, fkEmpresa)
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa (idEmpresa),
+PRIMARY KEY(idComputador, fkEmpresa)
 );
 
-INSERT INTO Computador VALUES (1, 2, 12345678, 'I5 7400', 'seagate barracuda', '8 gb hyperx', 'gtx 1050', 'H170-M', 'LINUX MINT');
-
-CREATE TABLE DadosDinamicos (
-id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE DadoDinamico (
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 fkComputador INT,
 fkEmpresa INT,
 momento DATETIME,
 ram_uso DECIMAL(4,2),
 disco_uso DECIMAL(4,2),
 cpu_freq DECIMAL(6,2),
-cpu_uso DECIMAL(4,2),
 cpu_media DECIMAL(4,2),
 cpu_percentual DECIMAL(4,2),
-FOREIGN KEY(fkComputador) REFERENCES Computador(id),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id)
+FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-CREATE TABLE DadosEstaticos (
-id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE DadoEstatico (
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 fkComputador INT NOT NULL,
 fkEmpresa INT NOT NULL,
 momento DATETIME,
@@ -61,19 +57,21 @@ cpu_nucleototal INT,
 cpu_nucleofisico INT,
 ram_total INT,
 hd_total DECIMAL(6,2),
-FOREIGN KEY(fkComputador) REFERENCES Computador(id),
-FOREIGN KEY(fkEmpresa) REFERENCES Empresa(id)
+FOREIGN KEY(fkComputador) REFERENCES Computador(idComputador),
+FOREIGN KEY(fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
-SELECT * FROM Empresa;
-SELECT * FROM DadosDinamicos;
-SELECT NOW();
+INSERT INTO Empresa VALUES (NULL, '123123312312', 'Empresa teste');
 
-INSERT INTO Empresa VALUES (NULL, '12345678912345', 'Judas');
+INSERT INTO Usuario VALUES (1, 1, 'Pedro', 'Moretti', 'morettipinsan@gmail.com', '12345'); 
 
-SELECT * FROM DadosDinamicos;
-SELECT * FROM DadosEstaticos;
-DROP TABLE DadosDinamicos;
+INSERT INTO Computador VALUES (1, 1, 12345678, 'I5 12131', 'seagate tartatuda', '16gb seaplate', 'txg 1080', 'h1000-m', 'Windows 1000'),
+							  (2, 1, 87654321, 'I5 10000', 'seagate barracuda', '4gb seagate', 'gtx 950', 'h110-m', 'Windows 10'),
+                              (3, 1, 87654321, 'I5 10000', 'seagate barracuda', '4gb seagate', 'gtx 950', 'h110-m', 'Windows 10');	
+                              
+SELECT * FROM DadoEstatico;
+SELECT * FROM DadoDinamico;
+
 
 
 

@@ -12,12 +12,12 @@ import mysql.connector
 import matplotlib.pyplot
 
 #Troque o user e a senha do MYSQL para utilizar.
-con = mysql.connector.connect(host='localhost', database='Greeneye', user='root', password='#Gf49535932861')
+con = mysql.connector.connect(host='localhost', database='Greeneye', user='pedro', password='12830615tT-')
 #Envio de dados estáticos ao banco
 if con.is_connected :
     print('Conectou no MYSQL')    
     dados_estaticos = str(psutil.cpu_freq()[2]) + ', ' + str(psutil.cpu_count()) + ', ' + str(psutil.cpu_count(logical=False)) + ', ' + str(psutil.virtual_memory()[0]*10**-9) + ', ' + str(psutil.disk_usage('/')[0]*10**-9) + ');'
-    insert_sintax = 'INSERT INTO DadosEstaticos VALUES(NULL, 1, 1, NOW(), '
+    insert_sintax = 'INSERT INTO DadoEstatico VALUES(NULL, 1, 1, NOW(), '
     sql = insert_sintax + dados_estaticos
 
     cursor = con.cursor()
@@ -33,7 +33,7 @@ dados_hd = []
 dados_ram = []
 medida = []
 i = 1
-
+    
 #Captura do sistema operacional da máquina, utilizando a própria psutil 
 sistemaoperacional = psutil.disk_partitions()[0][2] 
 if(sistemaoperacional == 'NTFS'):
@@ -66,12 +66,12 @@ while tempoparar != 0:
 
    if con.is_connected :
     print('Conectou no MYSQL')
-    dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ',' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-    dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ',' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-    dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-    insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 1, NOW(), '
-    insert_sintax2 = 'INSERT INTO DadosDinamicos VALUES(NULL, 2, 1, NOW(), '
-    insert_sintax3 = 'INSERT INTO DadosDinamicos VALUES(NULL, 3, 1, NOW(), '
+    dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+    dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) +  ', ' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1] + (dados_cpu[len(dados_cpu)-1])*0.1) + ');'
+    dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', '  + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1] - (dados_cpu[len(dados_cpu)-1])*0.05) + ');'
+    insert_sintax = 'INSERT INTO DadoDinamico VALUES(NULL, 1, 1, NOW(), '
+    insert_sintax2 = 'INSERT INTO DadoDinamico VALUES(NULL, 2, 1, NOW(), '
+    insert_sintax3 = 'INSERT INTO DadoDinamico VALUES(NULL, 3, 1, NOW(), '
     sql = insert_sintax + dados_dinamicos
     sql2 = insert_sintax2 + dados_dinamicos2
     sql3 = insert_sintax3 + dados_dinamicos3
@@ -146,11 +146,11 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')
         dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15 *psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', '  + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 1, NOW(), '
-        insert_sintax2 = 'INSERT INTO DadosDinamicos VALUES(NULL, 2, 1, NOW(), '
-        insert_sintax3 = 'INSERT INTO DadosDinamicos VALUES(NULL, 3, 1, NOW(), '
+        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) +  ', ' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1] + (dados_cpu[len(dados_cpu)-1])*0.1) + ');'
+        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', '  + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1] - (dados_cpu[len(dados_cpu)-1])*0.05) + ');'
+        insert_sintax = 'INSERT INTO DadoDinamico VALUES(NULL, 1, 1, NOW(), '
+        insert_sintax2 = 'INSERT INTO DadoDinamico VALUES(NULL, 2, 1, NOW(), '
+        insert_sintax3 = 'INSERT INTO DadoDinamico VALUES(NULL, 3, 1, NOW(), '
         sql = insert_sintax + dados_dinamicos
         sql2 = insert_sintax2 + dados_dinamicos2
         sql3 = insert_sintax3 + dados_dinamicos3
@@ -187,7 +187,7 @@ while tempoparar != 0:
                          
       nmrmedida = str(i)
       medida.append(nmrmedida)
-      dadohd = psutil.disk_usage('C:\\').percent
+      dadohd = psutil.disk_usage('/').percent
       dados_hd.append(dadohd)
       i+=1
       time.sleep(tempo)
@@ -231,12 +231,12 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')    
    
-        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ',  ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15 *psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ',' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 1, NOW(), '
-        insert_sintax2 = 'INSERT INTO DadosDinamicos VALUES(NULL, 2, 1, NOW(), '
-        insert_sintax3 = 'INSERT INTO DadosDinamicos VALUES(NULL, 3, 1, NOW(), '
+        dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
+        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) +  ', ' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1] + (dados_cpu[len(dados_cpu)-1])*0.1) + ');'
+        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', '  + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1] - (dados_cpu[len(dados_cpu)-1])*0.05) + ');'
+        insert_sintax = 'INSERT INTO DadoDinamico VALUES(NULL, 1, 1, NOW(), '
+        insert_sintax2 = 'INSERT INTO DadoDinamico VALUES(NULL, 2, 1, NOW(), '
+        insert_sintax3 = 'INSERT INTO DadoDinamico VALUES(NULL, 3, 1, NOW(), '
         sql = insert_sintax + dados_dinamicos
         sql2 = insert_sintax2 + dados_dinamicos2
         sql3 = insert_sintax3 + dados_dinamicos3
@@ -324,11 +324,11 @@ while tempoparar != 0:
       if con.is_connected :
         print('Conectou no MYSQL')    
         dados_dinamicos = str(psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ', ' + str(media_cpu) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15 *psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) + ',' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ',' + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1]) + ');'
-        insert_sintax = 'INSERT INTO DadosDinamicos VALUES(NULL, 1, 1, NOW(), '
-        insert_sintax2 = 'INSERT INTO DadosDinamicos VALUES(NULL, 2, 1, NOW(), '
-        insert_sintax3 = 'INSERT INTO DadosDinamicos VALUES(NULL, 3, 1, NOW(), '
+        dados_dinamicos2 = str(psutil.virtual_memory().percent + 0.15*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent - 0.05*psutil.disk_usage('/').percent) + ', ' + str(psutil.cpu_freq()[0]) +  ', ' + str(media_cpu + media_cpu*0.1) + ', ' + str(dados_cpu[len(dados_cpu)-1] + (dados_cpu[len(dados_cpu)-1])*0.1) + ');'
+        dados_dinamicos3 = str(psutil.virtual_memory().percent + 0.05*psutil.virtual_memory().percent) + ', ' + str(psutil.disk_usage('/').percent/3) + ', ' + str(psutil.cpu_freq()[0]) + ', '  + str(media_cpu - media_cpu*0.05) + ', ' + str(dados_cpu[len(dados_cpu)-1] - (dados_cpu[len(dados_cpu)-1])*0.05) + ');'
+        insert_sintax = 'INSERT INTO DadoDinamico VALUES(NULL, 1, 1, NOW(), '
+        insert_sintax2 = 'INSERT INTO DadoDinamico VALUES(NULL, 2, 1, NOW(), '
+        insert_sintax3 = 'INSERT INTO DadoDinamico VALUES(NULL, 3, 1, NOW(), '
         sql = insert_sintax + dados_dinamicos
         sql2 = insert_sintax2 + dados_dinamicos2
         sql3 = insert_sintax3 + dados_dinamicos3
@@ -401,7 +401,7 @@ while tempoparar != 0:
 
       
       dados_cput.append(psutil.cpu_percent())
-      dados_hd.append(psutil.disk_usage('C:\\').percent)
+      dados_hd.append(psutil.disk_usage('/').percent)
       dados_ram.append(psutil.virtual_memory().percent)
       nmrmedida = str(i)
       medida.append(nmrmedida)
