@@ -40,4 +40,4 @@ function mostrar2() {
   }
   function redirecionar() {
     window.open('https://www.instagram.com/juliab.pereira/?igshid=YmMyMTA2M2Y%3D', '_blank');
-  }
+  } 
