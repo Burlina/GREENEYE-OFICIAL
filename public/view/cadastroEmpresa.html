@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Cadastre sua empresa | GreenEye</title>
+  <title>Cadastro Empresa</title>
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -26,80 +26,112 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style-login.css" rel="stylesheet">
 
 </head>
 
 <body>
-  <!-- <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1> -->
-  <!-- Uncomment below if you prefer to use an image logo -->
-  <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto" href="login.html">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
+        <li><a class="nav-link scrollto" href="#services">Valores</a></li>
+        <li><a class="nav-link scrollto" href="#team">Equipe</a></li>
+        <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
+        <h1 class="logo"><a href="index.html"></a><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1>
+        <img src="assets/img/OLHO.png">
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
 
-  <!-- <nav id="navbar" class="navbar">
-        <ul> -->
-  <!-- <li><a class="nav-link scrollto active" href="index.html">Home</a></li> -->
-  <!-- <li><a class="nav-link scrollto" href="index.html#about">Sobre nós</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Valores</a></li> -->
-  <!-- <li><a class="nav-link scrollto " href="calculadora.html">Calculadora</a></li> -->
-  <!-- <li><a class="nav-link scrollto" href="index.html#team">Equipe</a></li> -->
-  <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> -->
-  <!-- <li><a class="nav-link scrollto" href="#contact">Contato</a></li> -->
-  <!-- <li><a class="getstarted scrollto" href="index.html">Voltar</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>.navbar -->
+  </div>
+</header><!-- End Header -->
 
-  <!-- </div>
-  </header> End Header -->
+  <!-- START LOGIN -->
+  <div class="content">
 
-  <div class="login">
-    <div class="filter">
-      <main class="container_login3">
-        <h2>Cadastro de empresa</h2>
-        <form action="submit">
+    <!-- <div id="logo-login">
+      <h1>
+        <img src="../assets/img/olhoolho.png" alt="" class="img-fluid">
+    </h1>
+    </div> -->
 
-          <div class="input-field2">
-            <input type="text" id="nome" placeholder="Digite o CNPJ da empresa">
-            <div class="underline"></div>
-          </div><br>
+    <div class="box-login">
+      <div class="wrapper">
+        <div class="title-text">
+  
+          <div class="title cadEmpresa">
+            Cadastro Empresa
+          </div>
+        </div>
+        <div class="form-container">
+          <!-- <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <div class="slider-contato"></div>
+          </div> -->
+          <div class="form-inner">
+            <form action="#" class="nome da empresa">
+              <div class="field">
+                <input type="text" placeholder="Nome da Empresa" required>
+              </div>
+              <div class="field">
+                <input type="password" placeholder="  CNPJ" required>
+              </div>
 
-          <div class="input-field2">
-            <input type="text" id="sobrenome" placeholder="Digite o nome da empresa">
-            <div class="underline"></div>
-          </div><br>
-
-          <input type="submit" value="Continue" onclick="validar()"><br>
-
-          <footer>
-          <span style=" display: grid;">Já tem uma empresa cadastrada?<a onclick="redireciona('cadastrousuario')"
-              class="link_cadastro" style="color: green; ">Clique aqui</a></span>
-          </footer>
-        </form>
-      </main>
+              <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Cadastrar">
+              </div>
+            </form>
+            <form action="#" class="signup">
+              <div class="field">
+                <h6>Para cadastrar sua empresa, entre em  <br> contato com nossa equipe. 
+                <a href="index.html" id="link-contato">Contato</a></h6>
+                <!-- <input type="text" placeholder="Email" required>
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Senha" required>
+              </div>
+              <div class="field">
+                <input type="password" placeholder="Confirmação de senha" required> -->
+              </div>
+              <!-- <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Cadastrar"> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script>
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (() => {
+          loginForm.style.marginLeft = "-50%";
+          loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (() => {
+          loginForm.style.marginLeft = "0%";
+          loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (() => {
+          signupBtn.click();
+          return false;
+        });
+      </script>
+    </div>
     </div>
   </div>
-
-
-
+  <!-- link: https://codepen.io/jando132456/pen/JjLZXYK -->
+  <!-- END LOGIN -->
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -111,41 +143,8 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-
-
-  <!-- Validação de cadastro-->
-  <script>
-    function validarcampos() {
-      if (nome.value == "") {
-        return false
-      }
-      else if (sobrenome.value == "") {
-        return false
-      }
-      else if (email.value == "") {
-        return false
-      }
-
-      else if (chave.value == "") {
-        return false
-      }
-      else {
-        return true
-      }
-    }
-
-    function validar() {
-      if (!(validarcampos())) {
-        alert("Campos Inválidos")
-        return
-      }
-      else {
-        alert("else")
-        window.location.href = "";
-      }
-    }
-  </script>
 </body>
+
 
 </html>
 
