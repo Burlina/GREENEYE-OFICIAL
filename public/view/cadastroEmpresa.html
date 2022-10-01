@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <title>Cadastro Empresa | GreenEye</title>
 
+  <script src="./js/funcoes.js"></script>
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -26,31 +28,11 @@
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="../assets/css/style-login.css" rel="stylesheet">
+  <link href="assets/css/style-cadastros.css" rel="stylesheet">
 
 </head>
 
 <body>
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
-
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto" href="login.html">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
-        <li><a class="nav-link scrollto" href="#services">Valores</a></li>
-        <li><a class="nav-link scrollto" href="#team">Equipe</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
-        <h1 class="logo"><a href="index.html"></a><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1>
-        <img src="assets/img/OLHO.png">
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
-  </div>
-</header><!-- End Header -->
-
   <!-- START LOGIN -->
   <div class="content">
 
@@ -61,6 +43,10 @@
     </div> -->
 
     <div class="box-login">
+
+      <a  href="#">
+        <img id="img-back-pages" src="assets/img/login_cadastro/back_icon_green.png"></a>
+
       <div class="wrapper">
         <div class="title-text">
   
@@ -77,15 +63,16 @@
           <div class="form-inner">
             <form action="#" class="nome da empresa">
               <div class="field">
-                <input type="text" placeholder="Nome da Empresa" required>
+                <input id="nomeE_input" type="text" placeholder="Nome da Empresa">
+        
               </div>
               <div class="field">
-                <input type="password" placeholder="  CNPJ" required>
+                <input id="cnpj_input" type="number" placeholder="CNPJ">
               </div>
 
               <div class="field btn">
                 <div class="btn-layer"></div>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cadastrar" onclick="cadastrar()">
               </div>
             </form>
             <form action="#" class="signup">
@@ -98,8 +85,8 @@
                 <input type="password" placeholder="Senha" required>
               </div>
               <div class="field">
-                <input type="password" placeholder="Confirmação de senha" required> -->
-              </div>
+                <input type="password" placeholder="Confirmação de senha" required> 
+              </div>-->
               <!-- <div class="field btn">
                 <div class="btn-layer"></div>
                 <input type="submit" value="Cadastrar"> -->
@@ -108,7 +95,7 @@
           </div>
         </div>
       </div>
-      <script>
+      <!-- <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
         const loginBtn = document.querySelector("label.login");
@@ -126,7 +113,7 @@
           signupBtn.click();
           return false;
         });
-      </script>
+      </script> -->
     </div>
     </div>
   </div>
@@ -149,3 +136,68 @@
 </html>
 
 <script src="../assets/js/redirecionamento.js"></script>
+<!-- 
+<script>
+  function cadastrarEmpresa() {
+        aguardar(); -->
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        <!-- var nomeVar = nomeE_input.value;
+        var cnpjVar = cnpj_input.value;
+
+        if (nomeVar == "" || cnpjVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                senhaServer: cnpjVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
+ -->

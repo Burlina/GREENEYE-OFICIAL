@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <title>Login | GreenEye</title>
 
+  <script src="./js/funcoes.js"></script>
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -31,40 +33,13 @@
 </head>
 
 <body>
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center justify-content-between">
-
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto" href="login.html">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
-        <li><a class="nav-link scrollto" href="#services">Valores</a></li>
-        <li><a class="nav-link scrollto" href="#team">Equipe</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
-        <h1 class="logo"><a href="index.html"></a><a href="index.html"> <span style="color: green;">Green</span>eye</a></h1>
-        <img src="assets/img/OLHO.png">
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
-  </div>
-</header><!-- End Header -->
-
   <!-- START LOGIN -->
   <div class="content">
-<!-- 
-    <div id="logo-login">
-      <h1>
-        <img src="../assets/img/olhoolho.png" alt="" class="img-fluid">
-        <a id="texto1" href="index.html">
-        <span style="color: green;">Green</span>
-        eye
-      </a> 
-    </h1>
-    </div> -->
-
     <div class="box-login">
+
+      <a  href="index.html">
+        <img id="img-back" src="assets/img/login_cadastro/back_icon_green.png"></a>
+
       <div class="wrapper">
         <div class="title-text">
   
@@ -86,13 +61,13 @@
           <div class="form-inner">
             <form action="#" class="login">
               <div class="field">
-                <input type="text" placeholder="Email" required>
+                <input id="email_input" type="text" placeholder="E-mail">
               </div>
               <div class="field">
-                <input type="password" placeholder="Senha" required>
+                <input id="senha_input" type="password" placeholder="******">
               </div>
               <div class="pass-link">
-                <p>Máximo de 10 caracteres</9>
+                <p>Máximo de 10 caracteres</p>
               </div>
               <div class="field btn">
                 <div class="btn-layer"></div>
@@ -113,16 +88,18 @@
                 <input type="password" placeholder="Senha" required>
               </div>
               <div class="field">
-                <input type="password" placeholder="Confirmação de senha" required> -->
-              </div>
+                <input type="password" placeholder="Confirmação de senha" required> 
+              </div>-->
               <!-- <div class="field btn">
                 <div class="btn-layer"></div>
                 <input type="submit" value="Cadastrar"> -->
+
               </div>
             </form>
           </div>
         </div>
       </div>
+      
       <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
@@ -159,8 +136,81 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
 </body>
-
-
 </html>
-
 <script src="../assets/js/redirecionamento.js"></script>
+
+<!-- <script>
+// Script de inserção no banco
+  function entrar() {
+      aguardar();
+
+      var emailVar = email_input.value;
+      var senhaVar = senha_input.value;
+
+      if (emailVar == "" || senhaVar == "") {
+          cardErro.style.display = "block"
+          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+          finalizarAguardar();
+          return false;
+      }
+      else {
+          setInterval(sumirMensagem, 5000)
+      }
+
+      console.log("FORM LOGIN: ", emailVar);
+      console.log("FORM SENHA: ", senhaVar);
+
+      fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              emailServer: emailVar,
+              senhaServer: senhaVar
+          })
+      }).then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!")
+
+          if (resposta.ok) {
+              console.log(resposta);
+
+              resposta.json().then(json => {
+                  console.log(json);
+                  console.log(JSON.stringify(json));
+
+                  sessionStorage.EMAIL_USUARIO = json.email;
+                  sessionStorage.NOME_USUARIO = json.nome;
+                  sessionStorage.ID_USUARIO = json.id;
+
+                  setTimeout(function () {
+                      window.location = "./dashboard/cards.html";
+                  }, 1000); // apenas para exibir o loading
+
+              });
+
+          } else {
+
+              console.log("Houve um erro ao tentar realizar o login!");
+
+              resposta.text().then(texto => {
+                  console.error(texto);
+                  finalizarAguardar(texto);
+              });
+          }
+
+      }).catch(function (erro) {
+          console.log(erro);
+      })
+
+      return false;
+  }
+
+  function sumirMensagem() {
+      cardErro.style.display = "none"
+  }
+
+</script> -->
+
+
+
