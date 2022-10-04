@@ -216,10 +216,11 @@ form .btn {
 }
 
 form .btn .btn-layer {
-  height: 100%;
-  width: 300%;
+  width: 500%;
   position: absolute;
-  left: -90%;
+  left: -100%;
+  top: -7%;
+  bottom: -7%;
   background: -webkit-linear-gradient(right, #f1f1f1, #6fc02c, #197c19);
   transition: all 0.4s ease;
 }
