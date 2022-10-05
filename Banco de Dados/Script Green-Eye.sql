@@ -42,10 +42,11 @@ processador_modelo int,
 ram_modelo varchar(45),
 disco_modelo varchar(45),
 cpu_modelo varchar(45),
-placamae_modelo varchar(45)
+placamae_modelo varchar(45),
+sistemaOperacional varchar(20)
 )auto_increment = 1000;
 
-insert into Especificacoes values (null, 12,'LPDDR5 5200MHZ 32GB','SSD 1TB PCIE NVME M.2','i712600p','GigaByte H510MH DDR4');
+insert into Especificacoes values (null, 12,'LPDDR5 5200MHZ 32GB','SSD 1TB PCIE NVME M.2','i712600p','GigaByte H510MH DDR4', 'Windows');
 
 create table Lote(
 idLote int primary key auto_increment,
@@ -67,21 +68,24 @@ fkLote int,
 foreign key (fkLote) references Lote(idLote)
 )auto_increment = 50000;
 
-insert into Maquina values (null, '12345678901234',20000);
+insert into Maquina values (null, '12345678901234',20000),
+						   (null, '12345678901235',20000),
+						   (null, '12345678901236',20000);
 
 create table Leitura(
 idLeitura int primary key auto_increment,
-cpu_Media int,
-qtdProcessador int,
-ram_Total decimal(3,2),
-ram_Uso decimal (3,2),
-ram_UsoPercent int,
-disco_Total decimal(5,2),
-disco_Uso decimal(5,2),
-disco_Livre decimal(5,2),
-disco_Percent decimal(5,2),
 fkMaquina int,
-foreign key (fkMaquina) references Maquina(idMaquina)
+foreign key (fkMaquina) references Maquina(idMaquina),
+cpuMedia int,
+qtdProcessador int,
+ramTotal decimal(3,2),
+ramUso decimal (3,2),
+ramUsoPercent int,
+discoTotal decimal(5,2),
+discoUso decimal(5,2),
+discoLivre decimal(5,2),
+discoPercent decimal(5,2),
+dataHora datetime
 )auto_increment = 1;
 
 select * from Perfil;
