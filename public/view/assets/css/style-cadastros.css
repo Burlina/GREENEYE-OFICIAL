@@ -320,8 +320,10 @@ form .btn input[type="submit"] {
   color: #5c9f24;
 }
 
-@media (max-width: 991px) {
-  
+@media screen (max-width: 991px, min-width: 509px) {
+  .wrapper .box-login {
+    margin: 0px;
+  }
   .mobile-nav-toggle {
     display: block;
   }

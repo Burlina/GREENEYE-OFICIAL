@@ -446,13 +446,16 @@ form .btn input[type="submit"] {
   visibility: visible;
 }
 
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
+@media screen (max-width: 991px, min-width: 509px) {
+  .wrapper .box-login {
+    margin:0px
+  }
+  .mobile-nav-toggle {
+    display: block;
   }
 
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
+  .navbar ul {
+    display: none;
   }
 }
 
@@ -472,7 +475,7 @@ form .btn input[type="submit"] {
   color: #5c9f24;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   
   .mobile-nav-toggle {
     display: block;
@@ -481,7 +484,7 @@ form .btn input[type="submit"] {
   .navbar ul {
     display: none;
   }
-}
+} */
 
 .navbar-mobile {
   position: fixed;
