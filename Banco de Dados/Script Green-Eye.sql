@@ -13,7 +13,7 @@ insert into Perfil values ('111','ADM'),
 create table Empresa(
 idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(45),
-CNPJ char(14)
+cnpj char(14)
 )auto_increment = 10000;
 
 insert into Empresa values (null, 'Greeneye','12345678900000');
@@ -38,11 +38,11 @@ insert into Usuario values (null,'Lucas','lucas.navasconi@sptech.school','123',1
 
 create table Especificacoes(
 idEspecificacao int primary key auto_increment,
-Processador_modelo int,
-Ram_modelo varchar(45),
-Disco_modelo varchar(45),
-Cpu_modelo varchar(45),
-Placamae_modelo varchar(45)
+processador_modelo int,
+ram_modelo varchar(45),
+disco_modelo varchar(45),
+cpu_modelo varchar(45),
+placamae_modelo varchar(45)
 )auto_increment = 1000;
 
 insert into Especificacoes values (null, 12,'LPDDR5 5200MHZ 32GB','SSD 1TB PCIE NVME M.2','i712600p','GigaByte H510MH DDR4');
@@ -71,7 +71,7 @@ insert into Maquina values (null, '12345678901234',20000);
 
 create table Leitura(
 idLeitura int primary key auto_increment,
-Cpu_Media int,
+cpu_Media int,
 qtdProcessador int,
 ram_Total decimal(3,2),
 ram_Uso decimal (3,2),

@@ -1,9 +1,4 @@
 #GRUPO 04
-#Gabriel Cavalcanti 
-#Julia Barboza Pereira
-#Leandro Vieira
-#Michelly Mendes
-#Pedro Moretti
 
 import psutil
 import time
@@ -12,7 +7,7 @@ import mysql.connector
 import matplotlib.pyplot
 
 #Troque o user e a senha do MYSQL para utilizar.
-con = mysql.connector.connect(host='localhost', database='Greeneye', user='root', password='#Gf49535932861')
+con = mysql.connector.connect(host='localhost', database='Greeneye', user='aluno', password='sptech')
 #Envio de dados estáticos ao banco
 if con.is_connected :
     print('Conectou no MYSQL')    
@@ -439,7 +434,7 @@ while tempoparar != 0:
 
 
          desejo =  (input("  Deseja continuar printando?(SIM/TROCAR/SAIR)"))
-         if(desejo == "sim" or desejo == "SIM" or desejo == "Sim"):
+         if(desejo == "sim" or desejo == "SIM" or desejo == "Sim" or desejo == "s"):
              tempoparar = float(input("Quantas vezes você deseja capturar os dados?"))
          elif(desejo == "Trocar" or desejo == "TROCAR" or desejo == "trocar"):
              tempoparar = float(input("Quantas vezes você deseja capturar os dados?"))
