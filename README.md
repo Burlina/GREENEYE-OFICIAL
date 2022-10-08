@@ -1,2 +1,2 @@
-# SPRINT-2-Semestre
-Repositório SPRINT 2º Semestre
+# Greeneye
+Projeto Grupo 08 de PI - 1ºSIS
