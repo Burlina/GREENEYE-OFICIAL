@@ -301,7 +301,22 @@ form .btn input[type="submit"] {
 * Desktop Navigation 
 */
 #img-back-pages{
-  width: 50px;
+  width: 30px;
+}
+
+#img-next-pages{
+  width: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: #197c19;
+  font-size: 25px;
+}
+
+#title-cadastros{
+  color: #fff;
+  text-align: center;
 }
 
 /**
