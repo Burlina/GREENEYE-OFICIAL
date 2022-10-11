@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Cadastro Lote | GreenEye</title>
+  <title>Cadastro Empresa | GreenEye</title>
+
+  <script src="./js/funcoes.js"></script>
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -31,30 +33,33 @@
 </head>
 
 <body>
-  <!-- START CADASTRO UNIDADE -->
+  <!-- START CADASTRO EMPRESA -->
   <div class="content">
-    <div class="content">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="box-login">
-      <a  href="cadLote.html">
+
+      <a  href="#">
         <img id="img-back-pages" src="../assets/img/login_cadastro/back_icon_green.png">Voltar</a>
-  
+        <img src="../assets/img/olhoolho.png" width="90px" id="img-between">
+      <a href="cadFuncionario.html">Próximo<img id="img-next-pages" src="../assets/img/login_cadastro/next_icon_green.png"></a>
+
       <div class="wrapper">
         <div class="title-text">
-  
+
           <div class="title cadEmpresa">
-            Cadastrar Unidade
+            Cadastro Empresa
           </div>
         </div>
         <div class="form-container">
           <div class="form-inner">
             <form action="#" class="nome da empresa">
               <div class="field">
-                <input id="unidade_input" type="text" placeholder="Local da Unidade">
+                <input id="nomeE_input" type="text" placeholder="Nome da Empresa">
+
               </div>
               <div class="field">
-                <input id="idEmpresa_input" type="number" placeholder="Id da sua empresa">
+                <input id="cnpj_input" type="number" placeholder="CNPJ">
               </div>
 
               <div class="field btn">
@@ -62,32 +67,11 @@
                 <input type="submit" value="Cadastrar" onclick="cadastrar()">
               </div>
             </form>
-              </div>
-            </form>
           </div>
         </div>
       </div>
-      <script>
-        const loginText = document.querySelector(".title-text .login");
-        const loginForm = document.querySelector("form.login");
-        const loginBtn = document.querySelector("label.login");
-        const signupBtn = document.querySelector("label.signup");
-        const signupLink = document.querySelector("form .signup-link a");
-        signupBtn.onclick = (() => {
-          loginForm.style.marginLeft = "-50%";
-          loginText.style.marginLeft = "-50%";
-        });
-        loginBtn.onclick = (() => {
-          loginForm.style.marginLeft = "0%";
-          loginText.style.marginLeft = "0%";
-        });
-        signupLink.onclick = (() => {
-          signupBtn.click();
-          return false;
-        });
-      </script>
     </div>
-    </div>
+  </div>
   </div>
   <!-- link: https://codepen.io/jando132456/pen/JjLZXYK -->
   <!-- END LOGIN -->
@@ -108,22 +92,24 @@
 </html>
 
 <script src="../assets/js/redirecionamento.js"></script>
-
 <script>
-  let girar1 = girar.value;
+  function cadastrar() {
+    var logName = logname.value;
+    var logEmail = logemail.value;
+    var logSenha = logsenha.value;
+    var logEmpresa = Number(logempresa.value);
+    var logPermissoes = logpermissoes.value;
 
-function cadastrarUnidade() {
-  var logLocal = loglocal.value;
-  var logEmpresaId = Number(logempresaId.value);
 
-  if (logLocal == "" || logEmpresaId == "") {
-    alert("Informe seus dados corretamente!");
-    return false;
-  }
+    if (logName == "" || logEmail == "" || logSenha == "" || logEmpresa == "" || logPermissoes == "") {
+      alert("Informe os dados corretamente!");
+      return false;
+    }
+
 
     console.log("INICIANDO O FETCH");
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrarUnidade", {
+    fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -131,8 +117,11 @@ function cadastrarUnidade() {
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        loglocalServer: logLocal,
-        logempresaIdServer: logEmpresaId
+        lognameServer: logName,
+        logemailServer: logEmail,
+        logsenhaServer: logSenha,
+        logempresaServer: logEmpresa,
+        logpermissoesServer: logPermissoes
       })
     }).then(function (resposta) {
       console.log("entrei no fetch");
@@ -152,6 +141,49 @@ function cadastrarUnidade() {
     });
 
     return false;
+  }
 
+
+  function cadastrarEmpresa() {
+
+    var logNomeE = lognomeE.value;
+    var logCnpj = logcnpj.value;
+
+    if (logNomeE == "" || logCnpj == "") {
+      alert("Informe os dados corretamente!");
+      return false;
+    }
+
+    console.log("INICIANDO O FETCH");
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrarEmpresa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        lognomeEServer: logNomeE,
+        logcnpjServer: logCnpj
+      })
+    }).then(function (resposta) {
+      console.log("entrei no fetch");
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        alert("Cadastro realizado com sucesso!");
+        function girar() {
+          girar1
+        }
+      } else {
+        alert("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+
+    });
+
+    return false;
   }
 </script>

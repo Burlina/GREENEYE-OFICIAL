@@ -34,18 +34,17 @@
 
 <body>
   <!-- START LOGIN -->
-  <meta name="viewport" content=
-        "width=device-width, initial-scale=1.0">
-        
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <div class="content">
     <div class="box-login">
 
-      <a  href="index.html">
+      <a href="index.html">
         <img id="img-back" src="../assets/img/login_cadastro/back_icon_green.png"></a>
 
       <div class="wrapper">
         <div class="title-text">
-  
+
           <div class="title login">
             Login
           </div>
@@ -90,27 +89,15 @@
             </form>
             <form action="#" class="signup">
               <div class="field">
-                <h6>Para cadastrar sua empresa, entre em  <br> contato com nossa equipe. 
-                <a href="index.html#contact" id="link-contato">Saiba Mais</a></h6>
-
-                <!-- <input type="text" placeholder="Email" required>
-              </div>
-              <div class="field">
-                <input type="password" placeholder="Senha" required>
-              </div>
-              <div class="field">
-                <input type="password" placeholder="Confirmação de senha" required> 
-              </div>-->
-              <!-- <div class="field btn">
-                <div class="btn-layer"></div>
-                <input type="submit" value="Cadastrar"> -->
-
+                <h6>Para cadastrar sua empresa, entre em <br> contato com nossa equipe.
+                  <a href="index.html#contact" id="link-contato">Saiba Mais</a>
+                </h6>
               </div>
             </form>
           </div>
         </div>
       </div>
-      
+
       <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
@@ -131,7 +118,7 @@
         });
       </script>
     </div>
-    </div>
+  </div>
   </div>
   <!-- link: https://codepen.io/jando132456/pen/JjLZXYK -->
   <!-- END LOGIN -->
@@ -147,81 +134,114 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
 </body>
+
 </html>
 <script src="../assets/js/redirecionamento.js"></script>
 
-<!-- <script>
-// Script de inserção no banco
-  function entrar() {
-      aguardar();
+<script>
+  let girar1 = girar.value
+	var loginButton = document.getElementById('login');
+	// function logar() {
+	// 	let logemail = logemail.value
+	// 	let logpass = logpass.value
+	// 	let logpermissoes = logpermissoes.value
+	// 	// loginButton.href = './cadEmpresa.html'
 
-      var emailVar = email_input.value;
-      var senhaVar = senha_input.value;
+	// 	if (logemail == "" || logpass == "") {
+	// 		alert("Seus dados não coferem!");
+	// 		return false;
+	// 	} else if (logpermissoes == "111") {
+	// 		loginButton = "../dashboard.html";
+	// 	} else if (logpermissoes == "222") {
+	// 		loginButton = "../dashboard.html";
+	// 	}else if (logpermissoes == "333") {
+    //         loginButton = "../cadEmpresa.html";
+	// 	}else {
+    //         loginButton.href = "../";
+	// 	}
+	// }
 
-      if (emailVar == "" || senhaVar == "") {
-          cardErro.style.display = "block"
-          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-          finalizarAguardar();
-          return false;
-      }
-      else {
-          setInterval(sumirMensagem, 5000)
-      }
+	// 			else {
+	// 				throw ("Houve um erro ao tentar realizar o cadastro!");
+	// 			}
+	// 		}).catch(function (resposta) {
+	// 			console.log(`#ERRO: ${resposta}`);
 
-      console.log("FORM LOGIN: ", emailVar);
-      console.log("FORM SENHA: ", senhaVar);
+	// 		});
 
-      fetch("/usuarios/autenticar", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-              emailServer: emailVar,
-              senhaServer: senhaVar
-          })
-      }).then(function (resposta) {
-          console.log("ESTOU NO THEN DO entrar()!")
+	// 		return false;
 
-          if (resposta.ok) {
-              console.log(resposta);
+	
+    function logar() {
+        // aguardar();
 
-              resposta.json().then(json => {
-                  console.log(json);
-                  console.log(JSON.stringify(json));
+        var logEmail = logemail.value;
+		var logPass = logpass.value;
+		var logPermissoes = logpermissoes.value;
 
-                  sessionStorage.EMAIL_USUARIO = json.email;
-                  sessionStorage.NOME_USUARIO = json.nome;
-                  sessionStorage.ID_USUARIO = json.id;
+		var loginButton = document.getElementById('login');
 
-                  setTimeout(function () {
-                      window.location = "./dashboard/cards.html";
-                  }, 1000); // apenas para exibir o loading
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (logEmail == "" || logPass == "" || logPermissoes == "") {
+			alert("Seus dados não coferem!");
+			return false;
+		}
 
-              });
-
-          } else {
-
-              console.log("Houve um erro ao tentar realizar o login!");
-
-              resposta.text().then(texto => {
-                  console.error(texto);
-                  finalizarAguardar(texto);
-              });
-          }
-
-      }).catch(function (erro) {
-          console.log(erro);
-      })
-
-      return false;
-  }
-
-  function sumirMensagem() {
-      cardErro.style.display = "none"
-  }
-
-</script> -->
+        console.log("FORM LOGIN: ", logemail);
+        console.log("FORM SENHA: ", logpass);
+        console.log("FORM USUARIO: ", logpermissoes);
 
 
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                logemailServer: logEmail,
+                logpassServer: logPass,
+                logpermissoesServer: logPermissoes
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
 
+			if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.logemail = json.logEmail;
+                    sessionStorage.logpass = json.logPass;
+                    sessionStorage.logpermissoes = json.logPermissoes;
+
+                    setTimeout(function ()
+					{if (logPermissoes == "111") {
+						window.location = "../dashboardTeste.html";
+    } else if (logPermissoes == "222") {
+		window.location = "../funDash.html";
+    }else if (logPermissoes == "333") {
+        window.location = "../cadEmpresa.html";
+    }else {
+		window.location = "../";
+		}})
+	})}
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+				function girar() {
+						girar1
+					}
+
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

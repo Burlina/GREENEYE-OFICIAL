@@ -302,8 +302,24 @@ form .btn input[type="submit"] {
 */
 #img-back-pages{
   width: 50px;
+  align-items: center;
 }
 
+#img-next-pages{
+  width: 50px;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+#img-between{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+}
 /**
 * Mobile Navigation 
 */
