@@ -10,7 +10,7 @@ while True:
     # i = i + 1
     try:
         db_connection = mysql.connector.connect(
-            host='localhost', user='root', password='#Gf40928326802', database='greeneye')
+            host='localhost', user='root', password='greeneye8', database='greeneye')
         print("Conectei no banco!")
     except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
