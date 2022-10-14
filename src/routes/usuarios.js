@@ -11,16 +11,22 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
 
+
+
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.post("/cadastrarEmpresa", function (req, res) {
+router.post("/public/view/cadEmpresa.html", function (req, res) {
     usuarioController.cadastrarEmpresa(req, res);
 })
 
-router.post("/cadastrarUnidade", function (req, res) {
-    usuarioController.cadastrarUnidade(req, res);
+router.post("/public/view/cadLote.html", function (req, res) {
+    usuarioController.cadastrarLote(req, res);
 })
 
-router.post("/cadastrar", function (req, res) {
+router.post("/public/view/cadMaquina.html", function (req, res) {
+    usuarioController.cadastrarMaquina(req, res);
+})
+
+router.post("/public/view/cadFuncionario.html", function (req, res) {
     usuarioController.cadastrar(req, res);
 })
 
