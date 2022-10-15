@@ -579,15 +579,15 @@
 
         </div>
 
-        <form action="https://api.staticforms.xyz/submit" method="post" name="formulario">
+        <form action="https://api.staticforms.xyz/submit" name="formulario" method="post" role="form" class="php-email-form">
+          <input type="hidden" name="accessKey" value="3da54985-ca46-4e85-bcbc-3c09ee1a412c">
+                    <input type="hidden" name="redirectTo" value="http://localhost:3333/index.html#contact">
           <input class="input_contact" type="text" name="name" placeholder="Seu nome">
           <input class="input_contact" type="text" name="email" placeholder="Seu e-mail" />
           <textarea class="input_contact" name="message" placeholder="Sua mensagem"></textarea>
           <input type="text" name="honeypot" style="display:none">
-          <input type="hidden" name="accessKey" value="6c8ae086-bb39-4a38-9187-5344e033e3b9">
           <input type="hidden" name="subject" value="Contact us from - example.com" />
           <input type="hidden" name="replyTo" value="@">
-          <input type="hidden" name="redirectTo" value="localhost:8080/index.html">
           <input type="submit" class="btn_contact" value="ENVIAR" onclick="validar()"/>
       </form>
 
@@ -694,6 +694,14 @@
         menssagem.focus()
         return
       }
+    }
+
+    function enviar() {
+        if(in_email.value != "" || in_name.value != "" || in_message.value != ""|| in_subject.value != "" || in_phone.value != "") {
+            alert("E-mail enviado. Agradecemos o vosso contato")
+        } else {
+            alert("Preencha os campos corretamente.")
+        }
     }
   </script>
 

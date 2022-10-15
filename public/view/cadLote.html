@@ -79,7 +79,7 @@
                 </div>
                 <div class="field btn">
                   <div class="btn-layer"></div>
-                  <input type="submit" value="Cadastrar">
+                  <input type="submit" value="Cadastrar" onclick="cadLote()">
                 </div>
               </form>
 
@@ -102,7 +102,7 @@
                   </div> -->
                   <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" onclick= cadEspecificacao() value="Cadastrar">
+                    <input type="submit" onclick="cadEspecificacao()" value="Cadastrar">
                   </div>
               </form>
             </div>
@@ -151,4 +151,97 @@
 
 <script src="../assets/js/redirecionamento.js"></script>
 
-<script></script>
+<script>
+  function cadLote() {
+		var logLocal = loglocal.value;
+		var logEmpresaId = Number(logempresaId.value);
+
+		if (logLocal == "" || logEmpresaId == "") {
+			alert("Informe seus dados corretamente!");
+			return false;
+		}
+
+			console.log("INICIANDO O FETCH");
+			// Enviando o valor da nova input
+			fetch("/usuarios/cadastrarUnidade", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					// crie um atributo que recebe o valor recuperado aqui
+					// Agora vá para o arquivo routes/usuario.js
+					loglocalServer: logLocal,
+					logempresaIdServer: logEmpresaId
+				})
+			}).then(function (resposta) {
+				console.log("entrei no fetch");
+				console.log("resposta: ", resposta);
+
+				if (resposta.ok) {
+					alert("Cadastro realizado com sucesso!");
+					function girar() {
+						girar1
+					}
+				} else {
+					alert("Houve um erro ao tentar realizar o cadastro!");
+				}
+			}).catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+
+			});
+
+			return false;
+
+		}
+
+    function cadEspecificacao() {
+		var logName = logname.value;
+		var logEmail = logemail.value;
+		var logSenha = logsenha.value;
+		var logEmpresa = Number(logempresa.value);
+		var logPermissoes = logpermissoes.value;
+	
+
+		if (logName == "" || logEmail == "" || logSenha == "" || logEmpresa == "" || logPermissoes == "" ) {
+			alert("Informe os dados corretamente!");
+			return false;
+		}
+		
+
+			console.log("INICIANDO O FETCH");
+			// Enviando o valor da nova input
+			fetch("/usuarios/cadastrar", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					// crie um atributo que recebe o valor recuperado aqui
+					// Agora vá para o arquivo routes/usuario.js
+					lognameServer: logName,
+					logemailServer: logEmail,
+					logsenhaServer: logSenha,
+					logempresaServer: logEmpresa,
+					logpermissoesServer: logPermissoes
+				})
+			}).then(function (resposta) {
+				console.log("entrei no fetch");
+				console.log("resposta: ", resposta);
+
+				if (resposta.ok) {
+                alert("Cadastro realizado com sucesso!");
+					function girar() {
+						girar1
+					}
+				} else {
+					alert("Houve um erro ao tentar realizar o cadastro!");
+				}
+			}).catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+
+			});
+
+			return false;
+		}
+</script>
