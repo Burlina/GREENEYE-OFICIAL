@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>GreenEye - Cadastrar máquina</title>
+  <title>GreenEye - Cadastrar lote</title>
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -31,63 +31,61 @@
 </head>
 
 <body>
-  <!-- START CADASTRO MAQUINA -->
+  <!-- START CADASTRO LOTE -->
   <div class="content">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <div class="box-login">
-
-      <a href="desenvolvedor.html">
-        <img id="img-back-pages" src="../assets/img/login_cadastro/back_icon_green.png">Voltar</a>
-        <img src="../assets/img/olhoolho.png" width="90px" id="img-between">
-      <!-- <a href="cadLote.html">Próximo<img id="img-next-pages" src="../assets/img/login_cadastro/next_icon_green.png"></a> -->
-
-      <div class="wrapper">
-        <div class="title-text">
-
-          <div class="title cadEmpresa">
-            Cadastro Máquina
+      
+      <a href="index.html">
+        <img id="img-back-pages" src="../assets/img/login_cadastro/back_icon_green.png">Sair</a>
+        
+        <div class="wrapper">
+          <div class="title-text">
+  
+            <div class="title login">
+              Menu de Cadastros
+            </div>
           </div>
-        </div>
-        <div class="form-container">
-          <div class="form-inner">
-            <form action="#" class="nome da empresa">
-              <div class="field">
-                <input id="#" type="number" placeholder="Serial Number">
-              </div>
-              <div class="field">
-                <input id="#" type="number" placeholder="Chave do Lote">
-              </div>
-              <div class="field btn">
-                <div class="btn-layer"></div>
-                <input type="submit" value="Cadastrar" onclick="cadastrar()">
-              </div>
-            </form>
+          <div class="form-container" style="margin-top: 10px;">
+            <!-- <div class="slide-controls">
+              <input type="radio" name="slide" id="login" checked>
+              <label for="login" class="slide login">Lote</label>
+              <div class="slider-tab"></div>
+            </div> -->
+            <div class="form-inner">
+              <form action="#" class="login">
+
+                <div class="field btn2" style="margin-bottom: -10px;">
+                  ❶ Usuário
+                  <a href="cadFuncionario.html">
+                  <div class="btn-layer2">➙</div></a>
+                </div>
+
+                <div class="field btn2" style="margin-bottom: -10px;" >
+                  ❷ Empresa
+                  <a href="cadEmpresa.html">
+                  <div class="btn-layer2">➙</div></a>
+                </div>
+
+                <div class="field btn2" style="margin-bottom: -10px;" href="cadLote.html">
+                  ❸ Lote
+                  <a href="cadLote.html">
+                  <div class="btn-layer2">➙</div></a>
+                </div>
+
+                <div class="field btn2" >
+                  ❹ Máquina
+                  <a href="cadMaquina.html">
+                <div class="btn-layer2">➙</div></a>
+               </div>
+
+              </form>
+            </div>
           </div>
-          </form>
         </div>
       </div>
     </div>
-    <script>
-      const loginText = document.querySelector(".title-text .login");
-      const loginForm = document.querySelector("form.login");
-      const loginBtn = document.querySelector("label.login");
-      const signupBtn = document.querySelector("label.signup");
-      const signupLink = document.querySelector("form .signup-link a");
-      signupBtn.onclick = (() => {
-        loginForm.style.marginLeft = "-50%";
-        loginText.style.marginLeft = "-50%";
-      });
-      loginBtn.onclick = (() => {
-        loginForm.style.marginLeft = "0%";
-        loginText.style.marginLeft = "0%";
-      });
-      signupLink.onclick = (() => {
-        signupBtn.click();
-        return false;
-      });
-    </script>
-  </div>
-  </div>
   </div>
   <!-- link: https://codepen.io/jando132456/pen/JjLZXYK -->
   <!-- END LOGIN -->
@@ -109,6 +107,4 @@
 
 <script src="../assets/js/redirecionamento.js"></script>
 
-<script>
-  
-</script>
+<script></script>

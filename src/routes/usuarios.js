@@ -22,6 +22,10 @@ router.post("/public/view/cadLote.html", function (req, res) {
     usuarioController.cadastrarLote(req, res);
 })
 
+router.post("/public/view/cadLote.html#", function (req, res) {
+    usuarioController.cadEspecificacao(req, res);
+})
+
 router.post("/public/view/cadMaquina.html", function (req, res) {
     usuarioController.cadastrarMaquina(req, res);
 })
