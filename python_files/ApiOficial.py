@@ -5,9 +5,9 @@ import time
 import os
 from mysql.connector import errorcode
 
-# i = 0
-while True:
-    # i = i + 1
+i = 0
+while (i < 5000):
+    i = i + 1
     try:
         db_connection = mysql.connector.connect(
             host='localhost', user='Gabes', password='urubu100', database='greeneye')
@@ -32,8 +32,8 @@ while True:
     # Processador
     processador = psutil.cpu_count()
     porcentagem_cpu = psutil.cpu_percent()
-    porcentagem_cpu2 = porcentagem_cpu * 1.10
-    porcentagem_cpu3 = porcentagem_cpu * 0.95
+    # porcentagem_cpu2 = porcentagem_cpu * 1.10
+    # porcentagem_cpu3 = porcentagem_cpu * 0.95
 
     # Disco
     if(sistemaoperacional == 'NFTS'):
@@ -46,16 +46,16 @@ while True:
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3' or sistemaoperacional == 'Linux'):
         discoUso = (psutil.disk_usage("/")[1] / 10**9)
     
-    discoUso2 = discoUso * 0.95
-    discoUso3 = discoTotal
+    # discoUso2 = discoUso * 0.95
+    # discoUso3 = discoTotal
 
     if(sistemaoperacional == 'NFTS' or sistemaoperacional == 'Windows'):
         discoLivre = (psutil.disk_usage("C:\\")[2] / 10**9)
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3' or sistemaoperacional == 'Linux'):
         discoLivre = (psutil.disk_usage("/")[2] / 10**9)
 
-    discoLivre2 = discoTotal - discoUso2
-    discoLivre3 = discoTotal - discoUso3
+    # discoLivre2 = discoTotal - discoUso2
+    # discoLivre3 = discoTotal - discoUso3
 
     if(sistemaoperacional == 'NFTS'):
         disk = psutil.disk_usage('C:\\')
@@ -63,8 +63,8 @@ while True:
         disk = psutil.disk_usage('/')
 
     diskPercent = disk.percent
-    diskPercent2 = diskPercent * 0.95
-    diskPercent3 = 100
+    # diskPercent2 = diskPercent * 0.95
+    # diskPercent3 = 100
 
     # Ram
     ramTotal = (psutil.virtual_memory() [0] / 10**9)
@@ -74,8 +74,8 @@ while True:
     # ramUsoPercent = "%0.2f" % (psutil.virtual_memory() [2])
     ram = (psutil.virtual_memory())
     ramPercent = ram.percent
-    ramPercent2 = ramPercent * 1.15
-    ramPercent3 = ramPercent2 * 1.05
+    # ramPercent2 = ramPercent * 1.15
+    # ramPercent3 = ramPercent2 * 1.05
 
 
     cursor = db_connection.cursor()
@@ -85,15 +85,15 @@ while True:
     values = [fkMaquina, sistemaoperacional,  porcentagem_cpu, processador, ramTotal, ramUso, ram.percent, discoTotal, discoUso, discoLivre, disk.percent]
     cursor.execute(sql, values)
     
-    fkMaquina = 50001
-    sql = "INSERT INTO Leitura (fkMaquina,sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES (%s,%s,%s, %s, %s, %s, %s,%s,%s,%s,%s,(SELECT NOW()))"
-    values = [fkMaquina, sistemaoperacional,porcentagem_cpu2, processador, ramTotal, ramUso2, ramPercent2, discoTotal, discoUso2, discoLivre2, diskPercent2]
-    cursor.execute(sql, values)
+    # fkMaquina = 50001
+    # sql = "INSERT INTO Leitura (fkMaquina,sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES (%s,%s,%s, %s, %s, %s, %s,%s,%s,%s,%s,(SELECT NOW()))"
+    # values = [fkMaquina, sistemaoperacional,porcentagem_cpu2, processador, ramTotal, ramUso2, ramPercent2, discoTotal, discoUso2, discoLivre2, diskPercent2]
+    # cursor.execute(sql, values)
 
-    fkMaquina = 50002
-    sql = "INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES (%s,%s,%s, %s, %s, %s, %s,%s,%s,%s,%s,(SELECT NOW()))"
-    values = [fkMaquina,sistemaoperacional, porcentagem_cpu3, processador, ramTotal, ramUso3, ramPercent3, discoTotal, discoUso3, discoLivre3, diskPercent3]
-    cursor.execute(sql, values)
+    # fkMaquina = 50002
+    # sql = "INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES (%s,%s,%s, %s, %s, %s, %s,%s,%s,%s,%s,(SELECT NOW()))"
+    # values = [fkMaquina,sistemaoperacional, porcentagem_cpu3, processador, ramTotal, ramUso3, ramPercent3, discoTotal, discoUso3, discoLivre3, diskPercent3]
+    # cursor.execute(sql, values)
 
 
 
@@ -101,5 +101,5 @@ while True:
     print("\n")
     print(cursor.rowcount, "Inserindo no banco.")
     db_connection.commit()
-    time.sleep(3)
+    time.sleep(0.1)
     
