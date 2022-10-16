@@ -88,6 +88,24 @@ discoPercent decimal(5,2),
 dataHora datetime
 )auto_increment = 1;
 
+// leitura looca
+
+create table LeituraLooca(
+idLeituraLooca int primary key auto_increment,
+qtdRamTotal DECIMAL(3,2),
+qtdRamUso DECIMAL(3,2),
+qtdRamDisponivel DECIMAL(3,2),
+tamanhoDisco DECIMAL(5,2),
+dataHoraLeitura timestamp
+)auto_increment = 1;
+
+create table SistemaOperacionalLooca(
+idSistema int primary key auto_increment,
+SO VARCHAR(50) not null,
+);
+
+
+
 select * from Perfil;
 select * from Empresa;
 select * from Usuario;
