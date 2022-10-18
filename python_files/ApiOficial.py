@@ -6,11 +6,11 @@ import os
 from mysql.connector import errorcode
 
 i = 0
-while (i < 5000):
+while (i < 500):
     i = i + 1
     try:
         db_connection = mysql.connector.connect(
-            host='localhost', user='aluno', password='sptech', database='greeneye')
+            host='localhost', user='Gabes', password='urubu100', database='greeneye')
         print("Conectei no banco!")
     except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -101,5 +101,5 @@ while (i < 5000):
     print("\n")
     print(cursor.rowcount, "Inserindo no banco.")
     db_connection.commit()
-    time.sleep(0.1)
+    time.sleep(10.0)
     
