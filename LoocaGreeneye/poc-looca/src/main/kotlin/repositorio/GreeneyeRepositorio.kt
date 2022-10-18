@@ -2,6 +2,7 @@ package repositorio
 
 import dominio.LeituraLooca
 import dominio.SistemaOperacionalLooca
+import org.springframework.jdbc.core.BeanPropertyRowMapper
 import org.springframework.jdbc.core.JdbcTemplate
 
 class GreeneyeRepositorio(val jdbcTemplate: JdbcTemplate) {
@@ -18,5 +19,9 @@ class GreeneyeRepositorio(val jdbcTemplate: JdbcTemplate) {
             insert into LeituraLooca (qtdRamTotal, qtdRamUso, qtdRamDisponivel, tamanhoDisco, dataHoraLeitura ) values
             ('${leitura.qtdRamTotal}', '${leitura.qtdRamUso}', '${leitura.qtdRamDisponivel}', '${leitura.tamanhoDisco}', '${leitura.datHoraLeitura}')
         """)
+    }
+
+    fun listarLeitura():List<LeituraLooca> {
+        return jdbcTemplate.query("select * from LeituraLooca", BeanPropertyRowMapper(LeituraLooca::class.java))
     }
 }

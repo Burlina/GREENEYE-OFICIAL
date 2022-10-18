@@ -1,6 +1,6 @@
 package dominio
 
-class LeituraLooca(
+data class LeituraLooca(
     var idLeituraLooca:Int,
     var qtdRamTotal:Double,
     var qtdRamUso:Double,

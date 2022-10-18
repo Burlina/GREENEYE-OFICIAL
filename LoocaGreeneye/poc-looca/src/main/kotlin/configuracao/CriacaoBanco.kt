@@ -10,7 +10,7 @@ fun main() {
             qtdRamUso DECIMAL(3,2),
             qtdRamDisponivel DECIMAL(3,2),
             tamanhoDisco DECIMAL(5,2),
-            dataHoraLeitura timestamp
+            dataHoraLeitura VARCHAR(50)
         );
     """)
 
