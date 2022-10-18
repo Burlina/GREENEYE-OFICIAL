@@ -55,11 +55,11 @@
           <div class="form-inner">
             <form action="#" class="nome da empresa">
               <div class="field">
-                <input id="nomeE_input" type="text" placeholder="Nome da Empresa">
+                <input id="lognomeE" type="text" placeholder="Nome da Empresa">
 
               </div>
               <div class="field">
-                <input id="cnpj_input" type="number" placeholder="CNPJ">
+                <input id="logcnpj" type="number" placeholder="CNPJ">
               </div>
 
               <div class="field btn">
@@ -105,7 +105,7 @@ if (logNomeE == "" || logCnpj == "") {
 
   console.log("INICIANDO O FETCH");
   // Enviando o valor da nova input
-  fetch("/usuarios/cadastrarEmpresa", {
+  fetch("/usuarios/cadEmpresa", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

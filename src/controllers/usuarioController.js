@@ -64,21 +64,31 @@ function logar(req, res) {
 }
 
 
-function cadastrarUnidade(req, res) {
+function cadLote(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var loglocal = req.body.loglocalServer;
-    var logempresaId = req.body.logempresaIdServer;
+    var logData = req.body.logDataServer;
+    var logEmpresa = req.body.logEmpresaServer;
+    var logEsp = req.body.logEspServer;
+    var logQuant = req.body.logQuantServer;
+    var logModelo = req.body.logModeloServer;
 
     // Faça as validações dos valores
 
-    if (loglocal == undefined) {
-        res.status(400).send("Informe o local correto");
-    } else if (logempresaId == undefined) {
+    if (logData == undefined) {
+        res.status(400).send("Informe a data correta");
+    } else if (logEmpresa == undefined) {
         res.status(400).send("Informe o id da empresa correto");
+    }else if (logEsp == undefined) {
+        res.status(400).send("Informe o id da especificação correto");
+    }else if (logQuant == undefined) {
+        res.status(400).send("Informe a quantidade correta");
+    }else if (logModelo == undefined) {
+        res.status(400).send("Informe o modelo corretamente");
     }
+
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
 
-    usuarioModel.cadastrarUnidade(loglocal, logempresaId)
+    usuarioModel.cadLote(logData, logEmpresa, logQuant, logModelo, logEsp)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -136,7 +146,7 @@ function cadastrar(req, res) {
         );
 }
 
-function cadastrarEmpresa(req, res) {
+function cadEmpresa(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var lognomeE = req.body.lognomeEServer;
     var logcnpj = req.body.logcnpjServer;
@@ -168,12 +178,82 @@ function cadastrarEmpresa(req, res) {
         );
 }
 
+function cadEspecificacao(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var logProcessador = req.body.logProcessadorServer;
+    var logRam = req.body.logRamServer;
+    var logDisco = req.body.logDiscoServer;
+    var logCPU = req.body.logCPUServer;
+
+    // Faça as validações dos valores
+
+    if (logProcessador == undefined) {
+        res.status(400).send("Informe o Processador corretamente");
+    } else if (logRam == undefined) {
+        res.status(400).send("Informe a Ram corretamente");
+    } else if (logDisco == undefined) {
+        res.status(400).send("Informe o Disco corretamente");
+    }  else if (logCPU == undefined) {
+        res.status(400).send("Informe a CPU corretamente");
+    } 
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+
+    usuarioModel.cadEspecificacao(logProcessador, logRam, logDisco, logCPU)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function cadMaquina(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var logSerial = req.body.logSerialServer;
+    var logLote = req.body.logLoteServer;
+ 
+
+    // Faça as validações dos valores
+
+    if (logSerial == undefined) {
+        res.status(400).send("Informe o numero serial corretamente");
+    } else if (logLote == undefined) {
+        res.status(400).send("Informe o id do Lote correto");
+    } 
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+
+    usuarioModel.cadMaquina(logSerial, logLote)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 module.exports = {
     logar,
-    cadastrarUnidade,
+    cadLote,
     cadastrar,
     listar,
     testar,
-    cadastrarEmpresa,
+    cadEmpresa,
+    cadEspecificacao,
+    cadMaquina
 }

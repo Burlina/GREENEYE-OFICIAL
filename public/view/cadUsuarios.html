@@ -52,19 +52,19 @@
           <div class="form-inner">
             <form action="#" class="nome da empresa">
               <div class="field">
-                <input id="nome_input" type="text" placeholder="Nome">
+                <input id="logname" type="text" placeholder="Nome">
               </div>
               <div class="field">
-                <input id="email_input" type="text" placeholder="meuemail@greeneye.com">
+                <input id="logemail" type="text" placeholder="meuemail@greeneye.com">
               </div>
               <div class="field">
-                <input id="senha_input" type="password" placeholder="******">
+                <input id="logsenha" type="password" placeholder="******">
               </div>
               <div class="field">
-                <input id="idEmpresa_input" type="number" placeholder="Id da sua empresa">
+                <input id="logempresaId" type="number" placeholder="Id da sua empresa">
               </div>
               <div class="field">
-                <select name="" id="">
+                <select name="" id="logpermissoes">
                   <option value="">Selecione o cargo</option>
                   <option value="">Funcionario</option>
                   <option value="">Dev</option>
@@ -142,8 +142,8 @@
 		var logName = logname.value;
 		var logEmail = logemail.value;
 		var logSenha = logsenha.value;
-		var logEmpresa = Number(logempresa.value);
-		var logPermissoes = logpermissoes.value;
+		var logEmpresaId = Number(logEmpresaId.value);
+		var logPermissoes = Number(logpermissoes.value);
 	
 
 		if (logName == "" || logEmail == "" || logSenha == "" || logEmpresa == "" || logPermissoes == "" ) {
@@ -165,7 +165,7 @@
 					lognameServer: logName,
 					logemailServer: logEmail,
 					logsenhaServer: logSenha,
-					logempresaServer: logEmpresa,
+					logEmpresaIdServer: logEmpresaId,
 					logpermissoesServer: logPermissoes
 				})
 			}).then(function (resposta) {

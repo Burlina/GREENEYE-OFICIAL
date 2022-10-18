@@ -61,21 +61,24 @@
             <div class="form-inner">
               <form action="#" class="login">
                 <div class="field">
-                  <input id="#" type="date" placeholder="00/00/0000">
+                  <input id="logData" type="date" placeholder="00/00/0000">
                 </div>
                 <div class="field">
-                  <input id="#" type="text" placeholder="Modelo">
+                  <input id="logModelo" type="text" placeholder="Modelo">
                 </div>
-                <select class="field" name="" id="#">
+                <select class="field" name="" id="logQuant">
                   <option value="">Quantidade de máquinas</option>
-                  <option value="">10</option>
-                  <option value="">20</option>
-                  <option value="">30</option>
-                  <option value="">40</option>
-                  <option value="">50</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
                 </select>
                 <div class="field">
-                  <input id="#" type="number" placeholder="Chave de especificações">
+                  <input id="logEsp" type="number" placeholder="ID Especificações">
+                </div>
+                <div class="field">
+                  <input id="logEmpresa" type="number" placeholder="ID Empresa">
                 </div>
                 <div class="field btn">
                   <div class="btn-layer"></div>
@@ -86,16 +89,16 @@
               <form action="#" class="signup">
                 <div class="field">
                   <div class="field">
-                    <input id="#" type="text" placeholder="Modelo Processador">
+                    <input id="logProcessador" type="text" placeholder="Modelo Processador">
                   </div>
                   <div class="field">
-                    <input id="#" type="text" placeholder="Modelo RAM">
+                    <input id="logRam" type="text" placeholder="Modelo RAM">
                   </div>
                   <div class="field">
-                    <input id="#" type="text" placeholder="Modelo Disco">
+                    <input id="logDisco" type="text" placeholder="Modelo Disco">
                   </div>
                   <div class="field">
-                    <input id="#" type="text" placeholder="Modelo CPU">
+                    <input id="logCPU" type="text" placeholder="Modelo CPU">
                   </div>
                   <!-- <div class="field">
                     <input id="#" type="text" placeholder="Modelo Placa-Mãe">
@@ -153,17 +156,20 @@
 
 <script>
   function cadLote() {
-		var logLocal = loglocal.value;
-		var logEmpresaId = Number(logempresaId.value);
+		var logData = newDate(logData.value);
+		var logEmpresa = Number(logEmpresa.value);
+		var logModelo = logModelo.value;
+		var logEsp = Number(logEsp.value);
+		var logQuant = Number(logQuant.value);
 
-		if (logLocal == "" || logEmpresaId == "") {
-			alert("Informe seus dados corretamente!");
+		if (logData == "" || logEmpresa == "" || logQuant == "" || logEsp == "" || logModelo == "") {
+			alert("Informe todos os dados corretamente!");
 			return false;
 		}
 
 			console.log("INICIANDO O FETCH");
 			// Enviando o valor da nova input
-			fetch("/usuarios/cadastrarUnidade", {
+			fetch("/usuarios/cadLote", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -171,8 +177,11 @@
 				body: JSON.stringify({
 					// crie um atributo que recebe o valor recuperado aqui
 					// Agora vá para o arquivo routes/usuario.js
-					loglocalServer: logLocal,
-					logempresaIdServer: logEmpresaId
+					logDataServer: logData,
+					logEmpresaServer: logEmpresa,
+					logQuantServer: logQuant,
+					logEspServer: logEsp,
+					logModeloServer: logModelo
 				})
 			}).then(function (resposta) {
 				console.log("entrei no fetch");
@@ -196,14 +205,13 @@
 		}
 
     function cadEspecificacao() {
-		var logName = logname.value;
-		var logEmail = logemail.value;
-		var logSenha = logsenha.value;
-		var logEmpresa = Number(logempresa.value);
-		var logPermissoes = logpermissoes.value;
+		var logProcessador = logProcessador.value;
+		var logRam = logRam.value;
+		var logDisco = logDisco.value;
+		var logCPU = logCPU.value;
 	
 
-		if (logName == "" || logEmail == "" || logSenha == "" || logEmpresa == "" || logPermissoes == "" ) {
+		if (logProcessador == "" || logRam == "" || logDisco == "" || logCPU == "") {
 			alert("Informe os dados corretamente!");
 			return false;
 		}
@@ -211,7 +219,7 @@
 
 			console.log("INICIANDO O FETCH");
 			// Enviando o valor da nova input
-			fetch("/usuarios/cadastrar", {
+			fetch("/usuarios/cadEspecificacao", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
@@ -219,11 +227,10 @@
 				body: JSON.stringify({
 					// crie um atributo que recebe o valor recuperado aqui
 					// Agora vá para o arquivo routes/usuario.js
-					lognameServer: logName,
-					logemailServer: logEmail,
-					logsenhaServer: logSenha,
-					logempresaServer: logEmpresa,
-					logpermissoesServer: logPermissoes
+					logProcessadorServer:logProcessador,
+					logRamServer: logRam,
+					logDiscoServer: logDisco,
+					logCPUServer: logCPU
 				})
 			}).then(function (resposta) {
 				console.log("entrei no fetch");

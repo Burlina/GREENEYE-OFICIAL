@@ -63,28 +63,28 @@
           <div class="form-inner">
             <form action="#" class="login">
               <div class="field">
-                <input id="email_input" type="text" placeholder="E-mail">
+                <input id="logemail" type="text" placeholder="E-mail">
               </div>
               <div class="field">
-                <input id="senha_input" type="password" placeholder="******">
+                <input id="logpass" type="password" placeholder="******">
               </div>
               <div class="pass-link">
                 <p>Máximo de 10 caracteres</p>
               </div>
               <div class="field">
-                <select name="" id="">
+                <select name="" id="logpermissoes">
                   <option value="">Selecione o cargo</option>
-                  <option value="">Administrador</option>
-                  <option value="">Funcionario</option>
-                  <option value="">Dev</option>
+                  <option value="111">Administrador</option>
+                  <option value="222">Funcionario</option>
+                  <option value="333">Dev</option>
                 </select>
               </div>
               <div class="field btn">
                 <div class="btn-layer"></div>
-                <input type="submit" value="Acessar">
+                <input type="submit" value="Acessar" onclick="Logar()">
               </div>
               <div class="signup-link">
-                Não possui conta? <a href="index.html">Cadastre-se</a>
+                Não possui conta? <a href="index.html#contact">Clique aqui!</a>
               </div>
             </form>
             <form action="#" class="signup">
@@ -140,7 +140,7 @@
 
 <script>
   let girar1 = girar.value
-	var loginButton = document.getElementById('login');
+	// var loginButton = document.getElementById('login');
 	// function logar() {
 	// 	let logemail = logemail.value
 	// 	let logpass = logpass.value
