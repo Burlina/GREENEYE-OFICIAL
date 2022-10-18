@@ -24,25 +24,63 @@
     
     alertas("lucas","lucasnavasconi@hotmail.com","1","Sptech","aaa","problem na ram do pc","18-10","Nathalia")
     
-    function verificar(metrica){  
+
+    function ram(metrica){  
     var frase= ""  
     // incluir uma nova medida de temperatura  
-    if(metrica>=60 && metrica <80){  
+    if(metrica>=70 && metrica <79){  
     frase = "Alerta: "  
     console.log('Cheguei aqui')  
     alertas("HealthSystem","RAM",metrica, frase)  
-    } else if(metrica >=80){  
-    frase = "Perigo: "  
+    } else if(metrica >=80 && metrica<89){  
+    frase = "Emergencia: "  
+    alertas("HealthSystem", "RAM", metrica, frase)  
+    } else if(metrica >=90 && metrica <100){  
+    frase = "Critico: "  
     alertas("HealthSystem", "RAM", metrica, frase)  
     }  
+    } 
+
+
+    function cpu(metrica){  
+    var frase= ""  
+    // incluir uma nova medida de temperatura  
+    if(metrica>=65 && metrica <75){  
+    frase = "Alerta: "  
+    console.log('Cheguei aqui')  
+    alertas("HealthSystem","CPU",metrica, frase)  
+    } else if(metrica >=76 && metrica<85){  
+    frase = "Emergencia: "  
+    alertas("HealthSystem", "CPU", metrica, frase)  
+    } else if(metrica >=86 && metrica <100){  
+    frase = "Critico: "  
+    alertas("HealthSystem", "CPU", metrica, frase)  
     }  
-    
-    
+    } 
+
+    function disco(metrica){  
+    var frase= ""  
+    // incluir uma nova medida de temperatura  
+    if(metrica>=80 && metrica <89){  
+    frase = "Alerta: "  
+    console.log('Cheguei aqui')  
+    alertas("HealthSystem","DISCO",metrica, frase)  
+    } else if(metrica >=90 && metrica<94){  
+    frase = "Emergencia: "  
+    alertas("HealthSystem", "DISCO", metrica, frase)  
+    } else if(metrica >=95 && metrica <100){  
+    frase = "Critico: "  
+    alertas("HealthSystem", "DISCO", metrica, frase)  
+    }  
+    }  
+
     let dadoscpu = novoRegistro[0].cpuPercent 
     
       let dadosram = novoRegistro[0].ramPercent 
     
-      verificar(dadosram) 
-    
-      verificar(dadoscpu) 
+      let dadosdisco = novoRegistro[0].discoPercent 
+
+      ram(dadosram) 
+      cpu(dadoscpu) 
+      disco(dadosdisco) 
       </script>
