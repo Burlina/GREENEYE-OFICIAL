@@ -6,11 +6,11 @@ import os
 from mysql.connector import errorcode
 
 i = 0
-while (i < 5000):
+while (i < 500):
     i = i + 1
     try:
         db_connection = mysql.connector.connect(
-            host='localhost', user='Gabes', password='urubu100', database='greeneye')
+            host='localhost', user='aluno', password='sptech', database='greeneye')
         print("Conectei no banco!")
     except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -94,8 +94,6 @@ while (i < 5000):
     # sql = "INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES (%s,%s,%s, %s, %s, %s, %s,%s,%s,%s,%s,(SELECT NOW()))"
     # values = [fkMaquina,sistemaoperacional, porcentagem_cpu3, processador, ramTotal, ramUso3, ramPercent3, discoTotal, discoUso3, discoLivre3, diskPercent3]
     # cursor.execute(sql, values)
-
-
 
 
     print("\n")
