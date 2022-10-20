@@ -50,16 +50,22 @@
         </div>
         <div class="form-container">
           <div class="form-inner">
-            <form action="#" class="nome da empresa">
-              <div class="field">
+            <form onsubmit="return false" action="#" class="nome da empresa">
+              <!-- <div class="field">
                 <input id="logSerial" type="number" placeholder="Serial Number">
-              </div>
+              </div> -->
               <div class="field">
-                <input id="logLote" type="number" placeholder="ID Lote">
+                <input id="loglote" type="number" placeholder="ID Lote">
               </div>
-              <div class="field btn">
+              <!-- <div class="field btn">
                 <div class="btn-layer"></div>
                 <input type="submit" value="Cadastrar" onclick="cadMaquina()">
+              </div> -->
+              <div class="field btn2">
+                <div class="btn-layer" style="color:#5c9f24"></div>
+                CADASTRAR
+                <button class="btn-layer2" onclick="cadMaquina()">➙</button>
+                <!-- <input id="" onclick="logar()"> -->
               </div>
             </form>
           </div>
@@ -73,18 +79,18 @@
       const loginBtn = document.querySelector("label.login");
       const signupBtn = document.querySelector("label.signup");
       const signupLink = document.querySelector("form .signup-link a");
-      signupBtn.onclick = (() => {
-        loginForm.style.marginLeft = "-50%";
-        loginText.style.marginLeft = "-50%";
-      });
-      loginBtn.onclick = (() => {
-        loginForm.style.marginLeft = "0%";
-        loginText.style.marginLeft = "0%";
-      });
-      signupLink.onclick = (() => {
-        signupBtn.click();
-        return false;
-      });
+      // signupBtn.onclick = (() => {
+      //   loginForm.style.marginLeft = "-50%";
+      //   loginText.style.marginLeft = "-50%";
+      // });
+      // loginBtn.onclick = (() => {
+      //   loginForm.style.marginLeft = "0%";
+      //   loginText.style.marginLeft = "0%";
+      // });
+      // signupLink.onclick = (() => {
+      //   signupBtn.click();
+      //   return false;
+      // });
     </script>
   </div>
   </div>
@@ -107,14 +113,14 @@
 
 </html>
 
-<script src="../assets/js/redirecionamento.js"></script>
+<!-- <script src="../assets/js/redirecionamento.js"></script> -->
 
 <script>
   function cadMaquina() {
-		var logSerial = Number(loglocal.value);
-		var logLote = Number(logLote.value);
+		// var logSerial = Number(loglocal.value);
+		var logLote = Number(loglote.value);
 
-		if (logSerial == "" || logLote == "") {
+		if (logLote == "") {
 			alert("Informe seus dados corretamente!");
 			return false;
 		}
@@ -129,8 +135,7 @@
 				body: JSON.stringify({
 					// crie um atributo que recebe o valor recuperado aqui
 					// Agora vá para o arquivo routes/usuario.js
-					logLoteServer: logLote,
-					logSerialServer: logSerial
+					logLoteServer: logLote
 				})
 			}).then(function (resposta) {
 				console.log("entrei no fetch");

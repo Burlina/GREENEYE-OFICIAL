@@ -1,6 +1,6 @@
-import app from './app.js';
+import app from './app.cjs';
 
-const port = 8080
+const port = 3333
 
 app.listen(port, () => {
     console.log('Servidor iniciado em localhost:' + port)
