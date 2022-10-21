@@ -14,13 +14,10 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     order by idRegistros desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        REGISTRO_TEMP, 
-        REGISTRO_UMID, 
-        REGISTRO_MOMENTO,
-        date_format(momento, '%H:%i:%s') as momento_grafico
-    from registros  
-    order by idRegistros desc limit ${limite_linhas}`;
+        instrucaoSql = `select cpuMedia, 
+        date_format(dataHora, '%H:%i:%s') as momento_grafico 
+        from Leitura 
+        order by date_format(dataHora, '%H:%i:%s') limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -46,12 +43,11 @@ function buscarMedidasEmTempoReal(idAquario) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
-        REGISTRO_TEMP, 
-        REGISTRO_UMID, 
-        REGISTRO_MOMENTO,
-        DATE_FORMAT(REGISTRO_MOMENTO,'%H:%i:%s') as momento_grafico
-    from registros  
-    order by idRegistros desc limit 1`;
+        cpuMedia, 
+        date_format(dataHora, '%H:%i:%s') as momento_grafico 
+    from Leitura  
+    order by date_format(dataHora, '%H:%i:%s') desc limit 1`;
+
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
