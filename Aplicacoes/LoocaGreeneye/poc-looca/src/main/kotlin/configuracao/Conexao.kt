@@ -4,17 +4,13 @@ import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 
 class Conexao {
-    val driverClassName = "com.mysql.cj.jdbc.Driver"
-    val url = "jdbc:mysql://localhost:3306/greeneyeDatabase"
-    val username = "aluno"
-    val password = "sptech"
 
     fun getJdbcTemplate(): JdbcTemplate {
-        val dataSource = BasicDataSource()
-        dataSource.driverClassName = driverClassName
-        dataSource.url = url
-        dataSource.username = username
-        dataSource.password = password
+        val dataSource = BasicDataSource();
+        dataSource.driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        dataSource.url = "jdbc:sqlserver://greeneye.database.windows.net;database=greeneye"
+        dataSource.username = "greeneyeADM"
+        dataSource.password = "Greeneye123@"
 
         val jdbcTemplate = JdbcTemplate(dataSource)
         return jdbcTemplate
