@@ -1808,31 +1808,31 @@ form input[type="submit"]:hover{
 }
 
 #m1 {
-  background-image: url(../img/team/mem1.png);
+  background-image: url(../img/team/fabo.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #m2 {
-  background-image: url(../img/team/mem2.jpeg);
+  background-image: url(../img/team/gabi.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #m3 {
-  background-image: url(../img/team/mem3.jpeg);
+  background-image: url(../img/team/lucas.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #m4 {
-  background-image: url(../img/team/mem4.jpeg);
+  background-image: url(../img/team/nathi.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 #m5 {
-  background-image: url(../img/team/mem5.jpeg);
+  background-image: url(../img/team/thais.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
