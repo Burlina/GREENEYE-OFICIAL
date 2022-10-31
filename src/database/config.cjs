@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "greeneye",
     user: "root",
-    password: "160891",
+    password: "#Gf40928326802",
 };
 
 function executar(instrucao) {
