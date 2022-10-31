@@ -43,7 +43,7 @@ body {
 .dash-right .avisos .div-form textarea {
   width: 100%;
   /* color: #E6005A; */
-  border: 3px solid #e6005a;
+  border: 3px solid #0fae15;
   background-color: white;
   border-radius: 5px;
 }
@@ -57,7 +57,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #19f156;
   width: 120px;
 }
 
@@ -120,6 +120,7 @@ body {
   top: 0;
   left: 25%;
   background-color: #161618;
+  margin-left: -280px;
 
   /* width: 75%;
     display: flex;
@@ -241,15 +242,52 @@ background-color: #161618;
 border-radius: 30px;
 align-items: center;
 align-items: flex-start;
+display: flex;
+justify-content: center;
+flex-direction: row;
+align-items: center;
 }
 
 .header-left{
-  width: 200px;
-  height: 300px;
-  background-color: #75e190;
+  width: 220px;
+  height: 380px;
+  background: linear-gradient(68.15deg, #16eb3a, rgb(4, 109, 44), #07eb1a) no-repeat;
   justify-content: center;
-  margin-left: 2%;
+  background-size: 300% 300%;
+  animation: gradient 10s ease alternate infinite;
+  overflow: hidden;
+  margin-left: -250px;
   border-radius: 30px;
+}
+
+.hello{
+  margin-left: 10%;
+  color: black;
+}
+
+.btn-nav-white{
+  margin-left: 10%;
+  color: black;
+}
+
+.btn-nav{
+  margin-left: 10%;
+  color: black;
+}
+
+.btn-slack{
+  margin-left: 10%;
+  color: black;
+}
+
+.btn-pipefy{
+  margin-left: 10%;
+  color: black;
+}
+
+.btn-logout{
+  margin-left: 10%;
+  color: black;
 }
 
 .dash{
@@ -266,10 +304,29 @@ align-items: flex-start;
   font-family: "Exo 2", sans-serif;
   border: 0;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 30px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: #09e79d;
   background-color: white;
   margin: 5px;
-  border-radius: 3px;
+  border-radius: 3px; 
 }
+
+.janela1 {
+  height: 600px;
+  background-color: #161618;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 200px;
+  border: 1px solid red;
+  }
+
+  .alerta1{
+    background-color: rgb(237, 59, 59);
+    color: white;
+    width:350px;
+    border: 1px solid blue;
+  }

@@ -28,17 +28,19 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1>GreenEye</h1>
+            <h1 style="color: black;">GreenEye</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <h3>Seja bem vindo!
+                    <span id="b_usuario"></span>
+                </h3>
             </div>
 
-            <div class="btn-nav-white">
+            <!--<div class="btn-nav-white">
                 <a href="./cards.html">
                     <h3>Lotes</h3>
                 </a>
-            </div>
+            </div>-->
 
             <div class="btn-nav">
 
@@ -49,6 +51,18 @@
             <div class="btn-nav-white">
                 <a href="./mural.html">
                     <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-slack">
+                <a href="https://app.pipefy.com/pipes/302716733/form">
+                    <h3>Suporte Dell</h3>
+                </a>
+            </div>
+
+            <div class="btn-pipefy">
+                <a href="https://app.pipefy.com/public/form/JAtc76uc">
+                    <h3>Suporte GreenEye</h3>
                 </a>
             </div>
 
@@ -65,7 +79,7 @@
                 <button class="btn-chart btn-pink" onclick="obterDadosGrafico(1)">CPU</button>
                 <button class="btn-chart btn-white" onclick="obterDadosGrafico(2)">Memória</button>
                 <button class="btn-chart btn-white" onclick="obterDadosGrafico(3)">Disco</button>
-                <button class="btn-chart btn-white" onclick="obterDadosGrafico(4)">Internet</button>
+                <!--<button class="btn-chart btn-white" onclick="obterDadosGrafico(4)">Internet</button>-->
             </div>
             <div>
                 <h3 class="tituloGraficos">
@@ -77,6 +91,9 @@
             </div>
             <div class="graph">
                 <canvas id="myChart2"></canvas>
+            </div>
+            <div class="graph">
+                <canvas id="myChart3"></canvas>
             </div>
             <div class="avisoCaptura">
                 <p id="avisoCaptura" style="color: white"></p>
@@ -101,7 +118,7 @@
 
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Últimas medidas de desempenho <span style='color: #e6005a'> " + idAquario + "</span>"
+        tituloAquario.innerHTML = "Últimas medidas de desempenho <span style='color: #0cf930'> " + idAquario + "</span>"
     }
 
     window.onload = obterDadosGrafico(2);
@@ -110,7 +127,7 @@
 
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Últimas medidas de desempenho <span style='color: #e6005a'> " + idAquario + "</span>"
+        tituloAquario.innerHTML = "Últimas medidas de desempenho <span style='color: #e6005a'> " + idAquario
     }
 
     // O gráfico é construído com três funções:
@@ -170,9 +187,11 @@
         };
 
         if (idAquario == 1) {
-            dados.datasets[0].label = "Desempenho"
+            dados.datasets[0].label = "Desempenho CPU"
         } else if (idAquario == 2) {
-            dados.datasets[0].label = "Memória"
+            dados.datasets[0].label = "Desempenho Memória"
+        } else if (idAquario == 3) {
+            dados.datasets[0].label = "Desempenho Disco"
         }
 
         // console.log('----------------------------------------------')
@@ -185,9 +204,10 @@
             labels.push(registro.momento_grafico);
             if (idAquario == 1) {
                 dados.datasets[0].data.push(registro.cpuMedia);
-            }
-            else if (idAquario == 2) {
+            } else if (idAquario == 2) {
                 dados.datasets[0].data.push(registro.ramUsoPercent);
+            } else if (idAquario == 3) {
+                dados.datasets[0].data.push(registro.discoPercent);
             }
         }
 
@@ -211,6 +231,7 @@
 
             document.getElementById('myChart').style.display = 'block'
             document.getElementById('myChart2').style.display = 'none'
+            document.getElementById('myChart3').style.display = 'none'
             myChart = new Chart(
                 document.getElementById('myChart'),
                 config
@@ -219,9 +240,19 @@
 
             document.getElementById('myChart').style.display = 'none'
             document.getElementById('myChart2').style.display = 'block'
+            document.getElementById('myChart3').style.display = 'none'
 
             myChart = new Chart(
                 document.getElementById('myChart2'),
+                config
+            );
+        } else if (idAquario == 3) {
+            document.getElementById('myChart').style.display = 'none'
+            document.getElementById('myChart2').style.display = 'none'
+            document.getElementById('myChart3').style.display = 'block'
+            
+            myChart = new Chart(
+                document.getElementById('myChart3'),
                 config
             );
         }
@@ -269,9 +300,10 @@
 
                         if (idAquario == 1) {
                             dados.datasets[0].data.push(novoRegistro[0].cpuMedia); // incluir uma nova medida de umidade
-                        }
-                        else if (idAquario == 2) {
+                        } else if (idAquario == 2) {
                             dados.datasets[0].data.push(novoRegistro[0].ramUsoPercent); // incluir uma nova medida de umidade
+                        } else if (idAquario == 3) {
+                            dados.datasets[0].data.push(novoRegistro[0].discoPercent); // incluir uma nova medida de umidade
                         }
 
                         // dados.datasets[0].data.shift();  // apagar o primeiro de temperatura

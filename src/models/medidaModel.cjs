@@ -162,7 +162,22 @@ function buscarMedidasEmTempoReal(idAquario) {
     from registros  
     order by idRegistros desc limit 1` */
     `select cpuPercent, ramPercent, horario, date_format(horario, '%H:%i') as horarioF from Leitura order by idLeitura desc limit 1`;
-    } else {
+
+    //     let coleta = ""
+    //     if (idAquario == 1) {
+    //         coleta = "cpuMedia"
+    //     } else if (idAquario == 2) {
+    //         coleta = "ramUsoPercent"
+    //     } else if (idAquario == 3) {
+    //         coleta = "discoPercent"
+    //     }
+
+    //     instrucaoSql = `select 
+    //     ${coleta}, 
+    //     date_format(dataHora, '%H:%i:%s') as momento_grafico 
+    // from Leitura  
+    // order by idLeitura desc limit 1`;
+} else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
     }

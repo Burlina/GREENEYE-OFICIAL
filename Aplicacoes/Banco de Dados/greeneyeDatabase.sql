@@ -95,16 +95,4 @@ select * from Lote;
 select * from maquina;
 select * from Leitura;
 
-truncate Leitura;
-
 -- SELECT * FROM usuario WHERE email = 'nathalia.marques@sptech.school' AND senha = '123' AND fkPerfil = 333;
-
-                          
-
-
-
-                           
-
-
-
-
