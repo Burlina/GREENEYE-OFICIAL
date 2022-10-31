@@ -5,9 +5,9 @@ import time
 import os
 from mysql.connector import errorcode
 
-i = 0
-while (i < 500):
-    i = i + 1
+
+while (True):
+
     try:
         db_connection = mysql.connector.connect(
             host='localhost', user='root', password='160891', database='greeneye')
@@ -99,5 +99,5 @@ while (i < 500):
     print("\n")
     print(cursor.rowcount, "Inserindo no banco.")
     db_connection.commit()
-    time.sleep(0.1)
+    time.sleep(2)
     

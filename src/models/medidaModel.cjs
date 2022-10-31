@@ -46,9 +46,10 @@ function buscarMedidasEmTempoReal(idAquario) {
         let coleta = ""
         if (idAquario == 1) {
             coleta = "cpuMedia"
-        }
-        else if (idAquario == 2) {
+        } else if (idAquario == 2) {
             coleta = "ramUsoPercent"
+        } else if (idAquario == 3) {
+            coleta = "discoPercent"
         }
 
         instrucaoSql = `select 
@@ -64,34 +65,6 @@ function buscarMedidasEmTempoReal(idAquario) {
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
-
-function buscarMedidasEmTempoReal1(idMemoria) {
-
-    instrucaoSql1 = ''
-
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1 
-        REGISTRO_TEMP, 
-        REGISTRO_UMID, 
-        REGISTRO_MOMENTO,
-        CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
-    from registros  
-    order by idRegistros desc`;
-
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select ramUsoPercent, 
-        date_format(dataHora, '%H:%i:%s') as momento_grafico 
-    from Leitura  
-    order by date_format(dataHora, '%H:%i:%s') desc limit 1`;
-
-    } else {
-        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
-    }
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql1);
-    return database.executar(instrucaoSql1);
 }
 
 
