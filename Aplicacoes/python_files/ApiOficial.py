@@ -8,7 +8,7 @@ from mysql.connector import errorcode
 while (True):
     try:
         db_connection = mysql.connector.connect(
-            host='localhost', user='aluno', password='sptech', database='greeneye')
+            host='localhost', user='root', password='#Gf40928326802', database='greeneye')
         print("Conectei no banco!")
     except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -97,5 +97,4 @@ while (True):
     print("\n")
     print(cursor.rowcount, "Inserindo no banco.")
     db_connection.commit()
-    time.sleep(0.1)
-    
+    time.sleep(5)
