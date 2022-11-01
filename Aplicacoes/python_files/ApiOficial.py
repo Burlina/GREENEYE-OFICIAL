@@ -5,9 +5,7 @@ import time
 import os
 from mysql.connector import errorcode
 
-i = 0
-while (i < 500):
-    i = i + 1
+while (True):
     try:
         db_connection = mysql.connector.connect(
             host='localhost', user='aluno', password='sptech', database='greeneye')
