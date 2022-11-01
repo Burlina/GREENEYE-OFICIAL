@@ -645,6 +645,22 @@ pre code {
   margin-left: -15px;
 }
 
+.row2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.row3 {
+  height: 849px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* margin-right: -15px;
+  margin-left: -15px; */
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -1301,7 +1317,7 @@ pre code {
   }
 
   .col-lg-4 {
-    flex: 0 0 50%;
+    flex: 0 0 50.%;
     max-width: 50%;
   }
 
@@ -1311,7 +1327,7 @@ pre code {
   }
 
   .col-lg-6 {
-    flex: 0 0 50%;
+    /* flex: 0 0 50%; */
     max-width: 50%;
   }
 
@@ -20276,12 +20292,15 @@ background-color: darkgrey;
   padding: 0 10px;
 }
 
-.card-chart .chart-area {
+.card-chart .chart-area-ram {
   height: 220px;
   width: 100%;
- 
- 
-  
+} 
+
+.card-chart .cpu {
+  /* padding-left: 100px; */
+  /* height: 400px; */
+  width: 600px;
 } 
 
 .card-chart .card-footer {

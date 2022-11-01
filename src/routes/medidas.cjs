@@ -16,7 +16,7 @@
 var express = require("express");
 var router = express.Router();
 
-var medidaController = require("../controllers/medidaController");
+var medidaController = require("../controllers/medidaController.cjs");
 
 router.get("/ultimas/:valorId", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
