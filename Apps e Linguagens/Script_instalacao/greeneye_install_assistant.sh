@@ -6,7 +6,7 @@ VERSAO18=18
 VERSAO11=11
 echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Olá sou seu assistente de instalação irei acompanhar os processos e te notificar dos passos a seguir!"
 sleep 2.0
-echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Sendo eles Java, ODBC Driver SQL, Python3 e Python3-PIP."
+echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Sendo eles Java, Kotlin, ODBC Driver SQL, Python3 e Python3-PIP."
 sleep 2.0
 echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Vamos atualizar seu sistema antes para verificar se temos algumas das aplicações instalada."
 sudo apt update && sudo apt upgrade -y
@@ -99,7 +99,11 @@ if [ $? -eq 0 ]
 	if [ \"$inst\" == \"S\" ]
 		then
 			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Ok! Você escolheu instalar o Kotlin"
-			snap install kotlin
+			sudo apt install zip
+			sudo apt update -y
+			curl -s https://get.sdkman.io | bash
+			clear
+			sdk install kotlin
 			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Atualizando! Quase lá"
 			sleep 2
 			sudo apt update -y
