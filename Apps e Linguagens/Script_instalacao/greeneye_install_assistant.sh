@@ -85,6 +85,33 @@ sleep 2.0
 # fi
 # sleep 2.0
 
+#INSTALANDO KOTLIN
+kotlin -version
+if [ $? -eq 0 ]
+	then
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você já tem o Kotlin instalado!."
+		sleep 2.0
+	else
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Opa! Não identifiquei nenhuma versão do Kotlin instalado, mas sem problemas, irei resolver isso agora!"
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Confirme se realmente deseja instalar o Kotlin (S/N)?"
+		sleep 2.0
+	read inst
+	if [ \"$inst\" == \"S\" ]
+		then
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Ok! Você escolheu instalar o Kotlin"
+			snap install kotlin
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Atualizando! Quase lá"
+			sleep 2
+			sudo apt update -y
+			clear
+			echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Kotlin instalado com sucesso!"
+		else 	
+		echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Você optou por não instalar o Kotlin por enquanto, até a próxima então!"
+	fi
+fi
+sleep 2.0
+
+
 #INSTALANDO ODBC Driver SQL driver para rodar sql na azure
 echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7)  Verificando aqui se você possui o ODBC instalado...;"
 sleep 2.0
@@ -177,7 +204,3 @@ sudo apt update && sudo apt upgrade -y
 echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Pacotes atualizados..."
 sleep 2.0
 
-#INICIANDO CAPTURA DE DADOS
-echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Agora vamos iniciar o processo para rodar o nosso sistema de captura de dados"
-sudo git clone https://github.com/Burlina/GREENEYE-OFICIAL.git
-echo "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) Agora vamos iniciar o processo para rodar o nosso sistema de captura de dados"
