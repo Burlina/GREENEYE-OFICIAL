@@ -3,10 +3,10 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "SEU_SERVIDOR",
-    database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
-    password: "SUA_SENHA",
+    server: "greeneye.database.windows.net",
+    database: "greeneye",
+    user: "GreeneyeADM",
+    password: "Greeneye123@",
     pool: {
         max: 10,
         min: 0,
@@ -18,12 +18,12 @@ var sqlServerConfig = {
 }
 
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
-var mySqlConfig = {
-    host: "localhost",
-    database: "greeneye",
-    user: "root",
-    password: "#Gf40928326802",
-};
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "greeneye",
+//     user: "root",
+//     password: "Fabio12345@",
+// };
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js
