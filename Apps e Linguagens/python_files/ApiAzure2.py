@@ -60,7 +60,7 @@ while (True):
     #Captura do sistema operacional da máquina, utilizando a própria psutil 
     # sistemaoperacional = psutil.disk_partitions()[0][2] 
     if(os.name == 'nt'):
-        sistemaoperacional = 'NFTS'
+        sistemaoperacional = 'NTFS'
     elif(os.name == 'posix'):
         sistemaoperacional = 'EXT4'
     else:
@@ -71,22 +71,22 @@ while (True):
     porcentagem_cpu = psutil.cpu_percent()
 
     # Disco
-    if(sistemaoperacional == 'NFTS'):
+    if(sistemaoperacional == 'NTFS'):
         discoTotal =(psutil.disk_usage("C:\\")[0] / 10**9)
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3'):
         discoTotal =(psutil.disk_usage("/")[0] / 10**9)
     
-    if(sistemaoperacional == 'NFTS' or sistemaoperacional == 'Windows'):
+    if(sistemaoperacional == 'NTFS' or sistemaoperacional == 'Windows'):
         discoUso = (psutil.disk_usage("C:\\")[1] / 10**9)
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3' or sistemaoperacional == 'Linux'):
         discoUso = (psutil.disk_usage("/")[1] / 10**9)
 
-    if(sistemaoperacional == 'NFTS' or sistemaoperacional == 'Windows'):
+    if(sistemaoperacional == 'NTFS' or sistemaoperacional == 'Windows'):
         discoLivre = (psutil.disk_usage("C:\\")[2] / 10**9)
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3' or sistemaoperacional == 'Linux'):
         discoLivre = (psutil.disk_usage("/")[2] / 10**9)
 
-    if(sistemaoperacional == 'NFTS'):
+    if(sistemaoperacional == 'NTFS'):
         disk = psutil.disk_usage('C:\\')
     elif(sistemaoperacional == 'EXT4' or sistemaoperacional == 'EXT3'):
         disk = psutil.disk_usage('/')
