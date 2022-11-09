@@ -1,6 +1,6 @@
 var database = require("../database/config.cjs");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(id, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -12,7 +12,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
     // from registros  
     // order by idRegistros desc`;
-    instrucaoSql = `select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF from Leitura order by idLeitura desc limit ${limite_linhas}`;
+    instrucaoSql = `select cpuMedia, ramUsoPercent, dataHora from Leitura order by idLeitura`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -44,6 +44,7 @@ function buscarMedidasEmTempoReal(idAquario) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
+        if(obterDadosGraficoCPU){
         instrucaoSql = 
     //     `select top 1 
     //     REGISTRO_TEMP, 
@@ -52,8 +53,18 @@ function buscarMedidasEmTempoReal(idAquario) {
     //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
     // from registros  
     // order by idRegistros desc`;
-    `select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
-    from Leitura order by idLeitura desc top 1`
+    `select top 1 cpuMedia, dataHora from Leitura order by idLeitura`
+        } else if (obterDadosGraficoRAM){
+            instrucaoSql = 
+    //     `select top 1 
+    //     REGISTRO_TEMP, 
+    //     REGISTRO_UMID, 
+    //     REGISTRO_MOMENTO,
+    //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+    // from registros  
+    // order by idRegistros desc`;
+    `select top 1 ramUsoPercent, dataHora from Leitura order by idLeitura`
+        }
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 

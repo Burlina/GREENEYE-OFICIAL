@@ -806,6 +806,24 @@
           </div>
         </div>
       </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="card z-index-2">
+            <div class="card-header pb-4">
+              <h6>Sales overview</h6>
+              <p class="text-sm">
+                <i class="fa fa-arrow-up text-success"></i>
+                <span class="font-weight-bold">4% more</span> in 2021
+              </p>
+            </div>
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
           <div class="card">
@@ -1305,18 +1323,21 @@
       
       const discoLivre = 100 - resposta[0].discoPercent  
       const dados =[resposta[0].discoPercent, discoLivre]
+      // const = 100 - resposta[0].discoPercent  
+      // const dadosCPU =[resposta[0]., discoLivre]
 
       new Chart(ctx, {
         type: "doughnut",
         data: {
-          labels: ["Usado", "Livre"],
+          labels:["Usado", "Livre"],
           datasets: [{
-            label: "Sales",
-            tension: 0.4,
-            borderWidth: 0,
-            borderRadius: 4,
-            borderSkipped: false,
-            backgroundColor: ["000", "#fff"],
+            // label: "Sales",
+            // tension: 0.4,
+            // borderWidth: 0,
+            // borderRadius: 4,
+            // borderSkipped: false,
+            backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)'],
+            borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)'],
             data: dados,
             maxBarThickness: 6
           },],
@@ -1329,10 +1350,10 @@
               display: true,
             }
           },
-          interaction: {
-            intersect: false,
-            mode: 'index',
-          },
+          // interaction: {
+          //   intersect: false,
+          //   mode: 'index',
+          // },
           scales: {
             y: {
               grid: {
@@ -1342,17 +1363,18 @@
                 drawTicks: false,
               },
               ticks: {
-                suggestedMin: 0,
-                suggestedMax: 500,
-                beginAtZero: true,
-                padding: 15,
-                font: {
-                  size: 14,
-                  family: "Open Sans",
-                  style: 'normal',
-                  lineHeight: 2
-                },
-                color: "#fff"
+                display: false,
+                // suggestedMin: 0,
+                // suggestedMax: 500,
+                // beginAtZero: true,
+                // padding: 15,
+                // font: {
+                //   size: 14,
+                //   family: "Open Sans",
+                //   style: 'normal',
+                //   lineHeight: 2
+                // },
+                // color: "#fff"
               },
             },
             x: {
@@ -1379,6 +1401,45 @@
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
             resposta.reverse();
             grafico(resposta);
+            // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            // respostaCPU.reverse();
+            // graficoCPU(respostaCPU);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function obterDadosGraficoCPU(id) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/ultimas/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (respostaCPU) {
+            console.log(`Dados recebidos: ${JSON.stringify(respostaCPU)}`);
+            respostaCPU.reverse();
+            graficoCPU(respostaCPU);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function obterDadosGraficoRAM(id) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/ultimas/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (respostaRAM) {
+            console.log(`Dados recebidos: ${JSON.stringify(respostaRAM)}`);
+            respostaRAM.reverse();
+            graficoRAM(respostaRAM);
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
@@ -1393,9 +1454,45 @@
     let proximaAtualizacao;
 
     window.onload = obterDadosGrafico(1);
+    window.onload = obterDadosGraficoCPU(1);
+    window.onload = obterDadosGraficoRAM(1);
+
 
 
     var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+    // for (i = 0; i < respostaCPU.length; i++) {
+    //       const registro = respostaCPU[i];
+    //       dadosCPU.labels.push(registro.horarioF);
+    //       dadosCPU.datasets[0].data.push(registro.cpuMedia);
+    //       dadosRAM.labels.push(registro.horarioF)
+    //       dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
+    //       // dados3.labels.push(registro.horarioF)
+    //       // dados3.datasets[0].data.push(registro.discoUso)
+    //       // dados3.datasets[1].data.push(registro.discoLivre)
+    //     }
+
+    function graficoCPU(respostaCPU) {
+
+      // const discoLivre = 100 - respostaCPU[0].discoPercent
+      
+      for (i = 0; i < respostaCPU.length; i++) {
+      const registro = respostaCPU[i];
+      const horarioF = registro.dataHora
+      const dadosCPU =[registro.cpuMedia]
+      // horario.labels.push(horarioF)
+      }
+
+      // for (i = 0; i < respostaCPU.length; i++) {
+      //     const registro = respostaCPU[i];
+      //     dadosCPU.labels.push(registro.horarioF);
+      //     dadosCPU.datasets[0].data.push(registro.cpuMedia);
+      //     // dadosRAM.labels.push(registro.horarioF)
+      //     // dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
+      //     // dados3.labels.push(registro.horarioF)
+      //     // dados3.datasets[0].data.push(registro.discoUso)
+      //     // dados3.datasets[1].data.push(registro.discoLivre)
+      //   }
 
     var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
 
@@ -1411,23 +1508,12 @@
 
     new Chart(ctx2, {
       type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0.4,
-          borderWidth: 0,
-          pointRadius: 0,
-          borderColor: "#cb0c9f",
-          borderWidth: 3,
-          backgroundColor: gradientStroke1,
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
-        },
+      data: 
+      {
+        // labels: dataa,
+        datasets: [
         {
-          label: "Websites",
+          label: "CPU",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
@@ -1435,7 +1521,7 @@
           borderWidth: 3,
           backgroundColor: gradientStroke2,
           fill: true,
-          data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+          data: [],
           maxBarThickness: 6
         },
         ],
@@ -1445,13 +1531,13 @@
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true,
           }
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
+        // interaction: {
+        //   intersect: false,
+        //   mode: 'index',
+        // },
         scales: {
           y: {
             grid: {
@@ -1496,6 +1582,190 @@
         },
       },
     });
+  }
+
+  
+  var ctx3 = document.getElementById("chart-line2").getContext("2d");
+
+// for (i = 0; i < respostaCPU.length; i++) {
+//       const registro = respostaCPU[i];
+//       dadosCPU.labels.push(registro.horarioF);
+//       dadosCPU.datasets[0].data.push(registro.cpuMedia);
+//       dadosRAM.labels.push(registro.horarioF)
+//       dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
+//       // dados3.labels.push(registro.horarioF)
+//       // dados3.datasets[0].data.push(registro.discoUso)
+//       // dados3.datasets[1].data.push(registro.discoLivre)
+//     }
+
+function graficoRAM(respostaRAM) {
+
+  // const discoLivre = 100 - respostaCPU[0].discoPercent
+  
+  for (i = 0; i < respostaRAM.length; i++) {
+  const registro = respostaCPU[i];
+  const horarioF = registro.dataHora
+  const dadosRAM =[registro.ramUsoPercent]
+  // horario.labels.push(horarioF)
+  }
+
+  // for (i = 0; i < respostaCPU.length; i++) {
+  //     const registro = respostaCPU[i];
+  //     dadosCPU.labels.push(registro.horarioF);
+  //     dadosCPU.datasets[0].data.push(registro.cpuMedia);
+  //     // dadosRAM.labels.push(registro.horarioF)
+  //     // dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
+  //     // dados3.labels.push(registro.horarioF)
+  //     // dados3.datasets[0].data.push(registro.discoUso)
+  //     // dados3.datasets[1].data.push(registro.discoLivre)
+  //   }
+
+var gradientStroke4 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke4.addColorStop(1, 'rgba(203,12,159,0.2)');
+gradientStroke4.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+gradientStroke4.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+var gradientStroke5 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke5.addColorStop(1, 'rgba(20,23,39,0.2)');
+gradientStroke5.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+gradientStroke5.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+new Chart(ctx3, {
+  type: "line",
+  data: 
+  {
+    // labels: dataa,
+    datasets: [
+    {
+      label: "RAM",
+      tension: 0.4,
+      borderWidth: 0,
+      pointRadius: 0,
+      borderColor: "#3A416F",
+      borderWidth: 3,
+      backgroundColor: gradientStroke4,
+      fill: true,
+      data: [],
+      maxBarThickness: 6
+    },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+      }
+    },
+    // interaction: {
+    //   intersect: false,
+    //   mode: 'index',
+    // },
+    scales: {
+      y: {
+        grid: {
+          drawBorder: false,
+          display: true,
+          drawOnChartArea: true,
+          drawTicks: false,
+          borderDash: [5, 5]
+        },
+        ticks: {
+          display: true,
+          padding: 10,
+          color: '#b2b9bf',
+          font: {
+            size: 11,
+            family: "Open Sans",
+            style: 'normal',
+            lineHeight: 2
+          },
+        }
+      },
+      x: {
+        grid: {
+          drawBorder: false,
+          display: false,
+          drawOnChartArea: false,
+          drawTicks: false,
+          borderDash: [5, 5]
+        },
+        ticks: {
+          display: true,
+          color: '#b2b9bf',
+          padding: 20,
+          font: {
+            size: 11,
+            family: "Open Sans",
+            style: 'normal',
+            lineHeight: 2
+          },
+        }
+      },
+    },
+  },
+});
+}
+
+  function atualizarGrafico(id, dadosCPU, dadosRAM) {
+        console.log("ENTRANDO NO ATUALIZAR GRAFICO")
+        console.log("---------------------------------")
+        console.log(dadosRAM)
+        console.log("---------------------------------")
+
+
+        fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (response) {
+          if (response.ok) {
+            response.json().then(function (novoRegistro) {
+
+              console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+              console.log(`Dados atuais do gráfico: ${dadosCPU}`);
+              console.log(`Dados atuais do gráfico: ${dadosRAM}`);
+
+              // tirando e colocando valores no gráfico
+              dadosCPU.labels.shift(); // apagar o primeiro
+              dadosCPU.labels.push(novoRegistro[0].horarioF); // incluir um novo momento
+              dadosCPU.datasets[0].data.shift();  // apagar o primeiro de temperatura
+              dadosCPU.datasets[0].data.push(novoRegistro[0].cpuMedia);
+              let cpu = novoRegistro[0].cpuMedia// incluir uma nova medida de temperatura
+              setInterval(verificarcpu(cpu), 5000)
+              // dadosRAM.labels.shift();
+              // dadosRAM.labels.push(novoRegistro[0].horarioF);
+              // dadosRAM.datasets[0].data.shift();
+              // dadosRAM.datasets[0].data.push(novoRegistro[0].ramUsoPercent);
+              // let ram = novoRegistro[0].ramUsoPercent
+              // setInterval(verificarram(ram), 5000)
+              // dados3.labels.shift();
+              // dados3.labels.push(novoRegistro[0].horarioF);
+              // dados3.datasets[0].data.shift();
+              // dados3.datasets[0].data.push(novoRegistro[0].discoUso);
+              // dados3.datasets[1].data.shift();
+              // dados3.datasets[1].data.push(novoRegistro[0].discoLivre);
+
+
+              /* dados.datasets[0].data.shift(); */  // apagar o primeiro de temperatura
+              /*  dados.datasets[0].data.push(novoRegistro[0].grafico_zonas); */ // incluir uma nova medida de temperatura
+
+              window.ctx2.update();
+              window.ctx3.update();
+              // window.lineChart3.update();
+
+              // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+              proximaAtualizacao = setTimeout(() => atualizarGrafico(id, dadosCPU, dadosRAM), 2000);
+            });
+          } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          }
+        })
+          .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+          });
+
+      }
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

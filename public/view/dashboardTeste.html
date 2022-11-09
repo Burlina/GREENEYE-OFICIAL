@@ -1130,7 +1130,7 @@
       function plotarGrafico(resposta, id) {
         console.log('iniciando plotagem do gráfico...');
 
-        var dados = {
+        var dadosCPU = {
           labels: [],
           datasets: [
             {
@@ -1146,7 +1146,7 @@
 
         };
 
-        var dados2 = {
+        var dadosRAM = {
           labels: [],
           datasets: [
             {
@@ -1189,8 +1189,8 @@
 
         for (i = 0; i < resposta.length; i++) {
           var registro = resposta[i];
-          dados.labels.push(registro.horarioF);
-          dados.datasets[0].data.push(registro.cpuMedia);
+          dadosCPU.labels.push(registro.horarioF);
+          dadosCPU.datasets[0].data.push(registro.cpuMedia);
           dados2.labels.push(registro.horarioF)
           dados2.datasets[0].data.push(registro.ramUsoPercent)
           // dados3.labels.push(registro.horarioF)
