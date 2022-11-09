@@ -78,7 +78,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  active" href="../dashboard.html">
+          <a class="nav-link" href="../dashboard.html">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center px-0 me-2 d-flex align-items-center justify-content-center">
               <svg width="20px" height="20px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="dashboardLucas.html">
+          <a class="nav-link active" href="dashboardLucas.html">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -641,7 +641,7 @@
 
       <!-- Grafico Esquerda (INICIO)-->
       <div class="row mt-4">
-        <div class="col-lg-5 mb-lg-0 mb-4">
+        <div class="col-12 mb-lg-0 mb-4">
           <div class="card z-index-2">
             <div class="card-body p-3">
               <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
@@ -794,7 +794,7 @@
                 <!-- Grafico Esquerda (FIM)-->
          
                 <!-- Grafico Direita (INICIO)-->
-        <div class="col-lg-7">
+        <!-- <div class="col-lg-7">
           <div class="card z-index-2">
             <div class="card-header pb-0">
               <h6>Sales overview</h6>
@@ -809,12 +809,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- Grafico Direita (FIM)-->
 
       <!-- Grafico Grande (INICIO)-->
-      <div class="row mt-4">
+      <!-- <div class="row mt-4">
         <div class="col-12">
           <div class="card z-index-2">
             <div class="card-header pb-4">
@@ -831,7 +831,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Grafico Grande (FIM)-->
 
       <div class="row my-4">
@@ -1337,7 +1337,7 @@
       // const dadosCPU =[resposta[0]., discoLivre]
 
       new Chart(ctx, {
-        type: "doughnut",
+        type: "bar",
         data: {
           labels:["Usado", "Livre"],
           datasets: [{
@@ -1367,10 +1367,11 @@
           scales: {
             y: {
               grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
+                drawBorder: true,
+                display: true,
+                drawOnChartArea: true,
                 drawTicks: false,
+                color:"rgba(1,1,1,0.7)",
               },
               ticks: {
                 display: false,

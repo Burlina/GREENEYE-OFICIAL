@@ -26,6 +26,14 @@ router.get("/tempo-real/:idArmazem", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/ultimasRAM/:valorId", function (req, res) {
+    medidaController.buscarUltimasMedidasRAM(req, res);
+});
+
+router.get("/tempo-realRAM/:idArmazem", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealRAM(req, res);
+})
+
 router.get("/ultimaDisco/:idArmazem", function (req, res) {
     medidaController.buscarUltimaMedidaDisco(req, res);
 })
