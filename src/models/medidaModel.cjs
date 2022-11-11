@@ -1,6 +1,6 @@
 var database = require("../database/config.cjs");
 
-function buscarUltimasMedidas(id, limite_linhas) {
+function buscarUltimasMedidas(idAquario, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -13,7 +13,7 @@ function buscarUltimasMedidas(id, limite_linhas) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select cpuMedia, dataHora from Leitura order by idLeitura`
+            `select top 12 cpuMedia, dataHora, convert(varchar, dataHora, 108) as horarioF from Leitura order by idLeitura desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -40,7 +40,7 @@ function buscarUltimasMedidas(id, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimasMedidasRAM(id, limite_linhas) {
+function buscarUltimasMedidasRAM(idAquario, limite_linhas) {
 
     instrucaoSql = ''
 
@@ -53,7 +53,7 @@ function buscarUltimasMedidasRAM(id, limite_linhas) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select ramUsoPercent, dataHora from Leitura order by idLeitura`
+            `select top 12 ramUsoPercent, dataHora, convert(varchar, dataHora, 108) as horarioF from Leitura order by idLeitura desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -88,7 +88,7 @@ function buscarMedidasEmTempoReal(idAquario) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select top 1 cpuMedia, dataHora from Leitura order by idLeitura`
+            `select top 12 cpuMedia, dataHora, convert(varchar, dataHora, 108) as horarioF from Leitura order by idLeitura desc`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -99,7 +99,7 @@ function buscarMedidasEmTempoReal(idAquario) {
     from registros  
     order by idRegistros desc limit 1` */
 
-            `select cpuMedia, dataHora, date_format(dataHora, '%H:%i') as horarioF 
+            `select cpuMedia, ramUsoPercent dataHora, date_format(dataHora, '%H:%i') as horarioF 
     from Leitura order by idLeitura desc limit 1`
 
     } else {
@@ -124,7 +124,7 @@ function buscarMedidasEmTempoRealRAM(idAquario) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select top 1 ramUsoPercent, dataHora from Leitura order by idLeitura`
+            `select top 12 ramUsoPercent, dataHora, convert(varchar, dataHora, 108) as horarioF from Leitura order by idLeitura desc`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -137,7 +137,7 @@ function buscarMedidasEmTempoRealRAM(idAquario) {
             
     `select ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
     from Leitura order by idLeitura desc limit 1`
-    
+
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

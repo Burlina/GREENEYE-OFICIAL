@@ -53,7 +53,7 @@ function buscarUltimasMedidasRAM(req, res) {
     
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
+    medidaModel.buscarUltimasMedidasRAM(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -75,7 +75,7 @@ function buscarMedidasEmTempoRealRAM(req, res) {
     
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoRealRAM(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             console.log("RESULTADO", resultado);
             res.status(200).json(resultado);
