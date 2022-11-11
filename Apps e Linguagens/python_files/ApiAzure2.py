@@ -8,9 +8,7 @@ import pyodbc
 import textwrap
 
 while (True):
-
     # def Conexao():
-
     # variaveis de conexao
     driver ='{ODBC Driver 18 for SQL Server}'
     server_name = 'greeneye'
@@ -42,12 +40,9 @@ while (True):
     crsr = cnxn.cursor()
     print("Conectado ao banco de dados:")
 
-
-
-
     # try:
     #     db_connection = mysql.connector.connect(
-    #         host='localhost', user='root', password='Fabo12345@', database='greeneye')
+    #         host='localhost', user='aluno', password='sptech', database='greeneye')
     #     print("Conectei no banco!")
     # except mysql.connector.Error as error:
     #     if error.errno == errorcode.ER_BAD_DB_ERROR:
