@@ -251,7 +251,7 @@ if [ $? -eq 0 ]
 			pip install psutil
 			pip install -U textwrap3
 			pip install pyodbc
-			pip install mysql-connect-python
+			pip install mysql.connect-python
 			sleep 2.0
 			clear			
 			echo "$(tput setaf 10)[Assistente Greeneye]:$(tput setaf 7) Todas as bibliotecas do PIP foram instaladas com sucesso!"
