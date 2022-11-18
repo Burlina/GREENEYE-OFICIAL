@@ -46,7 +46,7 @@ try:
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
         db_connection = mysql.connector.connect(
-                host='localhost', user='root', password='Fabo12345@', database='greeneye')
+                host='localhost', user='Gabes', password='urubu100', database='greeneye')
         print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:

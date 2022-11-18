@@ -34,8 +34,17 @@ router.get("/tempo-realRAM/:idRealRAM", function (req, res) {
     medidaController.buscarMedidasEmTempoRealRAM(req, res);
 })
 
+router.get("/ultimasTEMP/:idTEMP", function (req, res) {
+    medidaController.buscarUltimasMedidasTEMP(req, res);
+});
+
+router.get("/tempo-realTEMP/:idRealTEMP", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTEMP(req, res);
+})
+
 router.get("/ultimaDisco/:idArmazem", function (req, res) {
     medidaController.buscarUltimaMedidaDisco(req, res);
 })
+
 
 module.exports = router;

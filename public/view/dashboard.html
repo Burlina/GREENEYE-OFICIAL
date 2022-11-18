@@ -721,7 +721,7 @@
             </div>
             <div class="card-body p-3">
               <div class="chart">
-                <canvas id="chart-line2" class="chart-canvas" height="300"></canvas>
+                <canvas id="chart-line2" class="chart-canvas" height="288"></canvas>
               </div>
             </div>
           </div>
@@ -737,11 +737,12 @@
             </div>
             <div class="card-body p-3">
               <div class="chart">
-                <canvas id="chart-line2" class="chart-canvas" height="300"></canvas>
+                <canvas id="chart-temp" class="chart-canvas" height="288"></canvas>
               </div>
             </div>
           </div>
         </div>
+ 
       </div>
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
@@ -1393,6 +1394,29 @@
         });
     }
 
+    // TEMPERATURA
+    function obterDadosGraficoTEMP(id) {
+      if (proximaAtualizacaoTEMP != undefined) {
+        clearTimeout(proximaAtualizacaoTEMP);
+      }
+      console.log("Entrei no obter")
+
+      fetch(`/medidas/ultimasTEMP/${id}`, { cache: 'no-store' }).then(function (responseTEMP) {
+        if (responseTEMP.ok) {
+          responseTEMP.json().then(function (respostaTEMP) {
+            console.log(`Dados recebidos: ${JSON.stringify(respostaTEMP)}`);
+            respostaTEMP.reverse();
+            graficoTEMP(respostaTEMP);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
     //---------------------- DADOS DO GRÁFICO DA CPU ---------------------------------
 
     const ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -1666,6 +1690,134 @@
       setInterval(atualizarGraficoRAM(ChartRam), 2000)
     }
 
+
+    const ctx4 = document.getElementById("chart-temp").getContext("2d");
+
+        function graficoTEMP(respostaTEMP) {
+
+          // const data_TEMP = respostaTEMP[0].data_agr
+          const horarioTEMP = respostaTEMP[0].horaTemp
+          const dadosTEMP = [respostaTEMP[0].tempValor, horarioTEMP]
+    
+          const dataTEMP = []
+          const labelsTEMP = []
+    
+          for (let i in respostaTEMP) {
+    
+            dataTEMP.push(respostaTEMP[i].tempValor)
+            labelsTEMP.push(respostaTEMP[i].horaTemp)
+          }
+    
+          // for (i = 0; i < respostaCPU.length; i++) {
+          //     const registro = respostaCPU[i];
+          //     dadosCPU.labels.push(registro.horarioF);
+          //     dadosCPU.datasets[0].data.push(registro.cpuMedia);
+          //     // dadosRAM.labels.push(registro.horarioF)
+          //     // dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
+          //     // dados3.labels.push(registro.horarioF)
+          //     // dados3.datasets[0].data.push(registro.discoUso)
+          //     // dados3.datasets[1].data.push(registro.discoLivre)
+          //   }
+    
+          var gradientStrokeTEMP = ctx4.createLinearGradient(0, 230, 0, 50);
+    
+          gradientStrokeTEMP.addColorStop(1, 'rgba(203,12,159,0.2)');
+          gradientStrokeTEMP.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+          gradientStrokeTEMP.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+    
+          var gradientStrokeTEMP2 = ctx4.createLinearGradient(0, 230, 0, 50);
+    
+          gradientStrokeTEMP2.addColorStop(1, 'rgba(20,23,39,0.2)');
+          gradientStrokeTEMP2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+          gradientStrokeTEMP2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+    
+          window.ChartTEMP = new Chart(ctx4, {
+            type: "line",
+            data:
+            {
+              labels: labelsTEMP,
+              datasets: [
+                {
+                  yAxisID: 'yAxisTEMP',
+                  xAxisID: 'xAxisTEMP',
+                  label: 'Porcentagem de Temperatura',
+                  tension: 0.4,
+                  borderWidth: 0,
+                  pointRadius: 0,
+                  borderColor: "#FF4500",
+                  borderWidth: 3,
+                  backgroundColor: gradientStrokeTEMP2,
+                  fill: true,
+                  data: dataTEMP,
+                  // maxBarThickness: 6
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              animation: { duration: 2000 },
+              hoverMode: 'index',
+              plugins: {
+                legend: {
+                  display: true,
+                }
+              },
+              // interaction: {
+              //   intersect: true,
+              //   mode: 'index',
+              // },
+              // scales: {
+              //   yAxisRam: {
+              //     grid: {
+              //       beginAtZero: true,
+              //       max: 100,
+              //       drawBorder: false,
+              //       display: true,
+              //       drawOnChartArea: true,
+              //       drawTicks: false,
+              //       borderDash: [5, 5]
+              //     },
+              //     ticks: {
+              //       display: true,
+              //       padding: 10,
+              //       color: '#b2b9bf',
+              //       font: {
+              //         size: 12,
+              //         family: "Open Sans",
+              //         style: 'normal',
+              //         lineHeight: 2
+              //       },
+              //     }
+              //   },
+              //   xAxisRam: {
+              //     grid: {
+              //       drawBorder: false,
+              //       display: true,
+              //       drawOnChartArea: false,
+              //       drawTicks: true,
+              //       borderDash: [5, 5]
+              //     },
+              //     // ticks: {
+              //     //   // display: true,
+              //     //   color: '#b2b9bf',
+              //     //   padding: 20,
+              //     //   font: {
+              //     //     size: 11,
+              //     //     family: "Open Sans",
+              //     //     style: 'normal',
+              //     //     lineHeight: 2
+              //     //   },
+              //     // }
+              //   },
+              // },
+            },
+          });
+    
+          setInterval(atualizarGraficoTEMP(ChartTEMP), 2000)
+        }
+
+
     function atualizarGrafico(id) {
       fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (responseCPU) {
         if (responseCPU.ok) {
@@ -1752,11 +1904,50 @@
 
     }
 
+    function atualizarGraficoTEMP(id) {
+
+fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (responseTEMP) {
+  if (responseTEMP.ok) {
+    responseTEMP.json().then(function (novoRegistroTEMP) {
+
+      console.log(`Dados recebidos: ${JSON.stringify(novoRegistroTEMP)}`);
+
+      ChartTEMP.data.labels.shift();
+      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horarioTEMP);
+      ChartTEMP.data.datasets[0].data.shift();
+      ChartTEMP.data.datasets[0].data.push(novoRegistroTEMP[0].tempValor);
+      // let ram = novoRegistroRAM[0].ramUsoPercent
+      // setInterval(verificarram(ram), 5000)
+
+
+      /* dados.datasets[0].data.shift(); */  // apagar o primeiro de temperatura
+      /*  dados.datasets[0].data.push(novoRegistro[0].grafico_zonas); */ // incluir uma nova medida de temperatura
+
+      // window.ctx2.update();
+      window.ChartTEMP.update();
+
+
+      // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+      proximaAtualizacaoTEMP = setTimeout(() => atualizarGraficoTEMP(id), 000);
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+
+}
+
+
     let proximaAtualizacao;
     let proximaAtualizacaoRAM;
+    let proximaAtualizacaoTEMP;
 
 
-    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1)];
+    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1), obterDadosGraficoTEMP(1)];
 // window.onload = obterDadosGraficoCPU(id);
 // window.onload = obterDadosGraficoRAM(id);
 
