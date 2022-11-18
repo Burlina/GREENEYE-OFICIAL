@@ -194,9 +194,11 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
-          sessionStorage.logemail = json.logEmail;
-          sessionStorage.logpass = json.logPass;
-          sessionStorage.logpermissoes = json.logPermissoes;
+          sessionStorage.logemail = json.email;
+          sessionStorage.logpass = json.senha;
+          sessionStorage.logpermissoes = json.fkPerfil;
+
+          
 
           setTimeout(function () {
             if (logPermissoes == "111") {
