@@ -26798,3 +26798,11 @@ pre[class*="language-"] {
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+/* Button individual Gabs */
+
+.button-gabs{
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}

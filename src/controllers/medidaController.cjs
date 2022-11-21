@@ -97,7 +97,7 @@ function buscarMedidasEmTempoRealTEMP(req, res) {
     
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+    medidaModel.buscarMedidasEmTempoRealTEMP(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             console.log("RESULTADO", resultado);
             res.status(200).json(resultado);

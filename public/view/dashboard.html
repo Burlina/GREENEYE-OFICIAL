@@ -31,7 +31,7 @@
   <!-- <link href="/assets2/vendor/nucleo/css/nucleo.css" rel="stylesheet"> -->
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets2/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="../assets2/css/nfbuucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets2/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
 </head>
@@ -730,6 +730,7 @@
           <div class="card z-index-2">
             <div class="card-header pb-0">
               <h6 class="text-dark" style="font-weight: 1000; font-size:xx-large;">TEMPERATURA</h6>
+              <button class="button-gabs">Histórico comparativo</button>
               <!-- <p class="text-sm">
                 <i class="fa fa-arrow-up text-success"></i>
                 <span class="font-weight-bold">4% more</span> in 2021
@@ -1587,7 +1588,7 @@
 
     const ctx4 = document.getElementById("chart-temp").getContext("2d");
 
-        function graficoTEMP(respostaTEMP) {
+        function graficoTEMP(respostaTEMP) { 
 
           // const data_TEMP = respostaTEMP[0].data_agr
           const horarioTEMP = respostaTEMP[0].horaTemp
@@ -1650,6 +1651,7 @@
           });
     
           setInterval(atualizarGraficoTEMP(ChartTEMP), 2000)
+          
         }
 
         // ALERTAS DASHBOARD
@@ -1747,7 +1749,7 @@
 
             window.ChartCpu.update();
             var alertcpu= novoRegistro[0].cpuMedia
-            verificar(alertcpu, "CPU")
+            /* verificar(alertcpu, "CPU") */
             // window.ctx3.update();
 
 
@@ -1774,14 +1776,15 @@
             console.log(`Dados recebidos: ${JSON.stringify(novoRegistroRAM)}`);
 
             ChartRam.data.labels.shift();
-            ChartRam.data.labels.push(novoRegistroRAM[0].horarioF);
             ChartRam.data.datasets[0].data.shift();
+
+            ChartRam.data.labels.push(novoRegistroRAM[0].horarioF);
             ChartRam.data.datasets[0].data.push(novoRegistroRAM[0].ramUsoPercent);
             
             window.ChartRam.update();
 
             var alertram = novoRegistroRAM[0].ramUsoPercent
-            verificar(alertram, "RAM")
+            /* verificar(alertram, "RAM") */ 
 
 
 
@@ -1808,8 +1811,9 @@ fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (res
       console.log(`Dados recebidos: ${JSON.stringify(novoRegistroTEMP)}`);
 
       ChartTEMP.data.labels.shift();
-      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horarioTEMP);
       ChartTEMP.data.datasets[0].data.shift();
+
+      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horarioTEMP); 
       ChartTEMP.data.datasets[0].data.push(novoRegistroTEMP[0].tempValor);
       // let ram = novoRegistroRAM[0].ramUsoPercent
       // setInterval(verificarram(ram), 5000)
@@ -1823,7 +1827,7 @@ fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (res
 
 
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoTEMP = setTimeout(() => atualizarGraficoTEMP(id), 000);
+      proximaAtualizacaoTEMP = setTimeout(() => atualizarGraficoTEMP(id), 2000);
     });
   } else {
     console.error('Nenhum dado encontrado ou erro na API');
