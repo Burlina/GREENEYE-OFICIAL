@@ -1760,14 +1760,7 @@ fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (res
 
       ChartTEMP.data.labels.push(novoRegistroTEMP[0].horaTemp); 
       ChartTEMP.data.datasets[0].data.push(novoRegistroTEMP[0].tempValor);
-      // let ram = novoRegistroRAM[0].ramUsoPercent
-      // setInterval(verificarram(ram), 5000)
-
-
-      /* dados.datasets[0].data.shift(); */  // apagar o primeiro de temperatura
-      /*  dados.datasets[0].data.push(novoRegistro[0].grafico_zonas); */ // incluir uma nova medida de temperatura
-
-      // window.ctx2.update();
+      
       window.ChartTEMP.update();
 
 
