@@ -1295,39 +1295,6 @@
             mode: 'index',
           },
           scales: {
-            // y: {
-            //   grid: {
-            //     drawBorder: false,
-            //     display: false,
-            //     drawOnChartArea: false,
-            //     drawTicks: false,
-            //   },
-            //   ticks: {
-            //     display: false,
-            //     // suggestedMin: 0,
-            //     // suggestedMax: 500,
-            //     // beginAtZero: true,
-            //     // padding: 15,
-            //     // font: {
-            //     //   size: 14,
-            //     //   family: "Open Sans",
-            //     //   style: 'normal',
-            //     //   lineHeight: 2
-            //     // },
-            //     // color: "#fff"
-            //   },
-            // },
-            // x: {
-            //   grid: {
-            //     drawBorder: false,
-            //     display: false,
-            //     drawOnChartArea: false,
-            //     drawTicks: false
-            //   },
-            //   ticks: {
-            //     display: false
-            //   },
-            // },
           },
         },
       });
@@ -1437,17 +1404,6 @@
         labelsData.push(respostaCPU[i].horarioF)
       }
 
-      // for (i = 0; i < respostaCPU.length; i++) {
-      //     const registro = respostaCPU[i];
-      //     dadosCPU.labels.push(registro.horarioF);
-      //     dadosCPU.datasets[0].data.push(registro.cpuMedia);
-      //     // dadosRAM.labels.push(registro.horarioF)
-      //     // dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
-      //     // dados3.labels.push(registro.horarioF)
-      //     // dados3.datasets[0].data.push(registro.discoUso)
-      //     // dados3.datasets[1].data.push(registro.discoLivre)
-      //   }
-
       var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
 
       gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
@@ -1510,17 +1466,6 @@
 
 
     var ctx3 = document.getElementById("chart-line2").getContext("2d");
-
-    // for (i = 0; i < respostaCPU.length; i++) {
-    //       const registro = respostaCPU[i];
-    //       dadosCPU.labels.push(registro.horarioF);
-    //       dadosCPU.datasets[0].data.push(registro.cpuMedia);
-    //       dadosRAM.labels.push(registro.horarioF)
-    //       dadosRAM.datasets[0].data.push(registro.ramUsoPercent)
-    //       // dados3.labels.push(registro.horarioF)
-    //       // dados3.datasets[0].data.push(registro.discoUso)
-    //       // dados3.datasets[1].data.push(registro.discoLivre)
-    //     }
 
     function graficoRAM(respostaRAM) {
 
@@ -1813,7 +1758,7 @@ fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (res
       ChartTEMP.data.labels.shift();
       ChartTEMP.data.datasets[0].data.shift();
 
-      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horarioTEMP); 
+      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horaTemp); 
       ChartTEMP.data.datasets[0].data.push(novoRegistroTEMP[0].tempValor);
       // let ram = novoRegistroRAM[0].ramUsoPercent
       // setInterval(verificarram(ram), 5000)
