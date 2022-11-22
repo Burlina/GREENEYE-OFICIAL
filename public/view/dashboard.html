@@ -34,6 +34,9 @@
   <link href="../assets2/css/nfbuucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets2/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 
@@ -1626,15 +1629,15 @@
            if(componente == "CPU"){
             if(metrica >=65){
               if ( metrica < 75) {
-              alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
+              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Alerta!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
               
             } else if (metrica >= 76 && metrica <=85) {
-              alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
+              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else {
-              alert(`Cuidado ${componente} está ficando no estado Critico!`);
+              Swal.fire("Alert",`Cuidado ${componente} está ficando no estado Critico!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
             alertas(email, frase, metrica)
@@ -1644,15 +1647,14 @@
           } else if (componente == "RAM"){
           if(metrica >=70){
           if ( metrica < 79) {
-              alert(`Cuidado, ${componente} está ficando no estado de Alerta!`);
+            Swal.fire("Alert",`Cuidado, ${componente} está ficando no estado de Alerta!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
-              
             } else if (metrica >= 80 && metrica <=89) {
-              alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
+              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else {
-              alert(`Cuidado ${componente} está ficando no estado Critico!`);
+              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado Critico!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
             alertas(email, frase, metrica)
@@ -1694,8 +1696,8 @@
 
             window.ChartCpu.update();
             var alertcpu= novoRegistro[0].cpuMedia
-            /* verificar(alertcpu, "CPU") */
-            // window.ctx3.update();
+            verificar(alertcpu, "CPU") 
+            window.ctx3.update();
 
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
@@ -1729,7 +1731,7 @@
             window.ChartRam.update();
 
             var alertram = novoRegistroRAM[0].ramUsoPercent
-            /* verificar(alertram, "RAM") */ 
+            verificar(alertram, "RAM") 
 
 
 
