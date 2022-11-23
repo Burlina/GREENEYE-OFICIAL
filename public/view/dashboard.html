@@ -1243,6 +1243,8 @@
   <!-- NÃO MEXER NO BACKEND DA TELA DE DASHBOARD (PRINCIPAL) A NÃO SER QUE SEJA A SUA CÓPIA DA TELA PARA O INDIVIDUAL -->
 
   <script>
+    contador = 0
+
     var ctx = document.getElementById("CountryChart1").getContext("2d");
 
     function grafico(resposta) {
@@ -1626,40 +1628,47 @@
             var frase = ""
             var email = sessionStorage.logemail
 
+            
            if(componente == "CPU"){
+            if(contador <= 2){
             if(metrica >=65){
               if ( metrica < 75) {
-              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Alerta!`, "warning");
+              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Alerta!`, "info");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
               
             } else if (metrica >= 76 && metrica <=85) {
-              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
+              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else {
-              Swal.fire("Alert",`Cuidado ${componente} está ficando no estado Critico!`, "warning");
+              Swal.fire("Alerta",`Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            alertas(email, frase, metrica)
+           setTimeout(alertas(email, frase, metrica),1)
         
               console.log("INICIANDO O FETCH");
           }
+          contador++
+        }
           } else if (componente == "RAM"){
+            if(contador <= 2){
           if(metrica >=70){
           if ( metrica < 79) {
-            Swal.fire("Alert",`Cuidado, ${componente} está ficando no estado de Alerta!`, "warning");
+            Swal.fire("Alerta",`Cuidado, ${componente} está ficando no estado de Alerta!`, "info");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
             } else if (metrica >= 80 && metrica <=89) {
-              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
+              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else {
-              Swal.fire("Alert", `Cuidado ${componente} está ficando no estado Critico!`, "warning");
+              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            alertas(email, frase, metrica)
+           setTimeout(alertas(email, frase, metrica),1000)
            console.log("INICIANDO O FETCH");
          }
+         contador++
+        }
           }else if(componente == "DISCO"){
           if(metrica >=80){
           if ( metrica < 89) {
@@ -1674,7 +1683,7 @@
               alert(`Cuidado ${componente} está ficando no estado Critico!`);
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            alertas(email, frase, metrica)
+           setTimeout(alertas(email, frase, metrica),1)
            console.log("INICIANDO O FETCH");
         }
         }
@@ -1696,7 +1705,7 @@
 
             window.ChartCpu.update();
             var alertcpu= novoRegistro[0].cpuMedia
-            verificar(alertcpu, "CPU") 
+           setTimeout(verificar(alertcpu, "CPU"),60000) 
             window.ctx3.update();
 
 
@@ -1731,7 +1740,8 @@
             window.ChartRam.update();
 
             var alertram = novoRegistroRAM[0].ramUsoPercent
-            verificar(alertram, "RAM") 
+            console.log("1")
+            setTimeout(verificar(alertram, "RAM"),60000) 
 
 
 
