@@ -1605,6 +1605,7 @@
         }
 
         // ALERTAS DASHBOARD
+        
         function alertas(email,descricao, metrica) {
         const options = {
           method: 'POST',
@@ -1667,7 +1668,7 @@
            setTimeout(alertas(email, frase, metrica),1000)
            console.log("INICIANDO O FETCH");
          }
-         contador++
+          contador++
         }
           }else if(componente == "DISCO"){
           if(metrica >=80){
@@ -1687,7 +1688,7 @@
            console.log("INICIANDO O FETCH");
         }
         }
-      }
+      } 
 
 
     function atualizarGrafico(id) {

@@ -13,7 +13,7 @@ create table Empresa(
 idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(45),
 cnpj char(14)
-)auto_increment = 10000;
+)auto_increment = 1000;
 
 create table Usuario(
 idUsuario int primary key auto_increment,
@@ -31,7 +31,7 @@ idEspecificacao int primary key auto_increment,
 processador_modelo varchar(50),
 ram_modelo varchar(45),
 disco_modelo varchar(45)
-)auto_increment = 1000;
+)auto_increment = 10000;
 
 create table Lote(
 idLote int primary key auto_increment,
@@ -67,19 +67,30 @@ discoPercent decimal(5,2),
 dataHora datetime
 )auto_increment = 1;
 
--- Inserção de dados:
+create table Processos(
+idProcesso int primary key auto_increment,
+fkMaquina int,
+foreign key (fkMaquina) references Maquina(idMaquina),
+nome varchar(45),
+pid int,
+status_proc varchar(20),
+cpu_percent varchar(40),
+ram_percent varchar(40),
+data_hora datetime
+);
 
+-- Inserção de dados:
 insert into Perfil values ('111','ADM'),
 						  ('222','FUNC'),
 						  ('333','DEV');
 
 insert into Empresa values (null, 'Greeneye','12345678900000');
 
-insert into Usuario values (null,'Desenvolvedor','dev@sptech.school','123',10000,333);
+insert into Usuario values (null,'Desenvolvedor','dev@sptech.school','123',1000,333);
 
 insert into Especificacoes values (null,'i712600p','LPDDR5 5200MHZ 32GB','SSD 1TB PCIE NVME M.2');
 
-insert into Lote values (null, '21-09-22','Inspiron 660', 200,10000,1000);
+insert into Lote values (null, '21-09-22','Inspiron 660', 200,1000,10000);
 
 insert into Maquina values (null,20000),
 						   (null,20000),
@@ -94,5 +105,6 @@ select * from Especificacoes;
 select * from Lote;
 select * from maquina;
 select * from Leitura;
+select * from Processos;
 
 truncate table leitura;

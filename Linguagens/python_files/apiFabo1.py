@@ -5,15 +5,14 @@ import time
 import os
 from mysql.connector import errorcode
 import pyodbc
-import textwrap
-
+import colorama
 
 try:
-        cnxn = pyodbc.connect(driver='{SQL Server}', host='greeneye.database.windows.net',
+        cnxn = pyodbc.connect(driver='{ODBC Driver 18 for SQL Server}', host='greeneye.database.windows.net',
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
         db_connection = mysql.connector.connect(
-                host='localhost', user='aluno', password='sptech', database='greeneye')
+                host='localhost', user='root', password='Fabo12345@', database='greeneye')
         print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -23,8 +22,71 @@ except mysql.connector.Error as error:
         else:
                 print(error)
 
-while (True):
 
+def progress_bar(progresso, total, color=colorama.Fore.CYAN):
+    porcentagem = 100 * (progresso/float(total))
+    barra = '█' * int(porcentagem) + '-' * (100 - int(porcentagem))
+    print(color + f"\r|{barra}| {porcentagem:.2f}%", end="\r")
+    if progresso == total:
+        print(colorama.Fore.GREEN +
+              f"\r|{barra}| {porcentagem:.2f}%", end="\r")
+
+def LeituraProcessos():
+    while True:
+
+        # Processos
+        def bytes_to_giga(value):
+            return value / 1024 / 1024 / 1024
+
+        dados_proc = []
+        pid_proc = []
+        for proc in psutil.process_iter(['pid']):
+            pid_proc.append(proc.pid)
+
+        processador = psutil.cpu_count()
+
+        for i, proc in enumerate(psutil.process_iter()):
+            nome = proc.name()
+            pid = proc.ppid()
+            status = proc.status()
+            cpu = round(float(proc.cpu_percent(interval=0.1)/processador),2)
+            ram = bytes_to_giga(round(proc.memory_percent()/ 10**9, 2))
+            data = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+            dado = {"nome":nome, "pid":pid, "status":status, "cpu_percent":cpu, "ram_percent":ram, "data_hora":data}
+            dados_proc.append(dado)
+            progress_bar(i+1, len(pid_proc))
+        progress_bar(1, 1)
+
+
+        print(colorama.Fore.RESET)
+        # print(len(pid_proc))
+        # print(dados_proc)
+
+        #CURSOR
+        cursorLocal1 = db_connection.cursor()
+        cursorAzure1 = cnxn.cursor()
+
+        #PROCESSOS AZURE 
+        fkMaquina = 50000
+        sqlProc = f"INSERT INTO Processos (fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora) VALUES (?,?,?,?,?,?,?)"
+        valuesProc = (fkMaquina, nome, pid, status, cpu, ram, data)
+        cursorAzure1.execute(sqlProc, valuesProc)
+
+        #PROCESSOS LOCAL
+        fkMaquina = 50000
+        sqlProc = f"INSERT INTO Processos (fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora) VALUES (?,?,?,?,?,?,?)"
+        valuesProc = (fkMaquina, nome, pid, status, cpu, ram, data)
+        cursorLocal1.execute(sqlProc, valuesProc)
+
+        print("\n")
+        print(cursorAzure1.rowcount, "Inserindo processos no banco (Azure).")
+        cnxn.commit()
+
+        print(cursorLocal1.rowcount, "Inserindo processos no banco (Local).")
+        db_connection.commit()
+        time.sleep(1)
+
+while True:
         #Captura do sistema operacional da máquina, utilizando a própria psutil 
         # sistemaoperacional = psutil.disk_partitions()[0][2] 
         if(os.name == 'nt'):
@@ -71,19 +133,23 @@ while (True):
         ramUso3 = ramUso2 * 1.05
         ram = (psutil.virtual_memory())
         ramPercent = ram.percent
+        
 
         #CURSOR
         cursorLocal = db_connection.cursor()
         cursorAzure = cnxn.cursor()
 
-    #AZURE
+        #AZURE
         fkMaquina = 50000
         sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
         cursorAzure.execute(sql)
-    #LOCAL
+
+    
+        #LOCAL
         fkMaquina = 50000
         sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
         cursorLocal.execute(sql)
+
         
 
         print("\n")
@@ -93,3 +159,4 @@ while (True):
         print(cursorLocal.rowcount, "Inserindo no banco (Local).")
         db_connection.commit()
         time.sleep(5)
+
