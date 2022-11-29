@@ -1618,12 +1618,7 @@
         }
 
         // ALERTAS DASHBOARD
-<<<<<<< HEAD
-        
-        function alertas(email,descricao, metrica) {
-=======
         function alertas(componente, empresa, email, descricao, metrica) {
->>>>>>> 336ecda4067e24a5cd9ee3a7f858d7e1cb6051be
         const options = {
           method: 'POST',
           headers: {
@@ -1691,7 +1686,7 @@
             setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica),1000)
            console.log("INICIANDO O FETCH");
          }
-          contador++
+         contador++
         }
           }else if(componente == "DISCO"){
           if(metrica >=80){
@@ -1711,7 +1706,7 @@
            console.log("INICIANDO O FETCH");
         }
         }
-      } 
+      }
 
     function atualizarGrafico(id) {
       fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (responseCPU) {
