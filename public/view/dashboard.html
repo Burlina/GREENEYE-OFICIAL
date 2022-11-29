@@ -335,6 +335,20 @@
                     style="height: 54px;"></i>
               </div>
               <div class="docs-info">
+                <h6 class="text-white up mb-0">Vamos verificar os chamados?</h6>
+                <p class="text-xs font-weight-bold">Os alertas não te esperam!</p>
+                <a href="https://app.pipefy.com/pipes/302716733/" target="_blank"
+                  class="btn btn-white btn-sm w-100 mb-0">Suporte de Alertas</a>
+              </div>
+            </div>
+            <div class="card-body text-start p-3 w-100">
+              <div
+                class="icon icon-shape icon-sm text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
+                <i class="icon-lg text-dark text-gradient text-lg text-center mb-4 align-items-center justify-content-center top"
+                  aria-hidden="true" style="margin-top: 33px; margin-left: 142px;"><img src="./assets/img/dell.png"
+                    style="height: 54px;"></i>
+              </div>
+              <div class="docs-info">
                 <h6 class="text-white up mb-0">Algum problema?</h6>
                 <p class="text-xs font-weight-bold">Chame sua equipe!</p>
                 <a href="https://app.pipefy.com/public/form/mxJwreZ0" target="_blank"
@@ -1126,30 +1140,29 @@
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
               <div class="copyright text-center text-sm text-muted text-lg-start">
-                ©
-                <script>
+                © <script>
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                <a class="font-weight-bold" target="_blank">Greeneye Group</a>
               </div>
             </div>
             <div class="col-lg-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                  <a href="index.html" class="nav-link text-muted" target="_blank">Início</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
-                    Us</a>
+                  <a href="login.html" class="nav-link text-muted" target="_blank">Login</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                  <a href="profile.html" class="nav-link text-muted" target="_blank">Perfil</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                    target="_blank">License</a>
+                  <a href="" class="nav-link pe-0 text-muted" target="_blank"></a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link pe-0 text-muted" target="_blank"></a>
                 </li>
               </ul>
             </div>
@@ -1398,7 +1411,7 @@
     function graficoCPU(respostaCPU) {
 
       const dataHora = respostaCPU[0].horarioF
-      const dadosCPU = respostaCPU[0].cpuMedia
+      const dadosCPU = [respostaCPU[0].cpuMedia, dataHora]
 
       const dataCpu = []
       const labelsData = []
@@ -1605,8 +1618,12 @@
         }
 
         // ALERTAS DASHBOARD
+<<<<<<< HEAD
         
         function alertas(email,descricao, metrica) {
+=======
+        function alertas(componente, empresa, email, descricao, metrica) {
+>>>>>>> 336ecda4067e24a5cd9ee3a7f858d7e1cb6051be
         const options = {
           method: 'POST',
           headers: {
@@ -1615,7 +1632,13 @@
             'content-type': 'application/json'
           },
           body: JSON.stringify({
-            query: `mutation {           createCard(input: {             pipe_id:302716733,             title: "Card",             fields_attributes:[ {field_id: "email_solicitante", field_value: "${email}"},{field_id: "problem_description", field_value: "${descricao} ${metrica}"}            ],           }) {               card {                 title               }             }           }`
+            query: `mutation {createCard (input: {pipe_id:302716733, title:"${componente}", 
+            fields_attributes:[ 
+              {field_id: "titulo", field_value: "${componente}"},
+              {field_id: "empresa", field_value: "${empresa}"},
+              {field_id: "email_solicitante", field_value: "${email}"},
+              {field_id: "problem_description", field_value: "${descricao}${metrica}"}],})
+            {card {title}}}`
           })
         };
         fetch('https://api.pipefy.com/graphql', options)
@@ -1624,12 +1647,12 @@
           .catch(err => console.error(err));
       }
 
-      function verificar(metrica, componente) { 
+      function verificar(metrica, componente, email, frase, empresa) { 
 
-            var frase = ""
-            var email = sessionStorage.logemail
+        var frase = ""
+        var email = sessionStorage.logemail
+        var empresa = "Dell"
 
-            
            if(componente == "CPU"){
             if(contador <= 2){
             if(metrica >=65){
@@ -1645,7 +1668,7 @@
               Swal.fire("Alerta",`Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-           setTimeout(alertas(email, frase, metrica),1)
+           setTimeout(alertas('CPU', `${empresa}`, email, frase, metrica),1000)
         
               console.log("INICIANDO O FETCH");
           }
@@ -1665,7 +1688,7 @@
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-           setTimeout(alertas(email, frase, metrica),1000)
+            setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica),1000)
            console.log("INICIANDO O FETCH");
          }
           contador++
@@ -1684,12 +1707,11 @@
               alert(`Cuidado ${componente} está ficando no estado Critico!`);
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-           setTimeout(alertas(email, frase, metrica),1)
+            setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica),1000)
            console.log("INICIANDO O FETCH");
         }
         }
       } 
-
 
     function atualizarGrafico(id) {
       fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (responseCPU) {
@@ -1706,8 +1728,7 @@
 
             window.ChartCpu.update();
             var alertcpu= novoRegistro[0].cpuMedia
-           setTimeout(verificar(alertcpu, "CPU"),60000) 
-            window.ctx3.update();
+           setTimeout(verificar(alertcpu, "CPU"),60000)
 
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
