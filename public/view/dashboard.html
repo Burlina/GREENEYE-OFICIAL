@@ -1265,8 +1265,6 @@
 
       const discoLivre = 100 - resposta[0].discoPercent
       const dados = [resposta[0].discoPercent, discoLivre]
-      // const = 100 - resposta[0].discoPercent  
-      // const dadosCPU =[resposta[0]., discoLivre]
 
       new Chart(ctx, {
         type: "doughnut",
@@ -1617,8 +1615,10 @@
           
         }
 
+        const rotulo = []      
+        
         // ALERTAS DASHBOARD
-        function alertas(componente, empresa, email, descricao, metrica) {
+        function alertas(componente, empresa, email, descricao, metrica, rotulo) {
         const options = {
           method: 'POST',
           headers: {
@@ -1632,7 +1632,8 @@
               {field_id: "titulo", field_value: "${componente}"},
               {field_id: "empresa", field_value: "${empresa}"},
               {field_id: "email_solicitante", field_value: "${email}"},
-              {field_id: "problem_description", field_value: "${descricao}${metrica}"}],})
+              {field_id: "problem_description", field_value: "${descricao}${metrica}"}
+              {field_id: "label", field_value: "${rotulo}"}],})
             {card {title}}}`
           })
         };
@@ -1642,14 +1643,16 @@
           .catch(err => console.error(err));
       }
 
-      function verificar(metrica, componente, email, frase, empresa) { 
+      function verificar(metrica, componente, email, frase, empresa, rotulo) { 
 
         var frase = ""
         var email = sessionStorage.logemail
         var empresa = "Dell"
+        // var rotulo = []
 
            if(componente == "CPU"){
             if(contador <= 2){
+              rotulo= 307951087
             if(metrica >=65){
               if ( metrica < 75) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Alerta!`, "info");
@@ -1663,7 +1666,7 @@
               Swal.fire("Alerta",`Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-           setTimeout(alertas('CPU', `${empresa}`, email, frase, metrica),1000)
+           setTimeout(alertas('CPU', `${empresa}`, email, frase, metrica, rotulo),1000)
         
               console.log("INICIANDO O FETCH");
           }
@@ -1671,6 +1674,7 @@
         }
           } else if (componente == "RAM"){
             if(contador <= 2){
+              rotulo = 307950378
           if(metrica >=70){
           if ( metrica < 79) {
             Swal.fire("Alerta",`Cuidado, ${componente} está ficando no estado de Alerta!`, "info");
@@ -1683,13 +1687,14 @@
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica),1000)
+            setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica, rotulo),1000)
            console.log("INICIANDO O FETCH");
          }
          contador++
         }
           }else if(componente == "DISCO"){
           if(metrica >=80){
+            rotulo = 307951088
           if ( metrica < 89) {
               alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
@@ -1702,7 +1707,7 @@
               alert(`Cuidado ${componente} está ficando no estado Critico!`);
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica),1000)
+            setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica, rotulo),1000)
            console.log("INICIANDO O FETCH");
         }
         }

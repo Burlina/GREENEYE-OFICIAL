@@ -46,5 +46,13 @@ router.get("/ultimaDisco/:idArmazem", function (req, res) {
     medidaController.buscarUltimaMedidaDisco(req, res);
 })
 
+router.get("/ultimasRotulos/:idRotulos", function (req, res) {
+    medidaController.UltimasMedidasRotulos(req, res);
+});
+
+router.get("/ultimasFases/:idFases", function (req, res) {
+    medidaController.UltimasMedidasFases(req, res);
+});
+
 
 module.exports = router;

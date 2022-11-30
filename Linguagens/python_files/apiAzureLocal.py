@@ -73,7 +73,7 @@ while (True):
         ramPercent = ram.percent
 
         #CURSOR
-        cursorLocal = db_connection.cursor()
+        # cursorLocal = db_connection.cursor()
         cursorAzure = cnxn.cursor()
 
     #AZURE
@@ -81,15 +81,15 @@ while (True):
         sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
         cursorAzure.execute(sql)
     #LOCAL
-        fkMaquina = 50000
-        sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
-        cursorLocal.execute(sql)
+        # fkMaquina = 50000
+        # sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
+        # cursorLocal.execute(sql)
         
 
         print("\n")
         print(cursorAzure.rowcount, "Inserindo no banco (Azure).")
         cnxn.commit()
 
-        print(cursorLocal.rowcount, "Inserindo no banco (Local).")
-        db_connection.commit()
+        # print(cursorLocal.rowcount, "Inserindo no banco (Local).")
+        # db_connection.commit()
         time.sleep(5)
