@@ -661,7 +661,7 @@
           <div class="card">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-0">Porcentagem</h6>
+                <h6 class="mb-0 font-weight-bolder text-dark text-lg">FASES PRINCIPAIS</h6>
                 <button type="button"
                   class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center"
                   data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
@@ -670,35 +670,31 @@
                 </button>
               </div>
             </div>
-            <div class="card-body pb-0 p-3 mt-4">
+            <div class="card-body pb-0 p-3 mt-2">
               <div class="row">
                 <div class="col-7 text-start">
                   <div class="chart">
-                    <canvas id="chart-pie" class="chart-canvas" height="250" width="226"
-                      style="display: block; box-sizing: border-box; height: 200px; width: 181.2px;"></canvas>
+                    <canvas id="chart-pie" class="chart-canvas" height="270" width="260"
+                      style="display: block; box-sizing: border-box; height: 212px; width: 190.2px;"></canvas>
                   </div>
                 </div>
-                <div class="col-5 my-auto">
+                <div class="col-4 my-auto">
                   <span class="badge badge-md badge-dot me-4 d-block text-start">
                     <i class="bg-info"></i>
-                    <span class="text-dark text-xs">Facebook</span>
+                    <span class="text-warning text-xs">Em Aberto</span>
                   </span>
                   <span class="badge badge-md badge-dot me-4 d-block text-start">
                     <i class="bg-primary"></i>
-                    <span class="text-dark text-xs">Direct</span>
+                    <span class="text-danger text-xs">Atrasados</span>
                   </span>
                   <span class="badge badge-md badge-dot me-4 d-block text-start">
                     <i class="bg-dark"></i>
-                    <span class="text-dark text-xs">Organic</span>
-                  </span>
-                  <span class="badge badge-md badge-dot me-4 d-block text-start">
-                    <i class="bg-secondary"></i>
-                    <span class="text-dark text-xs">Referral</span>
+                    <span class="text-success text-xs">Finalizados</span>
                   </span>
                 </div>
               </div>
             </div>
-            <div class="card-footer pt-0 pb-0 p-3 d-flex align-items-center">
+            <div class="card-footer mt-4 pt-0 pb-0 p-3 d-flex align-items-center">
               <div class="w-60">
                 <p class="text-sm">
                   More than <b>1,200,000</b> sales are made using referral marketing, and <b>700,000</b> are from social
@@ -740,22 +736,14 @@
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-lg-7 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-6 col-md-12 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0 text-dark text-lg font-weight-bolder">FASES DO SUPORTE</h6>
+              <h6 class="mb-0 text-dark text-lg font-weight-bolder">FASES TOTAIS DO SUPORTE INTERNO</h6>
               <div class="d-flex align-items-center">
                 <span class="badge badge-md badge-dot me-4">
                   <i class="bg-primary"></i>
-                  <span class="text-dark text-xs">Organic search</span>
-                </span>
-                <span class="badge badge-md badge-dot me-4">
-                  <i class="bg-dark"></i>
-                  <span class="text-dark text-xs">Referral</span>
-                </span>
-                <span class="badge badge-md badge-dot me-4">
-                  <i class="bg-info"></i>
-                  <span class="text-dark text-xs">Social media</span>
+                  <span class="text-body text-xs">Quantidade de chamados por fase:</span>
                 </span>
               </div>
             </div>
@@ -767,11 +755,11 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-md-12 mb-xl-0 mb-4">
+        <div class="col-lg-6 col-md-12 mb-xl-0 mb-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="d-flex align-items-center">
-                <h6 class="mb-0">Referrals</h6>
+                <h6 class="mb-0 text-lg font-weight-bolder text-dark">PORCENTAGEM DE CHAMADOS POR FASES</h6>
                 <button type="button"
                   class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
                   data-bs-toggle="tooltip" data-bs-placement="bottom">
@@ -786,9 +774,8 @@
                     <canvas id="chart-doughnut" class="chart-canvas" height="250" width="203"
                       style="display: block; box-sizing: border-box; height: 200px; width: 162.5px;"></canvas>
                   </div>
-                  <a class="btn btn-sm bg-gradient-secondary mt-4">See all referrals</a>
                 </div>
-                <div class="col-lg-7 col-12">
+                <div class="col-lg-6 col-12">
                   <div class="table-responsive">
                     <table class="table align-items-center mb-0">
                       <tbody>
@@ -1617,7 +1604,7 @@
     var ctxRotulo = document.getElementById("chart-Bar-Rotulo").getContext("2d");
     var ctx7 = document.getElementById("chart-pie").getContext("2d");
     var ctxFase = document.getElementById("chart-Bar-Fase").getContext("2d");
-    var ctx4 = document.getElementById("chart-doughnut").getContext("2d");
+    var ctxContagemF = document.getElementById("chart-doughnut").getContext("2d");
     // var ctx6 = document.getElementById("chart-bar").getContext("2d");
 
     function graficoRotulo(resposta){
@@ -1631,18 +1618,21 @@
       const dataProb = []
       const dataReq = []
       const dataInc = []
-
+      const datasR = []
+      
       for (let i in resposta) {
 
-        dataHigh.push([resposta[i].qtdHigh])
-        dataLow.push([resposta[i].qtdLow])
-        dataMedium.push([resposta[i].qtdMedium]) 
-        dataNivel1.push([resposta[i].qtdNivel1]) 
-        dataNivel2.push([resposta[i].qtdNivel2]) 
-        dataNivel3.push([resposta[i].qtdNivel3])
-        dataProb.push([resposta[i].qtdProb]) 
-        dataReq.push([resposta[i].qtdReq])
-        dataInc.push([resposta[i].qtdInc])
+        dataHigh.push(resposta[i].qtdHigh)
+        dataMedium.push(resposta[i].qtdMedium)
+        dataLow.push(resposta[i].qtdLow) 
+        dataNivel1.push(resposta[i].qtdNivel1) 
+        dataNivel2.push(resposta[i].qtdNivel2) 
+        dataNivel3.push(resposta[i].qtdNivel3)
+        dataProb.push(resposta[i].qtdProb) 
+        dataReq.push(resposta[i].qtdReq)
+        dataInc.push(resposta[i].qtdInc)
+
+        datasR.push(dataHigh, dataMedium, dataLow, dataNivel1, dataNivel2, dataNivel3, dataProb, dataReq, dataInc)
 
       }
 
@@ -1662,18 +1652,19 @@
    new Chart(ctxRotulo, {
       type: "bar",
       data: {
-        labels: ["High", "Medium", "Low","Nivel 1", "Nivel 2","Nivel 3", "Problemas", "Requisições", "Incidentes"],
+        labels: (["High", "Medium", "Low","Nivel 1", "Nivel 2","Nivel 3", "Problemas", "Requisições", "Incidentes"]),
         datasets: [{
-          label: "Todos",
-          // tension: 0.4,
+          label: "Quantidade",
+          tension: 0.4,
           borderWidth: 0,
           pointRadius: 2,
           pointBackgroundColor: ["#5e72e4",  "#3A416F"],
           borderColor: ["#5e72e4", "#3A416F"],
           borderWidth: 3,
           backgroundColor: [gradientStroke8, gradientStroke9],
-          // fill: true,
-          data: [dataHigh, dataMedium, dataLow, dataNivel1, dataNivel2, dataNivel3, dataProb, dataReq, dataInc],
+          fill: true,
+          // data: [dataHigh, dataMedium, dataLow, dataNivel1, dataNivel2, dataNivel3, dataProb, dataReq, dataInc],
+          data: datasR,
         }
         ],
       },
@@ -1806,28 +1797,46 @@
 
       for (let i in resposta) {
 
-        labelsFase.push([resposta[i].fkFase])
-        dataFase.push([resposta[i].qtdCards])
+        labelsFase.push(resposta[i].fkFase)
+        dataFase.push(resposta[i].qtdCards)
 
       }
+
+      var gradientStroke1 = ctxFase.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(251, 207, 51,0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(251, 207, 51,0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(251, 207, 51,0)'); //yellow colors
 
       var gradientStroke8 = ctxFase.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke8.addColorStop(1, 'rgba(94, 114, 228,0.2)');
     gradientStroke8.addColorStop(0.2, 'rgba(94, 114, 228,0.0)');
-    gradientStroke8.addColorStop(0, 'rgba(94, 114, 228,0)'); //purple colors
+    gradientStroke8.addColorStop(0, 'rgba(94, 114, 228,0)'); //cinza colors
 
     var gradientStroke7 = ctxFase.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke7.addColorStop(1, 'rgba(203,12,159,0.2)');
     gradientStroke7.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke7.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+    gradientStroke7.addColorStop(0, 'rgba(203,12,159,0)'); //rosa colors
 
     var gradientStroke6 = ctxFase.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke6.addColorStop(1, 'rgba(20,23,39,0.2)');
     gradientStroke6.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke6.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+    gradientStroke6.addColorStop(0, 'rgba(20,23,39,0)'); //azul colors
+
+    var gradientStroke4 = ctxFase.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke4.addColorStop(1, 'rgba(23, 173, 55,0.2)');
+    gradientStroke4.addColorStop(0.2, 'rgba(23, 173, 55,0.0)');
+    gradientStroke4.addColorStop(0, 'rgba(23, 173, 55,0)'); //verde colors
+
+    var gradientStroke5 = ctxFase.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke5.addColorStop(1, 'rgba(234, 6, 6,0.2)');
+    gradientStroke5.addColorStop(0.2, 'rgba(234, 6, 6,0.0)');
+    gradientStroke5.addColorStop(0, 'rgba(234, 6, 6,0)'); //verde colors
 
     // Line chart
     new Chart(ctxFase, {
@@ -1835,14 +1844,14 @@
       data: {
         labels: labelsFase,
         datasets: [{
-          label: "Todos",
+          label: "Quantidade",
           // tension: 0.4,
           borderWidth: 0,
           pointRadius: 2,
           pointBackgroundColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
           borderColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
           borderWidth: 3,
-          backgroundColor: [gradientStroke6, gradientStroke8, gradientStroke7],
+          backgroundColor: [gradientStroke1, gradientStroke6, gradientStroke7, gradientStroke4, gradientStroke8],
           data: dataFase,
           fill: true
           // maxBarThickness: 6
@@ -1854,7 +1863,7 @@
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: true,
+            display: false,
           }
         },
         interaction: {
@@ -1917,10 +1926,10 @@
 
 
     // Doughnut chart
-    new Chart(ctx4, {
+    new Chart(ctxContagemF, {
       type: "doughnut",
       data: {
-        labels: ['Creative Tim', 'Github', 'Bootsnipp', 'Dev.to', 'Codeinwp'],
+        labels: [],
         datasets: [{
           label: "Projects",
           weight: 9,
