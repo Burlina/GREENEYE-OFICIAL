@@ -488,9 +488,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase text-info font-weight-bolder">Total</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      930
-                    </h5>
+                    <h5 class="font-weight-bolder mb-0" id="total"></h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -508,10 +506,8 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase text-warning font-weight-bolder">Em aberto</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      744
-                    </h5>
+                    <p class="text-sm mb-0 text-uppercase text-warning font-weight-bolder">Pendente</p>
+                    <h5 class="font-weight-bolder mb-0" id="abertos"></h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -530,9 +526,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase text-danger font-weight-bolder">Atrasados</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      1,414
-                    </h5>
+                    <h5 class="font-weight-bolder mb-0" id="atrasados"></h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -551,14 +545,12 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase text-success font-weight-bolder">Finalizados</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      1.76
-                    </h5>
+                    <h5 class="font-weight-bolder mb-0" id="finalizados"></h5>
                   </div>
                 </div>
-                <div class="col-4 text-end">
+                <div class="col-4 text-center">
                   <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-paper-diploma text-lg text-center opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -566,120 +558,30 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row mt-4">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card shadow-lg" style="background: white url(./assets2/img/shapes/pattern-right1.png); background-size: 7.6cm;">
-            <div class="card-body p-3 z-index-1 bg-cover">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      $53,000
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card shadow-lg" style="background: white url(./assets2/img/shapes/pattern-right1.png); background-size: 7.6cm;">
-            <div class="card-body p-3 z-index-1 bg-cover">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card shadow-lg" style="background: white url(./assets2/img/shapes/pattern-right1.png); background-size: 7.6cm;">
-            <div class="card-body p-3 z-index-1 bg-cover">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      +3,462
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card shadow-lg" style="background: white url(./assets2/img/shapes/pattern-right1.png); background-size: 7.6cm;">
-            <div class="card-body p-3 z-index-1 bg-cover">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      $103,430
-                      <span class="text-success text-sm font-weight-bolder">+5%</span>
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div class="row mt-4">
-        <div class="col-lg-4 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-lg-4 col-lg-5 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
                 <h6 class="mb-0 font-weight-bolder text-dark text-lg">FASES PRINCIPAIS</h6>
-                <button type="button"
-                  class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                  data-bs-original-title="See traffic channels">
-                  <i class="fas fa-info" aria-hidden="true"></i>
-                </button>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="badge badge-md badge-dot me-4">
+                  <i class="bg-success"></i>
+                  <span class="text-xs text-body">Quantidade de chamados em cada fase:</span>
+                </span>
               </div>
             </div>
-            <div class="card-body pb-0 p-3 mt-2">
+            <div class="card-body pb-0 p-3">
               <div class="row">
-                <div class="col-7 text-start">
+                <div class="col-lg-7 text-start mt-3 mb-3">
                   <div class="chart">
-                    <canvas id="chart-pie" class="chart-canvas" height="270" width="260"
-                      style="display: block; box-sizing: border-box; height: 212px; width: 190.2px;"></canvas>
+                    <canvas id="chart-pie-CardsCount" class="chart-canvas" height="280" width="290"
+                      style="display: block; box-sizing: border-box; height: 284px; width: 211.2px;"></canvas>
                   </div>
                 </div>
-                <div class="col-4 my-auto">
-                  <span class="badge badge-md badge-dot me-4 d-block text-start">
+                <div class="col-lg-5 my-auto mt-4 mb-2">
+                  <!-- <span class="badge badge-md badge-dot me-4 d-block text-start">
                     <i class="bg-info"></i>
                     <span class="text-warning text-xs">Em Aberto</span>
                   </span>
@@ -690,34 +592,64 @@
                   <span class="badge badge-md badge-dot me-4 d-block text-start">
                     <i class="bg-dark"></i>
                     <span class="text-success text-xs">Finalizados</span>
-                  </span>
+                  </span> -->
+                  <div class="table-responsive">
+                    <table class="table align-items-center">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="d-flex py-4">
+                              <!-- <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md"> -->
+                                <i class="ni ni-single-copy-04 text-lg text-warning opacity-10" aria-hidden="true"></i>
+                              <!-- </div> -->
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-dark ms-3 font-weight-bolder">PENDENTE</h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <span class="text-xs font-weight-bold" id="ana_fase"></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex py-4">
+                              <!-- <div class="icon icon-shape bg-gradient-danger shadow text-start text-center border-radius-md"> -->
+                                <i class="ni ni-time-alarm text-lg text-danger opacity-10" aria-hidden="true"></i>
+                              <!-- </div> -->
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm ms-3 text-dark font-weight-bolder">ATRASADOS</h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <span class="text-xs font-weight-bold" id="and_fase"></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex py-4">
+                              <!-- <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md"> -->
+                                <i class="ni ni-paper-diploma text-lg text-success opacity-10" aria-hidden="true"></i>
+                              <!-- </div> -->
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm ms-3 text-dark font-weight-bolder">FINALIZADOS</h6>
+                              </div>
+                            </div>
+                          </td>
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="card-footer mt-4 pt-0 pb-0 p-3 d-flex align-items-center">
-              <div class="w-60">
-                <p class="text-sm">
-                  More than <b>1,200,000</b> sales are made using referral marketing, and <b>700,000</b> are from social
-                  media.
-                </p>
-              </div>
-              <div class="w-40 text-end">
-                <a class="btn bg-light mb-0 text-end" href="javascript:;">Read more</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-lg-7 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
                 <h6 class="mb-0 font-weight-bolder text-lg text-dark">RÓTULOS DOS CHAMADOS</h6>
-                <button type="button"
-                  class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
-                  data-bs-original-title="See which ads perform better">
-                  <i class="fas fa-info" aria-hidden="true"></i>
-                </button>
               </div>
               <div class="d-flex align-items-center">
                 <span class="badge badge-md badge-dot me-4">
@@ -747,7 +679,7 @@
                 </span>
               </div>
             </div>
-            <div class="card-body p-3">
+            <div class="card-body p-3 mt-1 mb-1">
               <div class="chart">
                 <canvas id="chart-Bar-Fase" class="chart-canvas" height="375" width="769"
                   style="display: block; box-sizing: border-box; height: 300px; width: 615.5px;"></canvas>
@@ -760,716 +692,94 @@
             <div class="card-header pb-0 p-3">
               <div class="d-flex align-items-center">
                 <h6 class="mb-0 text-lg font-weight-bolder text-dark">PORCENTAGEM DE CHAMADOS POR FASES</h6>
-                <button type="button"
-                  class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom">
-                  <i class="fas fa-info" aria-hidden="true"></i>
-                </button>
               </div>
             </div>
             <div class="card-body p-3">
               <div class="row">
-                <div class="col-lg-5 col-12 text-center">
-                  <div class="chart mt-5">
-                    <canvas id="chart-doughnut" class="chart-canvas" height="250" width="203"
-                      style="display: block; box-sizing: border-box; height: 200px; width: 162.5px;"></canvas>
+                <div class="col-lg-6 col-12 text-center">
+                  <div class="chart mt-4">
+                    <canvas id="chart-doughnut-Gerais" class="chart-canvas" height="300" width="250"
+                      style="display: block; box-sizing: border-box; height: 270px; width: 190.5px;"></canvas>
                   </div>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-5 col-8">
                   <div class="table-responsive">
                     <table class="table align-items-center mb-0">
                       <tbody>
                         <tr>
                           <td>
-                            <div class="d-flex px-2 py-1">
-                              <div>
-                                <img src="./assets2/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-2"
-                                  alt="logo_xd">
-                              </div>
+                            <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Adobe</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Análise</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold"> 25% </span>
+                            <span class="text-xs font-weight-bold" id="ana_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <div class="d-flex px-2 py-1">
-                              <div>
-                                <img src="./assets2/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-2"
-                                  alt="logo_atlassian">
-                              </div>
+                            <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Atlassian</h6>
+                                <h6 class="mb-0 text-sm font-weight-bold text-dark">Andamento</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold"> 3% </span>
+                            <span class="text-xs font-weight-bold" id="and_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <div class="d-flex px-2 py-1">
-                              <div>
-                                <img src="./assets2/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-2"
-                                  alt="logo_slack">
-                              </div>
+                            <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Slack</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Manutenção</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold"> 12% </span>
+                            <span class="text-xs font-weight-bold" id="manu_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <div class="d-flex px-2 py-1">
-                              <div>
-                                <img src="./assets2/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-2"
-                                  alt="logo_spotify">
-                              </div>
+                            <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Spotify</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Concluído</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold"> 7% </span>
+                            <span class="text-xs font-weight-bold" id="conc_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <div class="d-flex px-2 py-1">
-                              <div>
-                                <img src="./assets2/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-2"
-                                  alt="logo_jira">
-                              </div>
+                            <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">Jira</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Arquivado</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold"> 10% </span>
+                            <span class="text-xs font-weight-bold" id="arq_fase"></span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex px-2 py-2">
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Atrasado</h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <span class="text-xs font-weight-bold" id="atras_fase"></span>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-lg-6 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header pb-0 p-3">
-              <div class="d-flex align-items-center">
-                <h6 class="mb-0">Social</h6>
-                <button type="button"
-                  class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom">
-                  <i class="fas fa-info" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body p-3">
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                  <div class="w-100">
-                    <div class="d-flex align-items-center mb-2">
-                      <a class="btn btn-facebook btn-simple mb-0 p-0" href="javascript:;">
-                        <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
-                      </a>
-                      <span class="me-2 text-sm font-weight-bold text-capitalize ms-2">Facebook</span>
-                      <span class="ms-auto text-sm font-weight-bold">80%</span>
-                    </div>
-                    <div>
-                      <div class="progress progress-md">
-                        <div class="progress-bar bg-gradient-dark w-80" role="progressbar" aria-valuenow="60"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                  <div class="w-100">
-                    <div class="d-flex align-items-center mb-2">
-                      <a class="btn btn-twitter btn-simple mb-0 p-0" href="javascript:;">
-                        <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
-                      </a>
-                      <span class="me-2 text-sm font-weight-bold text-capitalize ms-2">Twitter</span>
-                      <span class="ms-auto text-sm font-weight-bold">40%</span>
-                    </div>
-                    <div>
-                      <div class="progress progress-md">
-                        <div class="progress-bar bg-gradient-dark w-40" role="progressbar" aria-valuenow="40"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                  <div class="w-100">
-                    <div class="d-flex align-items-center mb-2">
-                      <a class="btn btn-reddit btn-simple mb-0 p-0" href="javascript:;">
-                        <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
-                      </a>
-                      <span class="me-2 text-sm font-weight-bold text-capitalize ms-2">Reddit</span>
-                      <span class="ms-auto text-sm font-weight-bold">30%</span>
-                    </div>
-                    <div>
-                      <div class="progress progress-md">
-                        <div class="progress-bar bg-gradient-dark w-30" role="progressbar" aria-valuenow="30"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                  <div class="w-100">
-                    <div class="d-flex align-items-center mb-2">
-                      <a class="btn btn-youtube btn-simple mb-0 p-0" href="javascript:;">
-                        <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
-                      </a>
-                      <span class="me-2 text-sm font-weight-bold text-capitalize ms-2">Youtube</span>
-                      <span class="ms-auto text-sm font-weight-bold">25%</span>
-                    </div>
-                    <div>
-                      <div class="progress progress-md">
-                        <div class="progress-bar bg-gradient-dark w-25" role="progressbar" aria-valuenow="25"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                  <div class="w-100">
-                    <div class="d-flex align-items-center mb-2">
-                      <a class="btn btn-slack btn-simple mb-0 p-0" href="javascript:;">
-                        <i class="fab fa-slack fa-lg" aria-hidden="true"></i>
-                      </a>
-                      <span class="me-2 text-sm font-weight-bold text-capitalize ms-2">Slack</span>
-                      <span class="ms-auto text-sm font-weight-bold">15%</span>
-                    </div>
-                    <div>
-                      <div class="progress progress-md">
-                        <div class="progress-bar bg-gradient-dark w-15" role="progressbar" aria-valuenow="15"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header pb-0 p-3">
-              <div class="d-flex align-items-center">
-                <h6>Pages</h6>
-                <button type="button"
-                  class="btn btn-icon-only btn-rounded btn-outline-success mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom">
-                  <i class="fas fa-check" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body px-3 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center justify-content-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Page</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Page Views
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Avg. Time
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Bounce Rate
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">1. /bits</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">345</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:17:07</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">40.91%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">2. /pages/argon-dashboard</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">520</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:23:13</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">30.14%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">3. /pages/soft-ui-dashboard</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">122</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:3:10</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">54.10%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">4. /bootstrap-themes</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">1,900</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:30:42</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">20.93%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">5. /react-themes</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">1,442</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:31:50</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">34.98%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">6. /product/argon-dashboard-angular</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">201</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:12:42</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">21.4%</p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">7. /product/material-dashboard-pro</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">2,115</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">00:50:11</p>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">34.98%</p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-          <div class="card">
-            <div class="card-header pb-0">
-              <div class="row">
-                <div class="col-lg-6 col-7">
-                  <h6>Projects</h6>
-                  <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">30 done</span> this month
-                  </p>
-                </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
-                  <div class="dropdown float-lg-end pe-4">
-                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-secondary"></i>
-                    </a>
-                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Completion</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets2/img/team-1.jpg" alt="team1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets2/img/team-2.jpg" alt="team2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="../assets2/img/team-3.jpg" alt="team3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets2/img/team-4.jpg" alt="team4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $14,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">60%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-3"
-                              alt="atlassian">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add Progress Track</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets2/img/team-2.jpg" alt="team5">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets2/img/team-4.jpg" alt="team6">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $3,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">10%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-10" role="progressbar" aria-valuenow="10"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-3"
-                              alt="team7">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets2/img/team-3.jpg" alt="team8">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets2/img/team-1.jpg" alt="team9">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Not set </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-3"
-                              alt="spotify">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets2/img/team-4.jpg" alt="user1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="../assets2/img/team-3.jpg" alt="user2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="../assets2/img/team-4.jpg" alt="user3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets2/img/team-1.jpg" alt="user4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $20,500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100"
-                              aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-3"
-                              alt="jira">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add the New Pricing Page</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets2/img/team-4.jpg" alt="user5">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">25%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25"
-                              aria-valuemin="0" aria-valuemax="25"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets2/img/small-logos/logo-invision.svg" class="avatar avatar-sm me-3"
-                              alt="invision">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="../assets2/img/team-1.jpg" alt="user6">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip"
-                            data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="../assets2/img/team-4.jpg" alt="user7">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $2,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">40%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-40" role="progressbar" aria-valuenow="40"
-                              aria-valuemin="0" aria-valuemax="40"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
-            <div class="card-header pb-0">
-              <h6>Orders overview</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-                <span class="font-weight-bold">24%</span> this month
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="timeline timeline-one-side">
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-bell-55 text-success text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-html5 text-danger text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #1832412</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-cart text-info text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Server payments for April</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-credit-card text-warning text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New card added for order #4395133</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block mb-3">
-                  <span class="timeline-step">
-                    <i class="ni ni-key-25 text-primary text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">Unlock packages for development</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
-                  </div>
-                </div>
-                <div class="timeline-block">
-                  <span class="timeline-step">
-                    <i class="ni ni-money-coins text-dark text-gradient"></i>
-                  </span>
-                  <div class="timeline-content">
-                    <h6 class="text-dark text-sm font-weight-bold mb-0">New order #9583120</h6>
-                    <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
                   </div>
                 </div>
               </div>
@@ -1599,12 +909,12 @@
   <script src="../assets2/js/plugins/chartjs.min.js"></script>
   <script>
 
-    window.onload = [obterDadosGraficoRotulos(1), obterDadosGraficoFases(1)];
+    window.onload = [obterDadosGraficoRotulos(1), obterDadosGraficoFases(1), obterDadosGraficoPrincipais(1), cardsPorcent(1)];
 
     var ctxRotulo = document.getElementById("chart-Bar-Rotulo").getContext("2d");
-    var ctx7 = document.getElementById("chart-pie").getContext("2d");
+    var ctxPrincipal = document.getElementById("chart-pie-CardsCount").getContext("2d");
     var ctxFase = document.getElementById("chart-Bar-Fase").getContext("2d");
-    var ctxContagemF = document.getElementById("chart-doughnut").getContext("2d");
+    var ctxContagemF = document.getElementById("chart-doughnut-Gerais").getContext("2d");
     // var ctx6 = document.getElementById("chart-bar").getContext("2d");
 
     function graficoRotulo(resposta){
@@ -1644,25 +954,28 @@
 
     var gradientStroke9 = ctxRotulo.createLinearGradient(0, 230, 0, 50);
 
-    gradientStroke9.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke9.addColorStop(1, 'rgba(20,23,39,0)');
     gradientStroke9.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke9.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+    gradientStroke9.addColorStop(0, 'rgba(20,23,39,0.2)'); //purple colors
 
     // Line chart
    new Chart(ctxRotulo, {
       type: "bar",
       data: {
-        labels: (["High", "Medium", "Low","Nivel 1", "Nivel 2","Nivel 3", "Problemas", "Requisições", "Incidentes"]),
+        labels: ["High", "Medium", "Low","Nivel 1", "Nivel 2","Nivel 3", "Problemas", "Requisições", "Incidentes"],
         datasets: [{
           label: "Quantidade",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 2,
-          pointBackgroundColor: ["#5e72e4",  "#3A416F"],
-          borderColor: ["#5e72e4", "#3A416F"],
+          pointBackgroundColor: ["#3A416F"],
+          borderColor: ["#3A416F"],
+          // pointBackgroundColor: ["#5e72e4",  "#3A416F"],
+          // borderColor: ["#5e72e4", "#3A416F"],
           borderWidth: 3,
-          backgroundColor: [gradientStroke8, gradientStroke9],
-          fill: true,
+          backgroundColor: [gradientStroke9],
+          // backgroundColor: [gradientStroke8, gradientStroke9],
+          // fill: true,
           // data: [dataHigh, dataMedium, dataLow, dataNivel1, dataNivel2, dataNivel3, dataProb, dataReq, dataInc],
           data: datasR,
         }
@@ -1692,7 +1005,7 @@
             ticks: {
               display: true,
               padding: 10,
-              color: '#9ca2b7'
+              color: '#9ca2b7',
             }
           },
           x: {
@@ -1705,7 +1018,8 @@
             },
             ticks: {
               display: true,
-              color: '#9ca2b7',
+              // color: '#9ca2b7',
+              color: ["#FF0000", "#FFFF03", "#0009FF", "#BFFF81", "#FFA100","#D00275","#9700FA","#10E7D0","#00DBFF"],
               padding: 10
             }
           },
@@ -1733,22 +1047,58 @@
     }
 
 
+function graficoPrincipais(resposta){
+
+  const dataAberto = []
+  const dataAtraso = []
+  const dataFinalizado = []
+  const dataPrincipal = []
+
+      for (let i in resposta) {
+        // dataAberto.push(total - (resposta[i].contagemAberto /100))
+        dataAberto.push(resposta[i].contagemAberto)
+        dataAtraso.push(resposta[i].contagemAtraso)
+        dataFinalizado.push(resposta[i].contagemFinalizado)
+        dataPrincipal.push(dataAberto, dataAtraso, dataFinalizado)
+
+      }
+
+      var gradientStroke1 = ctxPrincipal.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(251, 207, 51,0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(251, 207, 51,0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(251, 207, 51,0)'); //yellow colors
+
+    var gradientStroke4 = ctxPrincipal.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke4.addColorStop(1, 'rgba(23, 173, 55,0.2)');
+    gradientStroke4.addColorStop(0.2, 'rgba(23, 173, 55,0.0)');
+    gradientStroke4.addColorStop(0, 'rgba(23, 173, 55,0)'); //verde colors
+
+    var gradientStroke5 = ctxPrincipal.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke5.addColorStop(1, 'rgba(234, 6, 6,0.2)');
+    gradientStroke5.addColorStop(0.2, 'rgba(234, 6, 6,0.0)');
+    gradientStroke5.addColorStop(0, 'rgba(234, 6, 6,0)'); //verde colors
+
 
     // Pie chart
-    new Chart(ctx7, {
+    new Chart(ctxPrincipal, {
       type: "pie",
       data: {
-        labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
+        labels: ['Pendente', 'Atrasados', 'Finalizados'],
         datasets: [{
-          label: "Projects",
+          // label: "Projects",
           weight: 9,
           cutout: 0,
           tension: 0.9,
+          pointBackgroundColor:["#fbcf33", "#ea0606", "#17ad37"],
+          borderColor:["#fbcf33", "#ea0606", "#17ad37"],
           pointRadius: 2,
-          borderWidth: 2,
-          backgroundColor: ['#17c1e8', '#5e72e4', '#3A416F', '#a8b8d8'],
-          data: [15, 20, 12, 60],
-          fill: false
+          borderWidth: 3,
+          backgroundColor: [gradientStroke1, gradientStroke5, gradientStroke4],
+          data: dataPrincipal,
+          // fill: false
         }],
       },
       options: {
@@ -1757,8 +1107,7 @@
         plugins: {
           legend: {
             display: false,
-          }
-        },
+          },
         interaction: {
           intersect: false,
           mode: 'index',
@@ -1769,12 +1118,11 @@
               drawBorder: false,
               display: false,
               drawOnChartArea: false,
-              drawTicks: false,
+              drawTicks: true,
             },
             ticks: {
-              display: false
-            }
-          },
+              display: true,
+          }},
           x: {
             grid: {
               drawBorder: false,
@@ -1788,7 +1136,69 @@
           },
         },
       },
-    });
+    }});
+  }
+
+  function obterDadosGraficoPrincipais(id) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/ultimasPrincipais/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            graficoPrincipais(resposta);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    function graficoCardsPorcent(resposta){
+      const finalizados = []
+      const abertos = []
+      const atrasos = []
+      const dtFinal = document.getElementById("finalizados")
+      const dtAtraso = document.getElementById("atrasados")
+      const dtAberto = document.getElementById("abertos")
+      const dtTotal = document.getElementById("total")
+      const total = []
+      
+      for (let i in resposta) {
+        total.push(resposta[i].contagemTotal)
+        abertos.push(((resposta[i].contagemAberto * 100)/ total).toFixed(2))
+        atrasos.push(((resposta[i].contagemAtraso * 100)/ total).toFixed(2))
+        finalizados.push(((resposta[i].contagemFinalizado * 100)/ total).toFixed(2))
+
+        dtFinal.innerHTML = `${finalizados}%`
+        dtAtraso.innerHTML = `${atrasos}%`
+        dtAberto.innerHTML = `${abertos}%`
+        dtTotal.innerHTML = `${total}`
+
+      }
+
+    }
+
+    function cardsPorcent(id) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/ultimasPrincipais/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            graficoCardsPorcent(resposta);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
 
     function graficoFases(resposta){
 
@@ -1801,6 +1211,12 @@
         dataFase.push(resposta[i].qtdCards)
 
       }
+
+      var gradientStroke9 = ctxFase.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke9.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke9.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke9.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
 
       var gradientStroke1 = ctxFase.createLinearGradient(0, 230, 0, 50);
 
@@ -1848,10 +1264,13 @@
           // tension: 0.4,
           borderWidth: 0,
           pointRadius: 2,
-          pointBackgroundColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
-          borderColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
+          pointBackgroundColor: ["#3A416F"],
+          borderColor: ["#3A416F"],
+          // pointBackgroundColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
+          // borderColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
           borderWidth: 3,
-          backgroundColor: [gradientStroke1, gradientStroke6, gradientStroke7, gradientStroke4, gradientStroke8],
+          backgroundColor: [gradientStroke9],
+          // backgroundColor: [gradientStroke1, gradientStroke6, gradientStroke7, gradientStroke4, gradientStroke5, gradientStroke8],
           data: dataFase,
           fill: true
           // maxBarThickness: 6
@@ -1895,7 +1314,8 @@
             },
             ticks: {
               display: true,
-              color: '#9ca2b7',
+              // color: '#9ca2b7',
+              color: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
               padding: 10
             }
           },
@@ -1908,10 +1328,13 @@
       console.log("Entrei no obter")
       fetch(`/medidas/ultimasFases/${id}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
-          response.json().then(function (resposta) {
+          response.json().then(
+            function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
             resposta.reverse();
             graficoFases(resposta);
+            graficoGerais(resposta)
+
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
@@ -1922,23 +1345,79 @@
         });
     }
 
+function graficoGerais(resposta){
 
+  const labelsGerais = []
+      const dataGerais = []
+
+      for (let i in resposta) {
+
+        labelsGerais.push(resposta[i].fkFase)
+        dataGerais.push(resposta[i].qtdCards)
+
+      }
+
+      
+      var gradientStroke9 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke9.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke9.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke9.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+
+      var gradientStroke1 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(251, 207, 51,0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(251, 207, 51,0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(251, 207, 51,0)'); //yellow colors
+
+      var gradientStroke8 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke8.addColorStop(1, 'rgba(94, 114, 228,0.2)');
+    gradientStroke8.addColorStop(0.2, 'rgba(94, 114, 228,0.0)');
+    gradientStroke8.addColorStop(0, 'rgba(94, 114, 228,0)'); //cinza colors
+
+    var gradientStroke7 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke7.addColorStop(1, 'rgba(203,12,159,0.2)');
+    gradientStroke7.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke7.addColorStop(0, 'rgba(203,12,159,0)'); //rosa colors
+
+    var gradientStroke6 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke6.addColorStop(1, 'rgba(20,23,39,0.2)');
+    gradientStroke6.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+    gradientStroke6.addColorStop(0, 'rgba(20,23,39,0)'); //azul colors
+
+    var gradientStroke4 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke4.addColorStop(1, 'rgba(23, 173, 55,0.2)');
+    gradientStroke4.addColorStop(0.2, 'rgba(23, 173, 55,0.0)');
+    gradientStroke4.addColorStop(0, 'rgba(23, 173, 55,0)'); //verde colors
+
+    var gradientStroke5 = ctxContagemF.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke5.addColorStop(1, 'rgba(234, 6, 6,0.2)');
+    gradientStroke5.addColorStop(0.2, 'rgba(234, 6, 6,0.0)');
+    gradientStroke5.addColorStop(0, 'rgba(234, 6, 6,0)'); //verde colors
 
 
     // Doughnut chart
     new Chart(ctxContagemF, {
       type: "doughnut",
       data: {
-        labels: [],
+        labels: labelsGerais,
         datasets: [{
           label: "Projects",
           weight: 9,
           cutout: 60,
           tension: 0.9,
           pointRadius: 2,
-          borderWidth: 2,
-          backgroundColor: ['#2152ff', '#3A416F', '#f53939', '#a8b8d8', '#5e72e4'],
-          data: [15, 20, 12, 60, 20],
+          pointBackgroundColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
+          borderColor: ["#fbcf33", "#2152ff", "#CB0C9F", "#17ad37", "#ea0606","#67748E"],
+          borderWidth: 3,
+          backgroundColor: [gradientStroke1, gradientStroke6, gradientStroke7, gradientStroke4, gradientStroke5, gradientStroke8],
+         
+          data: dataGerais,
           fill: false
         }],
       },
@@ -1980,6 +1459,54 @@
         },
       },
     });
+  }
+
+  function graficoCardsPorcentGerais(resposta){
+      const concluidos = []
+      const analises = []
+      const atrasados = []
+      const andamento = []
+      const manutencao = []
+      const arquivados = []
+      const dtConcluido = document.getElementById("conc_fase")
+      const dtAtrasados = document.getElementById("atras_fase")
+      const dtAnalises = document.getElementById("ana_fase")
+      const dtArquivados = document.getElementById("arq_fase")
+      const dtAndamento = document.getElementById("and_fase")
+      const dtManutencao = document.getElementById("manu_fase")
+      const total = [concluidos + analises + atrasados + andamento + manutencao + arquivados]
+      
+      for (let i in resposta) {
+
+        
+
+        dtFinal.innerHTML = `${finalizados}%`
+        dtAtraso.innerHTML = `${atrasos}%`
+        dtAberto.innerHTML = `${abertos}%`
+        dtTotal.innerHTML = `${total}`
+
+      }
+
+    }
+
+    function cardsPorcentGerais(id) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/ultimasGerais/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            graficoCardsPorcentGerais(resposta);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

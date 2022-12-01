@@ -307,7 +307,63 @@ function UltimasMedidasFases(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
+function UltimasMedidasPrincipais(idAquario, limite_linhas) {
 
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            `select top 1 *, 
+                convert(varchar, DataColeta, 106) as datasFP 
+                    from CardsTotais where NomeSuporte = 'Suporte Interno' 
+                        order by idTotais desc;`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+       
+            instrucaoSql = `
+            select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
+                from Leitura 
+                    order by idLeitura 
+                        desc limit ${limite_linhas};`
+        
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function UltimasMedidasGerais(idAquario, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            `select top 6 *, 
+                convert(varchar, dataVisual, 106) as datasFG 
+                    from fasesCards 
+                        order by id desc;`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+       
+            instrucaoSql = `
+            select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
+                from Leitura 
+                    order by idLeitura 
+                        desc limit ${limite_linhas};`
+        
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     buscarUltimasMedidas,
@@ -318,5 +374,7 @@ module.exports = {
     buscarMedidasEmTempoRealTEMP,
     buscarUltimaMedidaDisco,
     UltimasMedidasRotulos,
-    UltimasMedidasFases
+    UltimasMedidasFases,
+    UltimasMedidasPrincipais,
+    UltimasMedidasGerais
 }

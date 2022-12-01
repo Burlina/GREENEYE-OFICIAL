@@ -54,5 +54,13 @@ router.get("/ultimasFases/:idFases", function (req, res) {
     medidaController.UltimasMedidasFases(req, res);
 });
 
+router.get("/ultimasPrincipais/:idPrincipais", function (req, res) {
+    medidaController.UltimasMedidasPrincipais(req, res);
+});
+
+router.get("/ultimasGerais/:idGerais", function (req, res) {
+    medidaController.UltimasMedidasGerais(req, res);
+});
+
 
 module.exports = router;
