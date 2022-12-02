@@ -194,6 +194,16 @@ while (TRUE) {
   #                "DataColeta"= Sys.Date())
   
   
+  geraisCount <- data.frame("qtdTotal"=  c(response2$data.pipe.cards_count),
+                            "qtdAnalise"= c(response3$data.pipe.phases.cards_count),
+                            "qtdAnd"= c(response3$data.pipe.phases.cards_count.1),
+                            "qtdManu"= c(response3$data.pipe.phases.cards_count.2),
+                            "qtdConc"= c(response3$data.pipe.phases.cards_count.3),
+                            "qtdArq"= c(response3$data.pipe.phases.cards_count.4),
+                            "qtdAtras"= c(response3$data.pipe.phases.cards_count.5),
+                            "dtDatas"= Sys.Date())
+  
+  
   dbBegin(conn)
   
   #Inserindo no banco da Azure os dados dos data.frames
@@ -235,6 +245,13 @@ while (TRUE) {
     params = list(labelsCount$High, labelsCount$Medium, labelsCount$Low, labelsCount$Nivel.1,
                   labelsCount$Nivel.2, labelsCount$Nivel.3, labelsCount$Problemas, labelsCount$Requisicoes,
                   labelsCount$Incidentes, labelsCount$DtColeta)
+  )
+  
+  dbExecute(
+    conn,
+    "INSERT INTO geraisCount VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    params = list(geraisCount$qtdTotal, geraisCount$qtdAnalise, geraisCount$qtdAnd, geraisCount$qtdManu, 
+                  geraisCount$qtdConc, geraisCount$qtdArq, geraisCount$qtdAtras, geraisCount$dtDatas)
   )
   
   dbCommit(conn)

@@ -102,7 +102,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../tables.html">
+          <a class="nav-link" href="dashboardLucas.html">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -124,11 +124,11 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Históricos</span>
+            <span class="nav-link-text ms-1">Lista de Alertas</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="dashboardLucas.html">
+          <a class="nav-link" href="">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="dashboardFabo.html">
+          <a class="nav-link" href="dashboardFabo.html">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -653,12 +653,12 @@
           <div class="card">
             <div class="card-header pb-0 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-0 font-weight-bolder text-lg text-dark">RÓTULOS DOS CHAMADOS</h6>
+                <h6 class="mb-0 font-weight-bolder text-lg text-dark">ETIQUETAS DOS CHAMADOS</h6>
               </div>
               <div class="d-flex align-items-center">
                 <span class="badge badge-md badge-dot me-4">
                   <i class="bg-success"></i>
-                  <span class="text-xs text-body">Quantidade existente de cada etiqueta:</span>
+                  <span class="text-xs text-body">Quantidade existente de cada etiqueta no suporte:</span>
                 </span>
               </div>
             </div>
@@ -719,7 +719,7 @@
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="ana_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #fbcf33" id="ana_fase"></span>
                           </td>
                         </tr>
                         <tr>
@@ -731,7 +731,7 @@
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="and_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #2152ff;" id="and_fase"></span>
                           </td>
                         </tr>
                         <tr>
@@ -743,43 +743,43 @@
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="manu_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #CB0C9F" id="manu_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Concluído</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Concluídos</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="conc_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #17ad37" id="conc_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Arquivado</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Atrasados</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="arq_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #ea0606" id="arq_fase"></span>
                           </td>
                         </tr>
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-2">
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Atrasado</h6>
+                                <h6 class="mb-0 text-sm text-dark font-weight-bold">Arquivados</h6>
                               </div>
                             </div>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <span class="text-xs font-weight-bold" id="atras_fase"></span>
+                            <span class="text-xs font-weight-bold" style="color: #67748E" id="atras_fase"></span>
                           </td>
                         </tr>
                       </tbody>
@@ -1379,13 +1379,6 @@
         manutencao.push(((resposta[i].qtdManu * 100)/ total).toFixed(2))
         andamento.push(((resposta[i].qtdAnd * 100)/ total).toFixed(2))
 
-        // analises.push((resposta[i].qtdAnalise * 100) / total)
-        // atrasados.push((resposta[i].qtdAtras * 100) / total)
-        // concluidos.push((resposta[i].qtdConc * 100) / total)
-        // arquivados.push((resposta[i].qtdArq * 100) / total)
-        // manutencao.push((resposta[i].qtdManu * 100) / total)
-        // andamento.push((resposta[i].qtdAnd * 100) / total)
-
         dtConcluido.innerHTML = `${concluidos}%`
         dtAtrasados.innerHTML = `${atrasados}%`
         dtAndamento.innerHTML = `${andamento}%`
@@ -1393,7 +1386,7 @@
         dtArquivados.innerHTML = `${arquivados}%`
         dtManutencao.innerHTML = `${manutencao}%`
 
-        dataGerais.push(analises, andamento, manutencao, concluidos, arquivados, atrasados)
+        dataGerais.push(analises, andamento, manutencao, concluidos, atrasados, arquivados)
 
 
       }
