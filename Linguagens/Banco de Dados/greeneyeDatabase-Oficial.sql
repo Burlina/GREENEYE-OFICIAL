@@ -69,6 +69,8 @@ dataHora datetime
 
 create table Temperatura(
 id int primary key auto_increment,
+fkMaquina int,
+foreign key (fkMaquina) references Maquina(idMaquina),
 tempMin decimal(5,2),
 tempValor decimal(5,2),
 tempMax decimal(5,2),
@@ -108,4 +110,4 @@ select * from Temperatura;
 -- truncate table leitura;
 -- drop table Leitura;
 
-select round(avg(tempValor),2) from Temperatura;
+-- select round(avg(tempValor),2) from Temperatura;
