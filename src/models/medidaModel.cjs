@@ -479,13 +479,19 @@ function UltimasMedidasPrincipais(idAquario, limite_linhas) {
 function UltimasMedidasGerais(idAquario, limite_linhas) {
 
     instrucaoSql = ''
+    // instrucaoSql2 = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql =
-            `select top 6 *, 
-                convert(varchar, dataVisual, 106) as datasFG 
-                    from fasesCards 
-                        order by id desc;`
+            `select top 1 geraisF.* , 
+                          totalCard.contagemTotal 
+                from [dbo].[geraisCount] as geraisF
+                    inner join [dbo].[CardsTotais] as totalCard
+                        on geraisF.id = totalCard.idTotais
+                            order by geraisF.id desc;`
+
+        // instrucaoSql2 =
+        //     `select top 6 * from fasesCards;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
        

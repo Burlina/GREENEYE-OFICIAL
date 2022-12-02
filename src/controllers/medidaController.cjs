@@ -310,7 +310,7 @@ function  UltimasMedidasGerais(req, res) {
     
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel. UltimasMedidasGerais(idAquario, limite_linhas).then(function (resultado) {
+    medidaModel.UltimasMedidasGerais(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
