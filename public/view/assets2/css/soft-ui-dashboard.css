@@ -26800,10 +26800,34 @@ pre[class*="language-"] {
 
 /*# sourceMappingURL=dashboard-free.css.map */
 
-/* Button individual Gabs */
+/* Button individual Gabs - TEMP */
 
-.button-gabs{
-  border-radius: 10px;
-  background-color: black;
+.button-gabs {
+  color: #000;
+  border: 0;
+  background-color: #3aaf85;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-end-start-radius:15px ;
+  border-end-end-radius:15px;
+  text-decoration: none;
+}
+
+.button-gabs a:hover{
   color: white;
+  font-family: Tahoma, sans-serif;
+}
+
+.div-lotes{
+  margin-top: 15px;
+}
+
+.button-back{
+  color: #000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+}
+
+.button-back a:hover{
+  color: white;
+  font-family: Tahoma, sans-serif;
 }
