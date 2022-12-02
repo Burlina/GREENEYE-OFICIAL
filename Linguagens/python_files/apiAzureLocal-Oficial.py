@@ -228,7 +228,7 @@ while (True):
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s)")
                         data = datetime.now().strftime('%Y-%m-%d')
                         hora = datetime.now().strftime('%H:%M:%S')
-                        values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
+                        values = (fkMaquina, temp_min1, temp_value1, temp_max1, data, hora)
                         cursorLocal3.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 2
@@ -236,7 +236,7 @@ while (True):
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s)")
                         data = datetime.now().strftime('%Y-%m-%d')
                         hora = datetime.now().strftime('%H:%M:%S')
-                        values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
+                        values = (fkMaquina, temp_min2, temp_value2, temp_max2, data, hora)
                         cursorLocal4.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 3
@@ -244,7 +244,7 @@ while (True):
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s)")
                         data = datetime.now().strftime('%Y-%m-%d')
                         hora = datetime.now().strftime('%H:%M:%S')
-                        values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
+                        values = (fkMaquina, temp_min3, temp_value3, temp_max3, data, hora)
                         cursorLocal5.execute(sqltemp, values) 
 
                         print("\n")
