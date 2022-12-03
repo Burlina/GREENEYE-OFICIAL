@@ -511,7 +511,7 @@ function UltimasMedidasGerais(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function dashlucas(idTriagem) {
+function dashlucas(idTriagem, limite_linhas) {
 
     instrucaoSql = ''
 

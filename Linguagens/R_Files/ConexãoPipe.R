@@ -1,5 +1,5 @@
 #Bibliotecas de conexão
-    
+  
   library(tidyverse)
   library(httr)
   library(odbc)
@@ -9,7 +9,7 @@
   library(dplyr)
   library(RODBC)
   
-  #criando uma conexão com o banco
+#Criando uma conexão com o banco
   
   conn <- DBI::dbConnect(odbc::odbc(),
                          Driver   = "{ODBC Driver 18 for SQL Server}",
