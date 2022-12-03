@@ -526,21 +526,17 @@
             <div class="card">
               <div class="card-header pb-0 p-3">
                 <div class="d-flex justify-content-between">
-                  <h6 class="mb-0 font-weight-bolder text-dark text-lg">FASES PRINCIPAIS</h6>
+                  <h6 class="mb-0 font-weight-bolder text-dark text-lg">Histórico Diário</h6>
                 </div>
                 <div class="d-flex justify-content-between">
-                  <span class="badge badge-md badge-dot me-4">
-                    <i class="bg-success"></i>
-                    <span class="text-xs text-body">Quantidade de chamados em cada fase:</span>
-                  </span>
                 </div>
               </div>
               <div class="card-body pb-0 p-3">
                 <div class="row">
                   <div class="col-lg-7 text-start mt-3 mb-3">
                     <div class="chart">
-                      <canvas id="" class="CountryChartlucas" height="280" width="290"
-                        style="display: block; box-sizing: border-box; height: 284px; width: 211.2px;"></canvas>
+                      <canvas id="CountryChartlucas" class="chart-canvas" height="375" width="889"
+                        style="display: block; box-sizing: border-box; height: 313px; width: 711.5px;"></canvas>
                     </div>
                   </div>
                   <div class="col-lg-5 my-auto mt-4 mb-2">
@@ -760,8 +756,8 @@
         data: {
           labels:["RAM", "CPU", "DISCO"],
           datasets: [{
-            backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)'],
-            borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)'],
+            backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)' ],
+            borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)'],
             data: dadosalertas,
             maxBarThickness: 6
           },],
@@ -771,33 +767,33 @@
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              display: true,
+              display: false,
             }
           },
           scales: {
-            y: {
-              grid: {
-                drawBorder: true,
-                display: true,
-                drawOnChartArea: true,
-                drawTicks: false,
-                color:"rgba(1,1,1,0.7)",
-              },
-              ticks: {
-                display: false,
-              },
-            },
-            x: {
-              grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false
-              },
-              ticks: {
-                display: false
-              },
-            },
+            // y: {
+            //   grid: {
+            //     drawBorder: true,
+            //     display: true,
+            //     drawOnChartArea: true,
+            //     drawTicks: false,
+            //     color:"rgba(1,1,1,0.7)",
+            //   },
+            //   ticks: {
+            //     display: false,
+            //   },
+            // },
+            // x: {
+            //   grid: {
+            //     drawBorder: false,
+            //     display: false,
+            //     drawOnChartArea: false,
+            //     drawTicks: false
+            //   },
+            //   ticks: {
+            //     display: false
+            //   },
+            // },
           },
         },
       });

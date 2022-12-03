@@ -517,7 +517,7 @@ function dashlucas(idTriagem) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql =
-            `select top 1 tRam ,tCpu ,tDisc  from Triagem order by id desc; `
+            `select top 1 triagemTot ,tRam ,tCpu ,tDisc  from Triagem order by id desc; `
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = 
