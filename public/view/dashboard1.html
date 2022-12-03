@@ -378,7 +378,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard - Lote 1</h6>
+          <h6 class="font-weight-bolder mb-0">Dashboard - Lote 2</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -769,7 +769,7 @@
                 <canvas id="chart-temp" class="chart-canvas" height="288"></canvas>
               </div>
             </div>
-            <button class="button-gabs"><a href="dashboardGabs.html"> Ver mais </a></button>
+            <button class="button-gabs"><a href="dashboardGabs1.html"> Ver mais </a></button>
           </div>
         </div> 
  
@@ -1720,24 +1720,6 @@
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
             setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica, rotulo),1000)
-           console.log("INICIANDO O FETCH");
-        }
-        }else if(componente == "TEMPERATURA"){
-          if(metrica >=90){
-            // rotulo = 307951088
-          if ( metrica < 90) {
-              alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-              console.log('Cheguei aqui')
-              
-            } else if (metrica >= 95 && metrica <=100) {
-              alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso: `
-            } else {
-              alert(`Cuidado ${componente} está ficando no estado Critico!`);
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-            }
-            setTimeout(alertas('TEMPERATURA', `${empresa}`, email, frase, metrica, rotulo),1000)
            console.log("INICIANDO O FETCH");
         }
         }
