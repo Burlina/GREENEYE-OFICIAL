@@ -78,5 +78,10 @@ router.get("/ultimasGerais/:idGerais", function (req, res) {
     medidaController.UltimasMedidasGerais(req, res);
 });
 
+router.get("/dashlucas/:idTriagem", function (req, res) {
+    medidaController.dashlucas(req, res);
+});
+
+
 
 module.exports = router;

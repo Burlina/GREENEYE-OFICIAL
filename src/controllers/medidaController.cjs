@@ -323,6 +323,25 @@ function  UltimasMedidasGerais(req, res) {
     });
 }
 
+function dashlucas(req, res) {
+
+    var idTriagem = req.params.idTriagem;
+    
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.dashlucas(idTriagem).then(function (resultado) {
+        if (resultado.length > 0) {
+            console.log("RESULTADO", resultado);
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 
@@ -341,6 +360,7 @@ module.exports = {
     buscarUltimaMedidaDisco,
     UltimasMedidasFases,
     UltimasMedidasPrincipais,
-    UltimasMedidasGerais
+    UltimasMedidasGerais,
+    dashlucas
     
 }
