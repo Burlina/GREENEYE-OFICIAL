@@ -357,6 +357,147 @@ function buscarMedidasEmTempoRealTEMPMK2(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasTEMPMK3(idAquario, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina = 50001 order by id desc;`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+    REGISTRO_TEMP, 
+    REGISTRO_UMID, 
+    REGISTRO_MOMENTO,
+    date_format(momento, '%H:%i:%s') as momento_grafico
+from registros  
+order by idRegistros desc limit ${limite_linhas}` */
+
+ `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealTEMPMK3(idAquario) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina = 50001 order by id desc`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+        REGISTRO_TEMP, 
+        REGISTRO_UMID, 
+        REGISTRO_MOMENTO,
+        DATE_FORMAT(REGISTRO_MOMENTO,'%H:%i:%s') as momento_grafico
+    from registros  
+    order by idRegistros desc limit 1` */
+
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50001 order by id desc limit 1`
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarUltimasMedidasTEMPMK4(idAquario, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina = 50004 order by id desc;`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+    REGISTRO_TEMP, 
+    REGISTRO_UMID, 
+    REGISTRO_MOMENTO,
+    date_format(momento, '%H:%i:%s') as momento_grafico
+from registros  
+order by idRegistros desc limit ${limite_linhas}` */
+
+ `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50004 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealTEMPMK4(idAquario) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina = 50004 order by id desc`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+        REGISTRO_TEMP, 
+        REGISTRO_UMID, 
+        REGISTRO_MOMENTO,
+        DATE_FORMAT(REGISTRO_MOMENTO,'%H:%i:%s') as momento_grafico
+    from registros  
+    order by idRegistros desc limit 1` */
+
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50004 order by id desc limit 1`
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 function buscarUltimaMedidaDisco(idAquario) {
 
     instrucaoSql = ''
@@ -544,6 +685,10 @@ module.exports = {
     buscarMedidasEmTempoRealTEMPMK1,
     buscarUltimasMedidasTEMPMK2,
     buscarMedidasEmTempoRealTEMPMK2,
+    buscarUltimasMedidasTEMPMK3,
+    buscarMedidasEmTempoRealTEMPMK3,
+    buscarUltimasMedidasTEMPMK4,
+    buscarMedidasEmTempoRealTEMPMK4,
     buscarUltimaMedidaDisco,
     UltimasMedidasRotulos,
     UltimasMedidasFases,

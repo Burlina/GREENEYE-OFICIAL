@@ -58,6 +58,22 @@ router.get("/tempo-realTEMPMK2/:idRealTEMP", function (req, res) {
     medidaController.buscarMedidasEmTempoRealTEMPMK2(req, res);
 })
 
+router.get("/ultimasTEMPMK3/:idTEMP", function (req, res) {
+    medidaController.buscarUltimasMedidasTEMPMK3(req, res);
+});
+
+router.get("/tempo-realTEMPMK3/:idRealTEMP", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTEMPMK3(req, res);
+})
+
+router.get("/ultimasTEMPMK4/:idTEMP", function (req, res) {
+    medidaController.buscarUltimasMedidasTEMPMK4(req, res);
+});
+
+router.get("/tempo-realTEMPMK4/:idRealTEMP", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTEMPMK4(req, res);
+})
+
 router.get("/ultimaDisco/:idArmazem", function (req, res) {
     medidaController.buscarUltimaMedidaDisco(req, res);
 })

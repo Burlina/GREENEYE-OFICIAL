@@ -94,7 +94,9 @@ insert into Lote values (null, '21-09-22','Inspiron 660', 200,10000,1000);
 
 insert into Maquina values (null,20000),
 						   (null,20000),
-						   (null,20000);
+						   (null,20000),
+						   (null,20000),
+                           (null,20000);
 
 -- Puxando dados das tabelas:
 
@@ -102,8 +104,8 @@ insert into Maquina values (null,20000),
 select * from Empresa;
 select * from Usuario;
 select * from Especificacoes;
-select * from Lote;
-select * from maquina;*/
+select * from Lote;*/
+select * from maquina;
 select * from Leitura;
 select * from Temperatura;
 

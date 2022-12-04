@@ -134,24 +134,27 @@ while (True):
                         temp_max = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Max'])
 
                         # MAQUINA SIMULAÇÃO 2
-                        temp_min1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 0.12 - 1.03
+                        temp_min1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 1.30 - 0.25
                         temp_value1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Value']) * 1.05 - 2.03
                         temp_max1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Max']) * 1.02 - 2.03
                         
                         # MAQUINA SIMULAÇÃO 3
-                        temp_min2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 0.02 - 4.03
+                        temp_min2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 2.02 - 3.03
                         temp_value2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Value']) * 1.12 - 1.05
                         temp_max2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Max']) * 1.05 - 2.03
 
                         # MAQUINA SIMULAÇÃO 4
-                        temp_min3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 0.02 - 0.10
-                        temp_value3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Value']) * 0.10 - 2.03
-                        temp_max3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Max']) * 0.08 - 0.05
+                        temp_min3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Min']) * 1.02 - 1.01
+                        temp_value3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Value']) * 1.10 - 2.03
+                        temp_max3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][4]['Max']) * 1.12 - 1.15
 
 
                         # print("Temperatura minima:", temp_min)
                         # print("Temperatura média:", temp_value)
                         # print("Temperatura maxima:", temp_max)
+
+                        data = datetime.now().strftime('%Y-%m-%d')
+                        hora = datetime.now().strftime('%H:%M:%S')
 
                         # -------------------------------------------------------------------------------------------------
 
@@ -179,32 +182,24 @@ while (True):
                         #TEMPERATURA AZURE PRINCIPAL
                         fkMaquina = 50000
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (?,?,?,?,?,?)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
                         cursorAzure2.execute(sqltemp, values)
 
                         #TEMPERATURA AZURE MAQUINA 1
                         fkMaquina = 50001
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (?,?,?,?,?,?)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min1, temp_value1, temp_max1, data, hora)
                         cursorAzure3.execute(sqltemp, values)
 
                         #TEMPERATURA AZURE MAQUINA 2
                         fkMaquina = 50003
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (?,?,?,?,?,?)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min2, temp_value2, temp_max2, data, hora)
                         cursorAzure4.execute(sqltemp, values)
 
                         #TEMPERATURA AZURE MAQUINA 3
                         fkMaquina = 50004
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (?,?,?,?,?,?)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min3, temp_value3, temp_max3, data, hora)
                         cursorAzure5.execute(sqltemp, values)
 
@@ -218,32 +213,24 @@ while (True):
                         #TEMPERATURA PRINCIPAL LOCAL
                         fkMaquina = 50000
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
                         cursorLocal2.execute(sqltemp, values) 
 
                         #TEMPERATURA MAQUINA LOCAL 1
                         fkMaquina = 50001
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min1, temp_value1, temp_max1, data, hora)
                         cursorLocal3.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 2
                         fkMaquina = 50003
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min2, temp_value2, temp_max2, data, hora)
                         cursorLocal4.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 3
                         fkMaquina = 50004
                         sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        data = datetime.now().strftime('%Y-%m-%d')
-                        hora = datetime.now().strftime('%H:%M:%S')
                         values = (fkMaquina, temp_min3, temp_value3, temp_max3, data, hora)
                         cursorLocal5.execute(sqltemp, values) 
 
