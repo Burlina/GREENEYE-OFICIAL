@@ -98,6 +98,10 @@ router.get("/dashlucas/:idTriagem", function (req, res) {
     medidaController.dashlucas(req, res);
 });
 
+router.get("/cardlucas/:idTot", function (req, res) {
+    medidaController.dashlucas(req, res);
+});
+
 
 
 module.exports = router;

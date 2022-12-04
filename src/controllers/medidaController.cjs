@@ -428,6 +428,26 @@ function dashlucas(req, res) {
     });
 }
 
+function cardlucas(req, res) {
+
+    var idTot = req.params.idTriagem;
+    
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.cardlucas(idTot).then(function (resultado) {
+        if (resultado.length > 0) {
+            console.log("RESULTADO", resultado);
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 
 module.exports = {
@@ -450,6 +470,7 @@ module.exports = {
     UltimasMedidasFases,
     UltimasMedidasPrincipais,
     UltimasMedidasGerais,
-    dashlucas
+    dashlucas,
+    cardlucas
     
 }
