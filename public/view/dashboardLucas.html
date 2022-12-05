@@ -22,7 +22,6 @@
   <link id="pagestyle" href="../assets2/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
 </head>
 
-
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">
@@ -591,7 +590,7 @@
               </div>
               <div class="card-body p-3">
                 <div class="chart">
-                  <canvas id="CountryChartlucas2" class="chart-canvas" height="375" width="889"
+                  <canvas id="CountryChartTotal" class="chart-canvas" height="375" width="889"
                     style="display: block; box-sizing: border-box; height: 300px; width: 711.5px;"></canvas>
                 </div>
               </div>
@@ -755,15 +754,35 @@
       dadosalertas.push(ram,cpu,disco)
     }
       
+    var gradientStroke8 = ctxlucas.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke8.addColorStop(1, 'rgba(94, 114, 228,0.2)');
+gradientStroke8.addColorStop(0.2, 'rgba(94, 114, 228,0.0)');
+gradientStroke8.addColorStop(0, 'rgba(94, 114, 228,0)'); //cinza colors
+
+var gradientStroke4 = ctxlucas.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke4.addColorStop(1, 'rgba(23, 173, 55,0.2)');
+gradientStroke4.addColorStop(0.2, 'rgba(23, 173, 55,0.0)');
+gradientStroke4.addColorStop(0, 'rgba(23, 173, 55,0)'); //verde colors
+
+var gradientStroke1 = ctxlucas.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke1.addColorStop(1, 'rgba(251, 207, 51,0.2)');
+gradientStroke1.addColorStop(0.2, 'rgba(251, 207, 51,0.0)');
+gradientStroke1.addColorStop(0, 'rgba(251, 207, 51,0)'); //yellow colors
+
       new Chart(ctxlucas,{
-        type: "bar",
+        type: "pie",
         data: {
           labels:["RAM", "CPU", "DISCO"],
           datasets: [{
-            backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)' ],
-            borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)'],
             data: dadosalertas,
-            maxBarThickness: 6
+            maxBarThickness: 6,
+            pointBackgroundColor: [ "#17ad37", "#2152ff","#fbcf33"],
+            borderColor: ["#17ad37", "#2152ff","#fbcf33"],
+            borderWidth: 3,
+            backgroundColor: [gradientStroke4,gradientStroke8,gradientStroke1]
           },],
         },
         options: {
@@ -804,7 +823,7 @@
     }
 
     function obterDadosGraficoLucas(idTriagem) {
-      console.log("Entrei no obter")
+      console.log("Entrei no obter Triagem")
       fetch(`/medidas/dashlucas/${idTriagem}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -821,11 +840,10 @@
         });
     }
 
-    window.onload = obterDadosGraficoLucas(1);
-
+    
 
     // GRAFICO 2 - CARDTOTAIS
-    var ctxlucas2= document.getElementById("CountryChartlucas2").getContext("2d");
+    var ctxlucas2= document.getElementById("CountryChartTotal").getContext("2d");
 
 function dashboardlucas2(resposta) {
 
@@ -841,19 +859,49 @@ function dashboardlucas2(resposta) {
   contAtraso.push(resposta[i].contagemAtraso)
   contFinalizado.push(resposta[i].contagemFinalizado)
 
-
-  dadosalertas2.push(contagemTotal,contagemAberto,contagemAtraso,contagemFinalizado)
+  dadosalertas2.push(contTotal,contAbert,contAtraso,contFinalizado)
 }
-  
+
+var gradientStroke8 = ctxlucas.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke8.addColorStop(1, 'rgba(94, 114, 228,0.2)');
+gradientStroke8.addColorStop(0.2, 'rgba(94, 114, 228,0.0)');
+gradientStroke8.addColorStop(0, 'rgba(94, 114, 228,0)'); //cinza colors
+
+var gradientStroke1 = ctxlucas2.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke1.addColorStop(1, 'rgba(251, 207, 51,0.2)');
+gradientStroke1.addColorStop(0.2, 'rgba(251, 207, 51,0.0)');
+gradientStroke1.addColorStop(0, 'rgba(251, 207, 51,0)'); //yellow colors
+
+var gradientStroke5 = ctxlucas2.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke5.addColorStop(1, 'rgba(234, 6, 6,0.2)');
+gradientStroke5.addColorStop(0.2, 'rgba(234, 6, 6,0.0)');
+gradientStroke5.addColorStop(0, 'rgba(234, 6, 6,0)'); //vermelho colors
+
+var gradientStroke4 = ctxlucas2.createLinearGradient(0, 230, 0, 50);
+
+gradientStroke4.addColorStop(1, 'rgba(23, 173, 55,0.2)');
+gradientStroke4.addColorStop(0.2, 'rgba(23, 173, 55,0.0)');
+gradientStroke4.addColorStop(0, 'rgba(23, 173, 55,0)'); //verde colors
+
+
+      
   new Chart(ctxlucas2,{
     type: "bar",
     data: {
-      labels:["", "", ""],
+      labels:["Total", "Aberto", "Atrasados","Finalizado"],
       datasets: [{
-        backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)' ],
-        borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)'],
+        weight: 9,
+        tension:0.9,
+        pointRadius:2,
         data: dadosalertas2,
-        maxBarThickness: 6
+        // maxBarThickness: 6,
+       pointBackgroundColor: ["#2152ff", "#fbcf33","#ea0606","#17ad37"],
+            borderColor: ["#2152ff","#fbcf33" ,"#ea0606","#17ad37"],
+            borderWidth: 3,
+            backgroundColor: [gradientStroke8,gradientStroke1,gradientStroke5,gradientStroke4]
       },],
     },
     options: {
@@ -865,36 +913,40 @@ function dashboardlucas2(resposta) {
         }
       },
       scales: {
-        // y: {
-        //   grid: {
-        //     drawBorder: true,
-        //     display: true,
-        //     drawOnChartArea: true,
-        //     drawTicks: false,
-        //     color:"rgba(1,1,1,0.7)",
-        //   },
-        //   ticks: {
-        //     display: false,
-        //   },
-        // },
-        // x: {
-        //   grid: {
-        //     drawBorder: false,
-        //     display: false,
-        //     drawOnChartArea: false,
-        //     drawTicks: false
-        //   },
-        //   ticks: {
-        //     display: false
-        //   },
-        // },
+        y: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: false,
+            borderDash:[5,5],
+          },
+          ticks: {
+            display: true,
+            padding:10,
+          },
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: true,
+            drawOnChartArea: true,
+            drawTicks: true,
+            borderDash:[5,5],
+          },
+          ticks: {
+            display: true,
+            Color: ["#2152ff","#fbcf33" ,"#ea0606","#17ad37"],
+            padding:10,
+          },
+        },
       },
     },
   });
 }
 
 function obterDadosGraficoLucas2(idTot) {
-      console.log("Entrei no obter")
+      console.log("Entrei no obter IDTot")
       fetch(`/medidas/cardlucas/${idTot}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -911,8 +963,8 @@ function obterDadosGraficoLucas2(idTot) {
         });
     }
 
-    window.onload = obterDadosGraficoLucas2(1);
-
+    // window.onload = obterDadosGraficoLucas(1);
+    window.onload = [obterDadosGraficoLucas(1),obterDadosGraficoLucas2(1)];
 
   </script>
   <script>

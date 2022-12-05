@@ -131,7 +131,7 @@ router.get("/dashlucas/:idTriagem", function (req, res) {
 });
 
 router.get("/cardlucas/:idTot", function (req, res) {
-    medidaController.dashlucas(req, res);
+    medidaController.cardlucas(req, res);
 });
 
 
