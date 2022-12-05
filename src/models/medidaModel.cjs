@@ -771,11 +771,17 @@ function cardlucas(idTot, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql =
-            ` `
+            `select top 1 *, 
+            convert(varchar, DataColeta, 106) as datasFP 
+                from CardsTotais where NomeSuporte = 'Suporte de Manutenção' 
+                    order by idTotais desc; `
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = 
-        ` `
+        ` select top 1 *, 
+        convert(varchar, DataColeta, 106) as datasFP 
+            from CardsTotais where NomeSuporte = 'Suporte de Manutenção' 
+                order by idTotais desc;`
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

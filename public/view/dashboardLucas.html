@@ -591,7 +591,7 @@
               </div>
               <div class="card-body p-3">
                 <div class="chart">
-                  <canvas id="" class="chart-canvas" height="375" width="889"
+                  <canvas id="CountryChartlucas2" class="chart-canvas" height="375" width="889"
                     style="display: block; box-sizing: border-box; height: 300px; width: 711.5px;"></canvas>
                 </div>
               </div>
@@ -736,7 +736,7 @@
   <script src="../assets2/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets2/js/plugins/chartjs.min.js"></script>
   <script>
-   
+   // GARFICO 1 - TRIAGEM
    var ctxlucas= document.getElementById("CountryChartlucas").getContext("2d");
 
     function dashboardlucas(resposta) {
@@ -821,9 +821,99 @@
         });
     }
 
-    // let proximaAtualizacao;
-
     window.onload = obterDadosGraficoLucas(1);
+
+
+    // GRAFICO 2 - CARDTOTAIS
+    var ctxlucas2= document.getElementById("CountryChartlucas2").getContext("2d");
+
+function dashboardlucas2(resposta) {
+
+  const dadosalertas2 = []
+  const contTotal = []
+  const contAbert = []
+  const contAtraso = []
+  const contFinalizado = []
+
+  for (let i in resposta) {
+  contTotal.push(resposta[i].contagemTotal)
+  contAbert.push(resposta[i].contagemAberto)
+  contAtraso.push(resposta[i].contagemAtraso)
+  contFinalizado.push(resposta[i].contagemFinalizado)
+
+
+  dadosalertas2.push(contagemTotal,contagemAberto,contagemAtraso,contagemFinalizado)
+}
+  
+  new Chart(ctxlucas2,{
+    type: "bar",
+    data: {
+      labels:["", "", ""],
+      datasets: [{
+        backgroundColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)' ],
+        borderColor: ['rgba(29, 248, 160,0.7)', 'rgba(31,142,241,0.7)','rgba(251, 207, 51,0.7)'],
+        data: dadosalertas2,
+        maxBarThickness: 6
+      },],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      scales: {
+        // y: {
+        //   grid: {
+        //     drawBorder: true,
+        //     display: true,
+        //     drawOnChartArea: true,
+        //     drawTicks: false,
+        //     color:"rgba(1,1,1,0.7)",
+        //   },
+        //   ticks: {
+        //     display: false,
+        //   },
+        // },
+        // x: {
+        //   grid: {
+        //     drawBorder: false,
+        //     display: false,
+        //     drawOnChartArea: false,
+        //     drawTicks: false
+        //   },
+        //   ticks: {
+        //     display: false
+        //   },
+        // },
+      },
+    },
+  });
+}
+
+function obterDadosGraficoLucas2(idTot) {
+      console.log("Entrei no obter")
+      fetch(`/medidas/cardlucas/${idTot}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            dashboardlucas2(resposta);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+
+    window.onload = obterDadosGraficoLucas2(1);
+
+
   </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
