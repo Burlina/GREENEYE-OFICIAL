@@ -26818,7 +26818,39 @@ pre[class*="language-"] {
 }
 
 .div-lotes{
+  width: auto;
   margin-top: 15px;
+  display: flex;
+}
+
+.div-metricas{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bs-card-cap-bg);
+  border-radius: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+#div-metricas-first{
+  background-color: #627594;
+  border-radius: 50%;
+  font-size:200%;
+  margin-bottom: 0px;
+  padding: 20px 20px 20px 20px;
+  color: #344767;
+}
+
+#div-metricas-second{
+  background-color: #627594;
+  border-radius: 50%;
+  font-size:200%;
+  padding: 20px 20px 20px 20px;
+  color: #344767;
 }
 
 .button-back{

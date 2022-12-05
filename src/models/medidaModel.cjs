@@ -497,6 +497,98 @@ function buscarMedidasEmTempoRealTEMPMK4(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function TempMax() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+
+        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50000 order by id desc;`
+                
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+
+            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+function TempMin() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+
+        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50000 order by id desc;`
+                
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+
+            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+function TempMax1() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+
+        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50003 order by id desc;`
+                
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+
+            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+function TempMin1() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+
+        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50003 order by id desc;`
+                
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+
+            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
 
 function buscarUltimaMedidaDisco(idAquario) {
 
@@ -716,5 +808,9 @@ module.exports = {
     UltimasMedidasPrincipais,
     UltimasMedidasGerais,
     dashlucas,
-    cardlucas
+    cardlucas,
+    TempMax,
+    TempMin,
+    TempMax1,
+    TempMin1
 }
