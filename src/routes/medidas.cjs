@@ -90,6 +90,22 @@ router.get("/ultimasTempMin1/", function (req, res) {
     medidaController.TempMin1(req, res);
 });
 
+router.get("/ultimasTempMax2/", function (req, res) {
+    medidaController.TempMax2(req, res);
+});
+
+router.get("/ultimasTempMin2/", function (req, res) {
+    medidaController.TempMin2(req, res);
+});
+
+router.get("/ultimasTempMax3/", function (req, res) {
+    medidaController.TempMax3(req, res);
+});
+
+router.get("/ultimasTempMin3/", function (req, res) {
+    medidaController.TempMin3(req, res);
+});
+
 router.get("/ultimaDisco/:idArmazem", function (req, res) {
     medidaController.buscarUltimaMedidaDisco(req, res);
 })

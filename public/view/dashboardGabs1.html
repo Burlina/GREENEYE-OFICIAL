@@ -681,6 +681,16 @@
                   <canvas id="chart-tempMK3" class="chart-canvas" height="288"></canvas>
                 </div>
               </div>
+            </div>
+            <div class="div-metricas">
+              Max.
+              <div id="div-metricas-first">
+                <b id="div_max2">000</b>°C
+              </div>
+              Min.
+              <div id="div-metricas-second">
+                <b id="div_min2">000</b>°C
+              </div>
             </div>  
           </div>
 
@@ -696,10 +706,21 @@
                   <canvas id="chart-tempMK4" class="chart-canvas" height="288"></canvas>
                 </div>
               </div>
+            </div>
+            <div class="div-metricas">
+              Max.
+              <div id="div-metricas-first">
+                <b id="div_max3">000</b>°C
+              </div>
+              Min.
+              <div id="div-metricas-second">
+                <b id="div_min3">000</b>°C
+              </div>
             </div>  
           </div>
-          <img src="assets/img/login_cadastro/back_icon_green.png" style="width: 5%;">
-            <a href="dashboard1.html" class="button-back"> Voltar  
+          <a href="dashboard1.html"><img src="assets/img/login_cadastro/back_icon_green.png" style="width: 5%;"></a>
+          <a href="dashboard1.html" class="button-back"> Voltar
+        </div>  
 
       <!-- <div class="row mt-4">
         <div class="col-lg-5 mb-lg-0 mb-4">
@@ -1436,9 +1457,88 @@ fetch(`/medidas/tempo-realTEMPMK4/${id}`, { cache: 'no-store' }).then(function (
     let proximaAtualizacaoTEMPMK4;
 
 
-    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1), obterDadosGraficoTEMPMK3(1), obterDadosGraficoTEMPMK4(1)];
+    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1), obterDadosGraficoTEMPMK3(1), obterDadosGraficoTEMPMK4(1),
+    obterDadosMetricasMax2(1), obterDadosMetricasMin2(1), obterDadosMetricasMax3(1), obterDadosMetricasMin3(1)];
 // window.onload = obterDadosGraficoCPU(id);
 // window.onload = obterDadosGraficoRAM(id);
+
+// ------------------------------------------------------------------ Métricas TEMP LOTE 2 ------------------------------------------------------------
+
+function obterDadosMetricasMax2() {
+
+fetch(`/medidas/ultimasTempMax2/`, { cache: 'no-store' }).then(function (response) {
+  if (response.ok) {
+    response.json().then(function (resposta) {
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+      const dadoMax2 = Number(resposta[0].tempMax)
+      const capturaMax2 = dadoMax2.toFixed(0)
+      div_max2.innerHTML = capturaMax2
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+}
+
+function obterDadosMetricasMin2() {
+
+fetch(`/medidas/ultimasTempMin2/`, { cache: 'no-store' }).then(function (response) {
+  if (response.ok) {
+    response.json().then(function (resposta) {
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+      const dadoMin2 = Number(resposta[0].tempMin)
+      const capturaMin2 = dadoMin2.toFixed(0)
+      div_min2.innerHTML = capturaMin2
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+}
+
+function obterDadosMetricasMax3() {
+
+fetch(`/medidas/ultimasTempMax3/`, { cache: 'no-store' }).then(function (response) {
+  if (response.ok) {
+    response.json().then(function (resposta) {
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+      const dadoMax3 = Number(resposta[0].tempMax)
+      const capturaMax3 = dadoMax3.toFixed(0)
+      div_max3.innerHTML = capturaMax3
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+}
+
+function obterDadosMetricasMin3() {
+
+fetch(`/medidas/ultimasTempMin3/`, { cache: 'no-store' }).then(function (response) {
+  if (response.ok) {
+    response.json().then(function (resposta) {
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+      const dadoMin3 = Number(resposta[0].tempMin)
+      const capturaMin3 = dadoMin3.toFixed(0)
+      div_min3.innerHTML = capturaMin3
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+}
 
   </script>
   <script>
