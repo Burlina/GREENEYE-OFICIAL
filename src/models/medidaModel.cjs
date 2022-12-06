@@ -160,7 +160,7 @@ function buscarUltimasMedidasTEMP(idAquario, limite_linhas) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura order by id desc;`
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -171,7 +171,7 @@ function buscarUltimasMedidasTEMP(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura order by id desc limit ${limite_linhas}`;
+ `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -195,7 +195,7 @@ function buscarMedidasEmTempoRealTEMP(idAquario) {
             //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
             // from registros  
             // order by idRegistros desc`;
-            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura order by id desc`
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = /* `select 
@@ -206,7 +206,7 @@ function buscarMedidasEmTempoRealTEMP(idAquario) {
     from registros  
     order by idRegistros desc limit 1` */
 
-            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura order by id desc limit 1`
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc limit 1`
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
