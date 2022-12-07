@@ -140,7 +140,7 @@ while (True):
                         
                         # MAQUINA SIMULAÇÃO 3
                         temp_min2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.06 - 1.00
-                        temp_value2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.09 - 1.03
+                        temp_value2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.09 - 1.3
                         temp_max2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.05 - 1.05
 
                         # MAQUINA SIMULAÇÃO 4

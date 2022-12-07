@@ -26830,16 +26830,14 @@ pre[class*="language-"] {
 }
 
 .div-metricas{
+  align-items: center;
   background-color: #cbd3da;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   display: flex;
   padding-left: 50px;
-  align-items: center;
-  margin-right: 40%;
-  margin-left: 30%;
   box-shadow: 3px 3px 3px;
-
+  padding-left: 30%;
 }
 
 #div-metricas-first{
