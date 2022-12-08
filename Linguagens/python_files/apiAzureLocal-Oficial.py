@@ -134,20 +134,46 @@ while (True):
                         temp_max = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max'])
 
                         # MAQUINA SIMULAÇÃO 2
-                        temp_min1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.30 - 1.25
-                        temp_value1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.05 - 2.03
-                        temp_max1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.05 - 1.03
+                        temp_min1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.30 
+                        temp_value1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 0.9 
+                        temp_max1 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.05 
                         
                         # MAQUINA SIMULAÇÃO 3
-                        temp_min2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.06 - 1.00
-                        temp_value2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.09 - 1.3
-                        temp_max2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.05 - 1.05
+                        temp_min2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.06 
+                        temp_value2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.09
+                        temp_max2 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.05 
 
                         # MAQUINA SIMULAÇÃO 4
-                        temp_min3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.02 - 1.01
-                        temp_value3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.10 - 2.03
-                        temp_max3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.12 - 1.15
+                        temp_min3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Min']) * 1.02 
+                        temp_value3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Value']) * 1.10
+                        temp_max3 = conversor(data['Children'][0]['Children'][1]['Children'][1]['Children'][0]['Max']) * 1.12
 
+                        if temp_min1 > 100:
+                            temp_min1 = 100
+
+                        if temp_value1 > 100:
+                            temp_value1 = 100
+
+                        if temp_max1 > 100:
+                            temp_max1 = 100
+
+                        if temp_min2 > 100:
+                            temp_min2 = 100
+
+                        if temp_value2 > 100:
+                            temp_value2 = 100
+
+                        if temp_max2 > 100:
+                            temp_max2 = 100
+
+                        if temp_min3 > 100:
+                            temp_min3 = 100
+
+                        if temp_value3 > 100:
+                            temp_value3 = 100
+
+                        if temp_max3 > 100:
+                            temp_max3 = 100
 
                         # print("Temperatura minima:", temp_min)
                         # print("Temperatura média:", temp_value)

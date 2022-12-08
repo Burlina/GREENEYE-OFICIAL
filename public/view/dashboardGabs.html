@@ -1229,7 +1229,8 @@
     }
 
     // ALERTAS DASHBOARD
-    function alertas(componente, empresa, email, descricao, metrica) {
+    function alertas(componente, empresa, email, frase, metrica) {
+      console.log("Cai no alertas")
       const options = {
         method: 'POST',
         headers: {
@@ -1238,12 +1239,12 @@
           'content-type': 'application/json'
         },
         body: JSON.stringify({
-          query: `mutation {createCard (input: {pipe_id:302852855, title:"${componente}", 
+          query: `mutation {createCard (input: {pipe_id:302853534, title:"Card", 
             fields_attributes:[ 
-              {field_id: "Titulo", field_value: "${componente}"},
-              {field_id: "Empresa", field_value: "${empresa}"},
-              {field_id: "Email", field_value: "${email}"},
-              {field_id: "Descricao do problema", field_value: "${descricao}${metrica}"}],})
+              {field_id: "titulo", field_value: "${componente}"},
+              {field_id: "empresa", field_value: "${empresa}"},
+              {field_id: "email", field_value: "${email}"},
+              {field_id: "descri_o_do_problema", field_value: "${frase}${metrica}"}],})
             {card {title}}}`
         })
       };
@@ -1260,26 +1261,26 @@
       var empresa = "Dell"
 
       if (componente == "TEMPERATURA") {
-        if (contador <= 2) {
-          if (metrica >= 20) {
-            if (metrica < 30) {
+        
+          if (metrica >= 80 && metrica < 95) {
+ 
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Alerta!`, "info");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
 
-            } else if (metrica >= 31 && metrica <= 40) {
+            } else if (metrica >= 65 && metrica <= 70) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-            } else {
+            } else if (metrica > 95) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            setTimeout(alertas('TEMPERATURA', `${empresa}`, email, frase, metrica), 1000)
+            alertas('TEMPERATURA', empresa , email, frase, metrica)
 
             console.log("INICIANDO O FETCH");
           }
-          contador++
-        }}}
+
+        }
 
     //   } else if (componente == "RAM") {
     //     if (contador <= 2) {
