@@ -12,9 +12,9 @@ try:
         cnxn = pyodbc.connect(driver='{SQL Server}', host='greeneye.database.windows.net',
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
-        db_connection = mysql.connector.connect(
-                host='localhost', user='aluno', password='sptech', database='greeneye')
-        print("Conectei no banco! (Local)")
+        # db_connection = mysql.connector.connect(
+        #         host='localhost', user='aluno', password='sptech', database='greeneye')
+        # print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
                 print("Não encontrei o banco")

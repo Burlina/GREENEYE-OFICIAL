@@ -26809,7 +26809,6 @@ pre[class*="language-"] {
 /* Button individual Gabs - TEMP */
 
 .button-gabs {
-  color: #000;
   border: 0;
   background-color: #3aaf85;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -26819,14 +26818,13 @@ pre[class*="language-"] {
 }
 
 .button-gabs a:hover{
-  color: white;
+  color: ;
   font-family: Tahoma, sans-serif;
 }
 
 .div-lotes{
   width: auto;
   margin-top: 15px;
-  /* display: flex; */
 }
 
 .div-metricas{

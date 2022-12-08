@@ -339,7 +339,7 @@
               <div class="docs-info">
                 <h6 class="text-white up mb-0">Vamos verificar os chamados?</h6>
                 <p class="text-xs font-weight-bold">Os alertas não te esperam!</p>
-                <a href="https://app.pipefy.com/pipes/302716733/" target="_blank"
+                <a href="https://app.pipefy.com/pipes/302852855/" target="_blank"
                   class="btn btn-white btn-sm w-100 mb-0">Suporte de Alertas</a>
               </div>
             </div>
@@ -1234,16 +1234,16 @@
         method: 'POST',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjozMDIxNjgwMTEsImVtYWlsIjoibHVjYXMubmF2YXNjb25pQHNwdGVjaC5zY2hvb2wiLCJhcHBsaWNhdGlvbiI6MzAwMjA2NDA4fX0.4Bv-Q1A5yF-dz1BrkqU4KTquUMB-ZSIUlJc6HlGb-HJsG0EC6rksPleIyB76rsOqdqJiv77wlQiUR0HA6zSb_w',
+          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjp7ImlkIjozMDIxNjc5NjQsImVtYWlsIjoiZ3JlZW5leWVfMDhAb3V0bG9vay5jb20iLCJhcHBsaWNhdGlvbiI6MzAwMjE2NTU0fX0.s2GQIzdhwLr6baiyidx7p_M8ItCmch3id6Kgak-CuQ-RI4MtznJZna4KhMY_baE_RDycTwyDPNEkilRqtCCBTg',
           'content-type': 'application/json'
         },
         body: JSON.stringify({
-          query: `mutation {createCard (input: {pipe_id:302716733, title:"${componente}", 
+          query: `mutation {createCard (input: {pipe_id:302852855, title:"${componente}", 
             fields_attributes:[ 
-              {field_id: "titulo", field_value: "${componente}"},
-              {field_id: "empresa", field_value: "${empresa}"},
-              {field_id: "email_solicitante", field_value: "${email}"},
-              {field_id: "problem_description", field_value: "${descricao}${metrica}"}],})
+              {field_id: "Titulo", field_value: "${componente}"},
+              {field_id: "Empresa", field_value: "${empresa}"},
+              {field_id: "Email", field_value: "${email}"},
+              {field_id: "Descricao do problema", field_value: "${descricao}${metrica}"}],})
             {card {title}}}`
         })
       };
@@ -1259,74 +1259,75 @@
       var email = sessionStorage.logemail
       var empresa = "Dell"
 
-      if (componente == "CPU") {
+      if (componente == "TEMPERATURA") {
         if (contador <= 2) {
-          if (metrica >= 65) {
-            if (metrica < 75) {
+          if (metrica >= 20) {
+            if (metrica < 30) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Alerta!`, "info");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
 
-            } else if (metrica >= 76 && metrica <= 85) {
+            } else if (metrica >= 31 && metrica <= 40) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             }
-            setTimeout(alertas('CPU', `${empresa}`, email, frase, metrica), 1000)
+            setTimeout(alertas('TEMPERATURA', `${empresa}`, email, frase, metrica), 1000)
 
             console.log("INICIANDO O FETCH");
           }
           contador++
-        }
-      } else if (componente == "RAM") {
-        if (contador <= 2) {
-          if (metrica >= 70) {
-            if (metrica < 79) {
-              Swal.fire("Alerta", `Cuidado, ${componente} está ficando no estado de Alerta!`, "info");
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-              console.log('Cheguei aqui')
-            } else if (metrica >= 80 && metrica <= 89) {
-              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-            } else {
-              Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
-              frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-            }
-            setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica), 1000)
-            console.log("INICIANDO O FETCH");
-          }
-          contador++
-        }
-      } else if (componente == "DISCO") {
-        if (metrica >= 80) {
-          if (metrica < 89) {
-            alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
-            frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-            console.log('Cheguei aqui')
+        }}}
 
-          } else if (metrica >= 90 && metrica <= 94) {
-            alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
-            frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso: `
-          } else {
-            alert(`Cuidado ${componente} está ficando no estado Critico!`);
-            frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-          }
-          setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica), 1000)
-          console.log("INICIANDO O FETCH");
-        }
-      } else if (componente == "TEMP") {
-        if (contador <= 2) {
-          if (metrica >= 60) {
-            Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
-            frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-          } setTimeout(alertas('TEMP', `${empresa}`, email, frase, metrica), 1000)
-          console.log("INICIANDO O FETCH");
-        }
-        contador++
-      }
-    }
+    //   } else if (componente == "RAM") {
+    //     if (contador <= 2) {
+    //       if (metrica >= 70) {
+    //         if (metrica < 79) {
+    //           Swal.fire("Alerta", `Cuidado, ${componente} está ficando no estado de Alerta!`, "info");
+    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //           console.log('Cheguei aqui')
+    //         } else if (metrica >= 80 && metrica <= 89) {
+    //           Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
+    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //         } else {
+    //           Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
+    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //         }
+    //         setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica), 1000)
+    //         console.log("INICIANDO O FETCH");
+    //       }
+    //       contador++
+    //     }
+    //   } else if (componente == "DISCO") {
+    //     if (metrica >= 80) {
+    //       if (metrica < 89) {
+    //         alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
+    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //         console.log('Cheguei aqui')
+
+    //       } else if (metrica >= 90 && metrica <= 94) {
+    //         alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
+    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso: `
+    //       } else {
+    //         alert(`Cuidado ${componente} está ficando no estado Critico!`);
+    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //       }
+    //       setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica), 1000)
+    //       console.log("INICIANDO O FETCH");
+    //     }
+    //   } else if (componente == "TEMP") {
+    //     if (contador <= 2) {
+    //       if (metrica >= 60) {
+    //         Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
+    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
+    //       } setTimeout(alertas('TEMP', `${empresa}`, email, frase, metrica), 1000)
+    //       console.log("INICIANDO O FETCH");
+    //     }
+    //     contador++
+    //   }
+    // }
 
     function atualizarGrafico(id) {
       fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (responseCPU) {
@@ -1411,6 +1412,10 @@
             ChartTEMPMK1.data.datasets[0].data.push(novoRegistroTEMPMK1[0].tempValor);
 
             window.ChartTEMPMK1.update();
+            
+            var alertTemp = novoRegistroTEMPMK1[0].tempValor
+            console.log("1")
+            setTimeout(verificar(alertTemp, "TEMPERATURA"), 60000)
 
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar

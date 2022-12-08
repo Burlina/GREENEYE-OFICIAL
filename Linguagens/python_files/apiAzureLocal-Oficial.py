@@ -49,9 +49,9 @@ try:
         cnxn = pyodbc.connect(driver='{ODBC Driver 18 for SQL Server}', host='greeneye.database.windows.net',
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
-        db_connection = mysql.connector.connect(
-                host='localhost', user='Gabes', password='urubu100', database='greeneye')
-        print("Conectei no banco! (Local)")
+        # db_connection = mysql.connector.connect(
+        #         host='localhost', user='Gabes', password='urubu100', database='greeneye')
+        # print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
                 print("Não encontrei o banco")
@@ -159,11 +159,11 @@ while (True):
                         # -------------------------------------------------------------------------------------------------
 
                         #CURSOR LOCAL 
-                        cursorLocal = db_connection.cursor()
-                        cursorLocal2 = db_connection.cursor()
-                        cursorLocal3 = db_connection.cursor()
-                        cursorLocal4 = db_connection.cursor()
-                        cursorLocal5 = db_connection.cursor()
+                        # cursorLocal = db_connection.cursor()
+                        # cursorLocal2 = db_connection.cursor()
+                        # cursorLocal3 = db_connection.cursor()
+                        # cursorLocal4 = db_connection.cursor()
+                        # cursorLocal5 = db_connection.cursor()
 
                         #CURSOR AZURE
                         cursorAzure = cnxn.cursor()
@@ -206,38 +206,38 @@ while (True):
                         # -----------------------------------------LOCAL--------------------------------------------------
 
                         #LOCAL
-                        fkMaquina = 50000
-                        sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
-                        cursorLocal.execute(sql)
+                        # fkMaquina = 50000
+                        # sql = f"INSERT INTO Leitura (fkMaquina, sistemaOperacional, cpuMedia, qtdProcessador, ramTotal, ramUso,  ramUsoPercent, discoTotal, discoUso, discoLivre, discoPercent, dataHora) VALUES ({fkMaquina},'{sistemaoperacional}', {porcentagem_cpu}, {processador}, {ramTotal}, {ramUso},{ram.percent},{discoTotal},{discoUso},{discoLivre},{disk.percent},(CURRENT_TIMESTAMP))"
+                        # cursorLocal.execute(sql)
 
                         #TEMPERATURA PRINCIPAL LOCAL
-                        fkMaquina = 50000
-                        sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
-                        cursorLocal2.execute(sqltemp, values) 
+                        # fkMaquina = 50000
+                        # sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
+                        # values = (fkMaquina, temp_min, temp_value, temp_max, data, hora)
+                        # cursorLocal2.execute(sqltemp, values) 
 
                         #TEMPERATURA MAQUINA LOCAL 1
-                        fkMaquina = 50001
-                        sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        values = (fkMaquina, temp_min1, temp_value1, temp_max1, data, hora)
-                        cursorLocal3.execute(sqltemp, values)
+                        # fkMaquina = 50001
+                        # sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
+                        # values = (fkMaquina, temp_min1, temp_value1, temp_max1, data, hora)
+                        # cursorLocal3.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 2
-                        fkMaquina = 50003
-                        sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        values = (fkMaquina, temp_min2, temp_value2, temp_max2, data, hora)
-                        cursorLocal4.execute(sqltemp, values)
+                        # fkMaquina = 50003
+                        # sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
+                        # values = (fkMaquina, temp_min2, temp_value2, temp_max2, data, hora)
+                        # cursorLocal4.execute(sqltemp, values)
 
                         #TEMPERATURA MAQUINA LOCAL 3
-                        fkMaquina = 50004
-                        sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
-                        values = (fkMaquina, temp_min3, temp_value3, temp_max3, data, hora)
-                        cursorLocal5.execute(sqltemp, values) 
+                        # fkMaquina = 50004
+                        # sqltemp = (f"INSERT INTO Temperatura (fkMaquina, tempMin, tempValor, tempMax, data_agr, hora_agr ) VALUES (%s,%s,%s,%s,%s,%s)")
+                        # values = (fkMaquina, temp_min3, temp_value3, temp_max3, data, hora)
+                        # cursorLocal5.execute(sqltemp, values) 
 
                         print("\n")
                         print(cursorAzure.rowcount, "Inserindo no banco (Azure).")
                         cnxn.commit()
 
-                        print(cursorLocal.rowcount, "Inserindo no banco (Local).")
-                        db_connection.commit()
+                        # print(cursorLocal.rowcount, "Inserindo no banco (Local).")
+                        # db_connection.commit()
                         time.sleep(1)
