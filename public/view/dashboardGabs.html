@@ -1262,13 +1262,13 @@
 
       if (componente == "TEMPERATURA") {
         
-          if (metrica >= 80 && metrica < 95) {
+          if (metrica >= 75 && metrica < 80) {
  
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Alerta!`, "info");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
               console.log('Cheguei aqui')
 
-            } else if (metrica >= 65 && metrica <= 70) {
+            } else if (metrica >= 80 && metrica <= 90) {
               Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
               frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
             } else if (metrica > 95) {
