@@ -13,7 +13,7 @@ try:
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
         db_connection = mysql.connector.connect(
-                host='localhost', user='aluno', password='sptech', database='greeneye')
+                host='localhost', user='root', password='Fabo12345@', database='greeneye')
         print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
@@ -28,12 +28,13 @@ def bytes_to_giga(value):
     return value / 1024 / 1024 / 1024
 
 # barra de progresso
+# https://www.youtube.com/watch?v=x1eaT88vJUA&ab_channel=NeuralNine
 def progress_bar(progresso, total, color=colorama.Fore.CYAN):
     porcentagem = 100 * (progresso/float(total))
     barra = '█' * int(porcentagem) + '-' * (100 - int(porcentagem))
     print(color + f"\r|{barra}| {porcentagem:.2f}%", end="\r")
     if progresso == total:
-        print(colorama.Fore.GREEN +
+        print(colorama.Fore.BLUE +
               f"\r|{barra}| {porcentagem:.2f}%", end="\r")
 
 # def Leitura():
@@ -52,7 +53,7 @@ while True:
             nome = proc.name()
             pid = proc.pid
             status = proc.status()
-            cpu = round(float(proc.cpu_percent(interval=0.1)/cores),2)
+            cpu = round(float(proc.cpu_percent(interval=1)/cores),2)
             ram = round(proc.memory_percent(),2)
             data = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
             dado = {"nome":nome, "pid":pid, "status_proc":status, "cpu_percent":cpu, "ram_percent":ram, "data_hora":data}
@@ -67,6 +68,13 @@ while True:
         #CURSOR
         # cursorLocal = db_connection.cursor()
         cursorAzure = cnxn.cursor()
+
+        try:
+                sqlDelete = f"TRUNCATE TABLE Processos"
+                cursorAzure.execute(sqlDelete)
+        except pyodbc.Error as err:
+                    cnxn.rollback()
+                    print("Algo está errado: {}".format(err))
 
         print("\n")
         print("Inserindo processos no banco! (Azure)")
@@ -94,50 +102,8 @@ while True:
         time.sleep(1)   
 
 
-def InseirDados(dados_proc):
-    for i, a in enumerate(dados_proc):
-        fkMaquina = a["fkMaquina"]
-        nome = a["nome"]
-        pid = a["pid"]
-        status = a["status_proc"]
-        cpu = a["cpu_percent"]
-        ram = a["ram_percent"]
-        data = a["data_hora"]
-        try:
-            # CURSOR
-            cursorLocal = db_connection.cursor()
-            cursorAzure = cnxn.cursor()
 
-            # PROCESSOS AZURE 
-            fkMaquina = 50000
-            sqlProc = f"INSERT INTO Processos (fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora) VALUES (?,?,?,?,?,?,?)"
-            valuesProc = (fkMaquina, nome, pid, status, cpu, ram, data)
-            cursorAzure.execute(sqlProc, valuesProc)
-
-            # PROCESSOS LOCAL
-            # fkMaquina = 50000
-            # sqlProc = f"INSERT INTO Processos (fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora) VALUES (?,?,?,?,?,?,?)"
-            # valuesProc = (fkMaquina, nome, pid, status, cpu, ram, data)
-            # cursorLocal.execute(sqlProc, valuesProc)
-
-            print("\n")
-            print(cursorAzure.rowcount, "Inserindo processos no banco (Azure).")
-            cnxn.commit()
-
-            # print(cursorLocal.rowcount, "Inserindo processos no banco (Local).")
-            # db_connection.commit()
-            time.sleep(1)
-        except pyodbc.Error as err:
-            cnxn.rollback()
-            print("Something went wrong: {}".format(err))
-
-            
-
-        
-
-
-
-
+# TESTES
 
 # for proc in psutil.process_iter(['name']):
 #     print(proc.info)

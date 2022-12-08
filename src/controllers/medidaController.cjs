@@ -585,6 +585,60 @@ function cardlucas(req, res) {
     });
 }
 
+// listar processos
+function buscarProc(req, res){
+    
+    var fkMaquina = req.params.fkMaquina;
+    
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarProc(fkMaquina).then(function (resultado) {
+        if(resultado.length > 0) {
+            res.json(resultado);
+        } else{
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro){
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+// listar top3 processos CPU%
+function procCPU(req, res) {
+
+    // var fkMaquina = req.params.fkMaquina;
+    // console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.procCPU().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+// listar top3 processos RAM%
+function procRAM(req, res) {
+
+    medidaModel.procRAM().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 module.exports = {
@@ -616,5 +670,8 @@ module.exports = {
     TempMax2,
     TempMin2,
     TempMax3,
-    TempMin3  
+    TempMin3,
+    buscarProc,
+    procCPU,
+    procRAM  
 }

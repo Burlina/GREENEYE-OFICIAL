@@ -884,6 +884,56 @@ function cardlucas(idTot, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
+// listar processos
+function buscarProc(fkMaquina){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select idProcesso, fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent from Processos`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select idProcesso, fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora from Processos where fkMaquina = ${fkMaquina};`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// listar 3 top proc CPU%
+function procCPU(){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 3 * from Processos order by cpu_percent desc;`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select * from Processos as t1 join (select distinct nome, max(idProcesso) as idProcesso from Processos group by nome) as t2 on t1.idProcesso = t2.idProcesso order by cpu_percent desc LIMIT 3`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// listar 3 top proc RAM%
+function procRAM(){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 3 * from Processos order by ram_percent desc`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select top 3 * from Processos as t1 join (select distinct nome, max(idProcesso) as idProcesso from Processos group by nome) as t2 on t1.idProcesso = t2.idProcesso order by ram_percent desc`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     buscarUltimasMedidas,
@@ -914,5 +964,8 @@ module.exports = {
     TempMax2,
     TempMin2,
     TempMax3,
-    TempMin3
+    TempMin3,
+    buscarProc,
+    procCPU,
+    procRAM
 }

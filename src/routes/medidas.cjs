@@ -134,6 +134,18 @@ router.get("/cardlucas/:idTot", function (req, res) {
     medidaController.cardlucas(req, res);
 });
 
+router.get("/buscarProc/:fkMaquina", function (req, res) {
+    medidaController.buscarProc(req, res);
+})
+
+router.get("/procCPU", function (req, res) {
+    medidaController.procCPU(req, res);
+});
+
+router.get("/procRAM", function (req, res) {
+    medidaController.procRAM(req, res);
+});
+
 
 
 module.exports = router;
