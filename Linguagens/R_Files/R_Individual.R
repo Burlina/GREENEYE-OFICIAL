@@ -63,26 +63,6 @@ cardsTotais <- data.frame("Nome Suporte"= c(responseTotal$data.pipe.name),
                           "Cards Atrasados"= c(responseTotal2$data.pipe.phases.cards_count.4),
                           "Datas"= Sys.Date())
 
-Alertas <- data.frame("Total Cards"= c(responseTotal$data.pipe.cards_count),
-                      "RAM"= c(responseRam2$data.pipe.phases.cards_count)+
-                        c(responseRam2$data.pipe.phases.cards_count.1)+
-                        c(responseRam2$data.pipe.phases.cards_count.2)+
-                        c(responseRam2$data.pipe.phases.cards_count.3)+
-                        c(responseRam2$data.pipe.phases.cards_count.4)+
-                        c(responseRam2$data.pipe.phases.cards_count.5),
-                      "CPU"= c(responseCpu2$data.pipe.phases.cards_count)+
-                        c(responseCpu2$data.pipe.phases.cards_count.1)+
-                        c(responseCpu2$data.pipe.phases.cards_count.2)+
-                        c(responseCpu2$data.pipe.phases.cards_count.3)+
-                        c(responseCpu2$data.pipe.phases.cards_count.4)+
-                        c(responseCpu2$data.pipe.phases.cards_count.5),
-                      "DISCO"= c(responseDisco2$data.pipe.phases.cards_count)+
-                        c(responseDisco2$data.pipe.phases.cards_count.1)+
-                        c(responseDisco2$data.pipe.phases.cards_count.2)+
-                        c(responseDisco2$data.pipe.phases.cards_count.3)+
-                        c(responseDisco2$data.pipe.phases.cards_count.4)+
-                        c(responseDisco2$data.pipe.phases.cards_count.5),
-                      "dtColeta"= Sys.Date())
 
 Triagem <- data.frame("TriagemTotal"= c(response2$cards_count),
                       "RAM"= c(responseRam2$data.pipe.phases.cards_count),
@@ -100,12 +80,6 @@ dbExecute(
   params = list(cardsTotais$Nome.Suporte, cardsTotais$Cards.Total, 
                 cardsTotais$Cards.Aberto, cardsTotais$Cards.Finalizados, 
                 cardsTotais$Cards.Atrasados, cardsTotais$Datas)
-)
-
-dbExecute(
-  conn,
-  "INSERT INTO Alertas VALUES (?, ?, ?, ?,?)",
-  params = list(Alertas$Total.Cards , Alertas$RAM,Alertas$CPU,Alertas$DISCO,Alertas$dtColeta)
 )
 
 dbExecute(
