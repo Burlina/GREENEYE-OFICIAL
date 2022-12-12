@@ -349,9 +349,9 @@
           <ul class="navbar-nav  justify-content-end">
             <!-- <div class="col-lg-6 col-12 d-flex ms-auto"> -->
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;"
+              <a 
                 class="btn btn-icon btn-outline-white ms-auto bg-gradient-dark dropdown-toggle btn-sm mb-0">
-                <span class="btn-inner--text">Export</span>
+                <span class="btn-inner--text" id="atualizar" type="button" onclick="fnServiceStart()">Atualizar</span>
                 <span class="btn-inner--icon ms-2"><i class="ni ni-folder-17"></i></span>
               </a>
             </li>
@@ -420,8 +420,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="./assets/img/team/lucas.jpeg"
-                          class="avatar avatar-sm bg-gradient-dark me-3">
+                        <img src="./assets/img/team/lucas.jpeg" class="avatar avatar-sm bg-gradient-dark me-3">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -439,8 +438,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="./assets2/img/alertaLaranja1.png"
-                          class="avatar avatar-sm bg-gradient-dark me-3">
+                        <img src="./assets2/img/alertaLaranja1.png" class="avatar avatar-sm bg-gradient-dark me-3">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -916,6 +914,18 @@
   <script src="../assets2/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets2/js/plugins/chartjs.min.js"></script>
   <script>
+  
+    var btn = document.querySelector("#atualizar");
+    btn.addEventListener('click', function fnServiceStart() {
+      location.reload()
+    });
+
+    // const R = require("r-integration")
+    // const shell = require("r-script")
+    // let out = shell(
+    //   R.executeRScript("./Linguagens/R_Files/ConexãoPipe.R")
+    // ).callSync()
+    // console.log(out)
 
     window.onload = [obterDadosGraficoRotulos(1), obterDadosGraficoFases(1), obterDadosGraficoPrincipais(1), cardsPorcent(1), cardsPorcentGerais(1)];
 
@@ -937,6 +947,7 @@
       const dataReq = []
       const dataInc = []
       const datasR = []
+      
 
       for (let i in resposta) {
 
@@ -1376,12 +1387,12 @@
       for (let i in resposta) {
 
         total.push(resposta[i].qtdTotal)
-        analises.push(((resposta[i].qtdAnalise * 100)/ total).toFixed(2))
-        atrasados.push(((resposta[i].qtdAtras * 100)/ total).toFixed(2))
-        concluidos.push(((resposta[i].qtdConc * 100)/ total).toFixed(2))
-        arquivados.push(((resposta[i].qtdArq * 100)/ total).toFixed(2))
-        manutencao.push(((resposta[i].qtdManu * 100)/ total).toFixed(2))
-        andamento.push(((resposta[i].qtdAnd * 100)/ total).toFixed(2))
+        analises.push(((resposta[i].qtdAnalise * 100) / total).toFixed(2))
+        atrasados.push(((resposta[i].qtdAtras * 100) / total).toFixed(2))
+        concluidos.push(((resposta[i].qtdConc * 100) / total).toFixed(2))
+        arquivados.push(((resposta[i].qtdArq * 100) / total).toFixed(2))
+        manutencao.push(((resposta[i].qtdManu * 100) / total).toFixed(2))
+        andamento.push(((resposta[i].qtdAnd * 100) / total).toFixed(2))
 
         dtConcluido.innerHTML = `${concluidos}%`
         dtAtrasados.innerHTML = `${atrasados}%`
