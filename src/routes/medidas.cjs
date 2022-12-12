@@ -146,6 +146,10 @@ router.get("/procRAM", function (req, res) {
     medidaController.procRAM(req, res);
 });
 
+router.get("/lotethais/:idLote", function (req, res) {
+    medidaController.lotethais(req, res);
+});
+
 
 
 module.exports = router;

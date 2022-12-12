@@ -945,6 +945,24 @@ function procRAM(){
     return database.executar(instrucaoSql);
 }
 
+function lotethais(idLote){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select cpuAlerta, ramAlerta, discoAlerta from Alertas where fkLote = ${idLote} order by 
+        momento desc`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select cpuAlerta, ramAlerta, discoAlerta from Alertas where fkLote = ${idLote} order by 
+        momento desc`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     buscarUltimasMedidas,
@@ -979,5 +997,6 @@ module.exports = {
     scripts,
     buscarProc,
     procCPU,
-    procRAM
+    procRAM,
+    lotethais
 }
