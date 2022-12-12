@@ -6,7 +6,6 @@ import colorama
 import mysql.connector
 from mysql.connector import errorcode
 import pyodbc
-import colorama
 
 try:
         cnxn = pyodbc.connect(driver='{SQL Server}', host='greeneye.database.windows.net',

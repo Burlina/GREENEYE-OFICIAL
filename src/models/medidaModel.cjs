@@ -971,7 +971,7 @@ function buscarProc(fkMaquina){
     instrucaoSql = ''
 
     if(process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select idProcesso, fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent from Processos`;
+        instrucaoSql = `select idProcesso as 'ID', fkMaquina as 'Maquina', nome as 'Nome', pid as 'PID', status_proc as 'Status', cpu_percent as 'CPU %', ram_percent as 'RAM %' from Processos;`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
         instrucaoSql = `select idProcesso, fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora from Processos where fkMaquina = ${fkMaquina};`; 
     } else {
