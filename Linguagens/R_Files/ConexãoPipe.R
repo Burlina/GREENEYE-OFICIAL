@@ -1,5 +1,5 @@
 #Bibliotecas de conexão
-  
+    
   library(tidyverse)
   library(httr)
   library(odbc)
@@ -9,20 +9,23 @@
   library(dplyr)
   library(RODBC)
   
-#Criando uma conexão com o banco
+  #criando uma conexão com o banco
   
   conn <- DBI::dbConnect(odbc::odbc(),
                          Driver   = "{ODBC Driver 18 for SQL Server}",
                          Server   = "greeneye.database.windows.net",
                          Database = "greeneye",
-                         UID      = rstudioapi::askForPassword("Database User"),
-                         PWD      = rstudioapi::askForPassword("Database Password"),
+                         UID      = "greeneyeADM",
+                         PWD      = "Greeneye123@",
                          Port     = 1433)
+
+while (TRUE) {
   
-while (TRUE) {   
   #criando uma conexão para recebimento de dados do pipefy
   
   url <- "https://api.pipefy.com/graphql"
+  
+  print('ola')
   
   #montagem da query de pedidos com os dados
   payload2 <- "{\"query\": \"{pipe(id: 302821771){name cards_count opened_cards_count } } \"}"
@@ -229,8 +232,8 @@ while (TRUE) {
     conn,
     "INSERT INTO CardsTotais VALUES (?, ?, ?, ?, ?, ?)",
     params = list(cardsTotais$Nome.Suporte, cardsTotais$Cards.Total, 
-                  cardsTotais$Cards.Aberto, cardsTotais$Cards.Finalizados, 
-                  cardsTotais$Cards.Atrasados, cardsTotais$Datas)
+                  cardsTotais$Cards.Aberto, cardsTotais$Cards.Atrasados, 
+                  cardsTotais$Cards.Finalizados, cardsTotais$Datas)
   )
   
   #dbExecute(
@@ -255,4 +258,6 @@ while (TRUE) {
   )
   
   dbCommit(conn)
+  
+  Sys.sleep(3600)
 }

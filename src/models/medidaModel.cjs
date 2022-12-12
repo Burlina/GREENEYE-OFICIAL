@@ -64,7 +64,7 @@ function buscarUltimasMedidasRAM(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF from Leitura order by idLeitura desc limit ${limite_linhas}`;
+            `select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF from Leitura order by idLeitura desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -134,8 +134,8 @@ function buscarMedidasEmTempoRealRAM(idAquario) {
         DATE_FORMAT(REGISTRO_MOMENTO,'%H:%i:%s') as momento_grafico
     from registros  
     order by idRegistros desc limit 1` */
-            
-    `select ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
+
+            `select ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
     from Leitura order by idLeitura desc limit 1`
 
     } else {
@@ -171,7 +171,7 @@ function buscarUltimasMedidasTEMP(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc limit ${limite_linhas}`;
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50000 and 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -241,7 +241,7 @@ function buscarUltimasMedidasTEMPMK1(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -311,7 +311,7 @@ function buscarUltimasMedidasTEMPMK2(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -381,7 +381,7 @@ function buscarUltimasMedidasTEMPMK3(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -451,7 +451,7 @@ function buscarUltimasMedidasTEMPMK4(idAquario, limite_linhas) {
 from registros  
 order by idRegistros desc limit ${limite_linhas}` */
 
- `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50004 order by id desc limit ${limite_linhas}`;
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina = 50004 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -503,11 +503,11 @@ function TempMax() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50000 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMax from Temperatura where fkMaquina = 50000 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -526,11 +526,11 @@ function TempMin() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50000 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMin from Temperatura where fkMaquina = 50000 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50000 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -549,11 +549,11 @@ function TempMax1() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50003 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMax from Temperatura where fkMaquina = 50003 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -572,11 +572,11 @@ function TempMin1() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50003 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMin from Temperatura where fkMaquina = 50003 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -595,11 +595,11 @@ function TempMax2() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50001 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMax from Temperatura where fkMaquina = 50001 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -618,11 +618,11 @@ function TempMin2() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50001 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMin from Temperatura where fkMaquina = 50001 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50001 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -641,11 +641,11 @@ function TempMax3() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMax from Temperatura where fkMaquina = 50003 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMax from Temperatura where fkMaquina = 50003 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMax from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -664,11 +664,11 @@ function TempMin3() {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
 
-        instrucaoSql =`select top 12 tempMin from Temperatura where fkMaquina = 50003 order by id desc;`
-                
+        instrucaoSql = `select top 12 tempMin from Temperatura where fkMaquina = 50003 order by id desc;`
+
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
 
-            instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select tempMin from Temperatura where fkMaquina = 50003 order by id desc limit ${limite_linhas}`;
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -727,13 +727,13 @@ function UltimasMedidasRotulos(idAquario, limite_linhas) {
                     from rotulosCount order by id desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-       
-            instrucaoSql = `
+
+        instrucaoSql = `
             select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
                 from Leitura 
                     order by idLeitura 
                         desc limit ${limite_linhas};`
-        
+
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -755,13 +755,13 @@ function UltimasMedidasFases(idAquario, limite_linhas) {
                     from fasesCards order by id desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-       
-            instrucaoSql = `
+
+        instrucaoSql = `
             select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
                 from Leitura 
                     order by idLeitura 
                         desc limit ${limite_linhas};`
-        
+
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -784,13 +784,13 @@ function UltimasMedidasPrincipais(idAquario, limite_linhas) {
                         order by idTotais desc;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-       
-            instrucaoSql = `
+
+        instrucaoSql = `
             select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
                 from Leitura 
                     order by idLeitura 
                         desc limit ${limite_linhas};`
-        
+
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -819,13 +819,13 @@ function UltimasMedidasGerais(idAquario, limite_linhas) {
         //     `select top 6 * from fasesCards;`
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-       
-            instrucaoSql = `
+
+        instrucaoSql = `
             select cpuMedia, ramUsoPercent, dataHora, date_format(dataHora, '%H:%i') as horarioF 
                 from Leitura 
                     order by idLeitura 
                         desc limit ${limite_linhas};`
-        
+
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -845,8 +845,8 @@ function dashlucas(idTriagem, limite_linhas) {
             `select top 1 triagemTot ,tRam ,tCpu ,tDisc  from Triagem order by id desc; `
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = 
-        `select top 1 triagemTot as "TriagemTotal",tRam as "RAM",tCpu as "CPU",tDisc as "DISCO" from Triagem order by id desc; `
+        instrucaoSql =
+            `select top 1 triagemTot as "TriagemTotal",tRam as "RAM",tCpu as "CPU",tDisc as "DISCO" from Triagem order by id desc; `
 
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -869,8 +869,8 @@ function cardlucas(idTot, limite_linhas) {
                     order by idTotais desc; `
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = 
-        ` select top 1 *, 
+        instrucaoSql =
+            ` select top 1 *, 
         convert(varchar, DataColeta, 106) as datasFP 
             from CardsTotais where NomeSuporte = 'Suporte de Manutenção' 
                 order by idTotais desc;`
@@ -882,6 +882,16 @@ function cardlucas(idTot, limite_linhas) {
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
+}
+
+function scripts() {
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+    const R = require("r-integration");
+    const shell = require("r-script")
+    let out = shell(path,
+        R.executeRScript("./Linguagens/R_Files/ConexãoPipe.R")
+    ).callSync();
+    console.log(out);}
 }
 
 
@@ -914,5 +924,6 @@ module.exports = {
     TempMax2,
     TempMin2,
     TempMax3,
-    TempMin3
+    TempMin3,
+    scripts
 }
