@@ -42,6 +42,14 @@ router.get("/tempo-realTEMP/:idRealTEMP", function (req, res) {
     medidaController.buscarMedidasEmTempoRealTEMP(req, res);
 })
 
+router.get("/ultimasTEMP1/:idTEMP", function (req, res) {
+    medidaController.buscarUltimasMedidasTEMP1(req, res);
+});
+
+router.get("/tempo-realTEMP1/:idRealTEMP", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTEMP1(req, res);
+})
+
 router.get("/ultimasTEMPMK1/:idTEMP", function (req, res) {
     medidaController.buscarUltimasMedidasTEMPMK1(req, res);
 });

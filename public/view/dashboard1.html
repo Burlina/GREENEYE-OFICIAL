@@ -790,7 +790,7 @@
             </div>
             <div class="card-body p-3">
               <div class="chart">
-                <canvas id="chart-temp" class="chart-canvas" height="288"></canvas>
+                <canvas id="chart-temp1" class="chart-canvas" height="288"></canvas>
               </div>
             </div>
             <button class="button-gabs"><a href="dashboardGabs1.html"> Ver mais </a></button>
@@ -1435,18 +1435,18 @@
     }
 
     // TEMPERATURA
-    function obterDadosGraficoTEMP(id) {
-      if (proximaAtualizacaoTEMP != undefined) {
-        clearTimeout(proximaAtualizacaoTEMP);
+    function obterDadosGraficoTEMP1(id) {
+      if (proximaAtualizacaoTEMP1 != undefined) {
+        clearTimeout(proximaAtualizacaoTEMP1);
       }
       console.log("Entrei no obter")
 
-      fetch(`/medidas/ultimasTEMP/${id}`, { cache: 'no-store' }).then(function (responseTEMP) {
-        if (responseTEMP.ok) {
-          responseTEMP.json().then(function (respostaTEMP) {
-            console.log(`Dados recebidos: ${JSON.stringify(respostaTEMP)}`);
-            respostaTEMP.reverse();
-            graficoTEMP(respostaTEMP);
+      fetch(`/medidas/ultimasTEMP1/${id}`, { cache: 'no-store' }).then(function (responseTEMP1) {
+        if (responseTEMP1.ok) {
+          responseTEMP1.json().then(function (respostaTEMP1) {
+            console.log(`Dados recebidos: ${JSON.stringify(respostaTEMP1)}`);
+            respostaTEMP1.reverse();
+            graficoTEMP1(respostaTEMP1);
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
@@ -1603,53 +1603,53 @@
     }
 
 
-    const ctx4 = document.getElementById("chart-temp").getContext("2d");
+    const ctx4 = document.getElementById("chart-temp1").getContext("2d");
 
-        function graficoTEMP(respostaTEMP) { 
+        function graficoTEMP1(respostaTEMP1) { 
 
-          // const data_TEMP = respostaTEMP[0].data_agr
-          const horarioTEMP = respostaTEMP[0].horaTemp
-          const dadosTEMP = [respostaTEMP[0].tempValor, horarioTEMP]
+          // const data_TEMP1 = respostaTEMP1[0].data_agr
+          const horarioTEMP1 = respostaTEMP1[0].horaTemp1
+          const dadosTEMP1 = [respostaTEMP1[0].temp1Valor, horarioTEMP1]
     
-          const dataTEMP = []
-          const labelsTEMP = []
+          const dataTEMP1 = []
+          const labelsTEMP1 = []
     
-          for (let i in respostaTEMP) {
+          for (let i in respostaTEMP1) {
     
-            dataTEMP.push(respostaTEMP[i].tempValor)
-            labelsTEMP.push(respostaTEMP[i].horaTemp)
+            dataTEMP1.push(respostaTEMP1[i].tempValor)
+            labelsTEMP1.push(respostaTEMP1[i].horaTemp)
           }
     
-          var gradientStrokeTEMP = ctx4.createLinearGradient(0, 230, 0, 50);
+          var gradientStrokeTEMP1 = ctx4.createLinearGradient(0, 230, 0, 50);
     
-          gradientStrokeTEMP.addColorStop(1, 'rgba(203,12,159,0.2)');
-          gradientStrokeTEMP.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-          gradientStrokeTEMP.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+          gradientStrokeTEMP1.addColorStop(1, 'rgba(203,12,159,0.2)');
+          gradientStrokeTEMP1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+          gradientStrokeTEMP1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
     
-          var gradientStrokeTEMP2 = ctx4.createLinearGradient(0, 230, 0, 50);
+          var gradientStrokeTEMP0 = ctx4.createLinearGradient(0, 230, 0, 50);
     
-          gradientStrokeTEMP2.addColorStop(1, 'rgba(20,23,39,0.2)');
-          gradientStrokeTEMP2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-          gradientStrokeTEMP2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+          gradientStrokeTEMP0.addColorStop(1, 'rgba(20,23,39,0.2)');
+          gradientStrokeTEMP0.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+          gradientStrokeTEMP0.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
     
-          window.ChartTEMP = new Chart(ctx4, {
+          window.ChartTEMP1 = new Chart(ctx4, {
             type: "line",
             data:
             {
-              labels: labelsTEMP,
+              labels: labelsTEMP1,
               datasets: [
                 {
-                  yAxisID: 'yAxisTEMP',
-                  xAxisID: 'xAxisTEMP',
-                  label: 'Porcentagem de Temperatura',
+                  yAxisID: 'yAxisTEMP1',
+                  xAxisID: 'xAxisTEMP1',
+                  label: 'Graus Celsius',
                   tension: 0.4,
                   borderWidth: 0,
                   pointRadius: 0,
                   borderColor: "#FF4500",
                   borderWidth: 3,
-                  backgroundColor: gradientStrokeTEMP2,
+                  backgroundColor: gradientStrokeTEMP1,
                   fill: true,
-                  data: dataTEMP,
+                  data: dataTEMP1,
                   // maxBarThickness: 6
                 },
               ],
@@ -1667,7 +1667,7 @@
             },
           });
     
-          setInterval(atualizarGraficoTEMP(ChartTEMP), 2000)
+          setInterval(atualizarGraficoTEMP1(ChartTEMP1), 2000)
           
         }
 
@@ -1837,25 +1837,25 @@
 
     }
 
-    function atualizarGraficoTEMP(id) {
+    function atualizarGraficoTEMP1(id) {
 
-fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (responseTEMP) {
-  if (responseTEMP.ok) {
-    responseTEMP.json().then(function (novoRegistroTEMP) {
+fetch(`/medidas/tempo-realTEMP1/${id}`, { cache: 'no-store' }).then(function (responseTEMP1) {
+  if (responseTEMP1.ok) {
+    responseTEMP1.json().then(function (novoRegistroTEMP1) {
 
-      console.log(`Dados recebidos: ${JSON.stringify(novoRegistroTEMP)}`);
+      console.log(`Dados recebidos: ${JSON.stringify(novoRegistroTEMP1)}`);
 
-      ChartTEMP.data.labels.shift();
-      ChartTEMP.data.datasets[0].data.shift();
+      ChartTEMP1.data.labels.shift();
+      ChartTEMP1.data.datasets[0].data.shift();
 
-      ChartTEMP.data.labels.push(novoRegistroTEMP[0].horaTemp); 
-      ChartTEMP.data.datasets[0].data.push(novoRegistroTEMP[0].tempValor);
+      ChartTEMP1.data.labels.push(novoRegistroTEMP1[0].horaTemp); 
+      ChartTEMP1.data.datasets[0].data.push(novoRegistroTEMP1[0].tempValor);
       
-      window.ChartTEMP.update();
+      window.ChartTEMP1.update();
 
 
       // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-      proximaAtualizacaoTEMP = setTimeout(() => atualizarGraficoTEMP(id), 2000);
+      proximaAtualizacaoTEMP1 = setTimeout(() => atualizarGraficoTEMP1(id), 2000);
     });
   } else {
     console.error('Nenhum dado encontrado ou erro na API');
@@ -1871,10 +1871,10 @@ fetch(`/medidas/tempo-realTEMP/${id}`, { cache: 'no-store' }).then(function (res
 
     let proximaAtualizacao;
     let proximaAtualizacaoRAM;
-    let proximaAtualizacaoTEMP;
+    let proximaAtualizacaoTEMP1;
 
 
-    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1), obterDadosGraficoTEMP(1)];
+    window.onload = [obterDadosGrafico(1), obterDadosGraficoCPU(1), obterDadosGraficoRAM(1), obterDadosGraficoTEMP1(1)];
 // window.onload = obterDadosGraficoCPU(id);
 // window.onload = obterDadosGraficoRAM(id);
 
