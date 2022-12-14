@@ -1106,7 +1106,7 @@
             {
               yAxisID: 'yAxisTEMPMK1',
               xAxisID: 'xAxisTEMPMK1',
-              label: 'Porcentagem de Temperatura',
+              label: 'Graus Celsius',
               tension: 0.4,
               borderWidth: 0,
               pointRadius: 0,
@@ -1198,7 +1198,7 @@
             {
               yAxisID: 'yAxisTEMPMK2',
               xAxisID: 'xAxisTEMPMK2',
-              label: 'Porcentagem de Temperatura',
+              label: 'Graus Celsius',
               tension: 0.4,
               borderWidth: 0,
               pointRadius: 0,
@@ -1282,54 +1282,7 @@
 
         }
 
-    //   } else if (componente == "RAM") {
-    //     if (contador <= 2) {
-    //       if (metrica >= 70) {
-    //         if (metrica < 79) {
-    //           Swal.fire("Alerta", `Cuidado, ${componente} está ficando no estado de Alerta!`, "info");
-    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //           console.log('Cheguei aqui')
-    //         } else if (metrica >= 80 && metrica <= 89) {
-    //           Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado de Emergencia!`, "warning");
-    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //         } else {
-    //           Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
-    //           frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //         }
-    //         setTimeout(alertas('RAM', `${empresa}`, email, frase, metrica), 1000)
-    //         console.log("INICIANDO O FETCH");
-    //       }
-    //       contador++
-    //     }
-    //   } else if (componente == "DISCO") {
-    //     if (metrica >= 80) {
-    //       if (metrica < 89) {
-    //         alert(`Cuidado ${componente} está ficando no estado de Alerta!`);
-    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //         console.log('Cheguei aqui')
-
-    //       } else if (metrica >= 90 && metrica <= 94) {
-    //         alert(`Cuidado ${componente} está ficando no estado de Emergencia!`);
-    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso: `
-    //       } else {
-    //         alert(`Cuidado ${componente} está ficando no estado Critico!`);
-    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //       }
-    //       setTimeout(alertas('DISCO', `${empresa}`, email, frase, metrica), 1000)
-    //       console.log("INICIANDO O FETCH");
-    //     }
-    //   } else if (componente == "TEMP") {
-    //     if (contador <= 2) {
-    //       if (metrica >= 60) {
-    //         Swal.fire("Alerta", `Cuidado ${componente} está ficando no estado Critico!`, "error");
-    //         frase = `Alerta:O ${componente} do computador está ficando sobrecarregado! Porcentagem de Uso:`
-    //       } setTimeout(alertas('TEMP', `${empresa}`, email, frase, metrica), 1000)
-    //       console.log("INICIANDO O FETCH");
-    //     }
-    //     contador++
-    //   }
-    // }
-
+   
     function atualizarGrafico(id) {
       fetch(`/medidas/tempo-real/${id}`, { cache: 'no-store' }).then(function (responseCPU) {
         if (responseCPU.ok) {
@@ -1448,6 +1401,10 @@
             ChartTEMPMK2.data.datasets[0].data.push(novoRegistroTEMPMK2[0].tempValor);
 
             window.ChartTEMPMK2.update();
+
+            var alertTemp2 = novoRegistroTEMPMK2[0].tempValor
+            console.log("2")
+            setTimeout(verificar(alertTemp2, "TEMPERATURA"), 60000)
 
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar

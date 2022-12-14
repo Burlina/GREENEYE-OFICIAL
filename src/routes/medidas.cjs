@@ -42,6 +42,14 @@ router.get("/tempo-realTEMP/:idRealTEMP", function (req, res) {
     medidaController.buscarMedidasEmTempoRealTEMP(req, res);
 })
 
+router.get("/ultimasTEMP1/:idTEMP", function (req, res) {
+    medidaController.buscarUltimasMedidasTEMP1(req, res);
+});
+
+router.get("/tempo-realTEMP1/:idRealTEMP", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealTEMP1(req, res);
+})
+
 router.get("/ultimasTEMPMK1/:idTEMP", function (req, res) {
     medidaController.buscarUltimasMedidasTEMPMK1(req, res);
 });
@@ -132,6 +140,22 @@ router.get("/dashlucas/:idTriagem", function (req, res) {
 
 router.get("/cardlucas/:idTot", function (req, res) {
     medidaController.cardlucas(req, res);
+});
+
+router.get("/buscarProc/:fkMaquina", function (req, res) {
+    medidaController.buscarProc(req, res);
+})
+
+router.get("/procCPU", function (req, res) {
+    medidaController.procCPU(req, res);
+});
+
+router.get("/procRAM", function (req, res) {
+    medidaController.procRAM(req, res);
+});
+
+router.get("/lotethais/:idLote", function (req, res) {
+    medidaController.lotethais(req, res);
 });
 
 

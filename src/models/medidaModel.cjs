@@ -217,6 +217,77 @@ function buscarMedidasEmTempoRealTEMP(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasTEMP1(idAquario, limite_linhas) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina between 50001 and 50004 order by id desc;`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+    REGISTRO_TEMP, 
+    REGISTRO_UMID, 
+    REGISTRO_MOMENTO,
+    date_format(momento, '%H:%i:%s') as momento_grafico
+from registros  
+order by idRegistros desc limit ${limite_linhas}` */
+
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50001 and 50004 order by id desc limit ${limite_linhas}`;
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealTEMP1(idAquario) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql =
+            //     `select top 1 
+            //     REGISTRO_TEMP, 
+            //     REGISTRO_UMID, 
+            //     REGISTRO_MOMENTO,
+            //     CONVERT(varchar, REGISTRO_MOMENTO, 108) as momento_grafico
+            // from registros  
+            // order by idRegistros desc`;
+            `select top 12 tempValor, hora_agr, convert(varchar, hora_agr, 108) as horaTemp from Temperatura where fkMaquina between 50001 and 50004 order by id desc`
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = /* `select 
+        REGISTRO_TEMP, 
+        REGISTRO_UMID, 
+        REGISTRO_MOMENTO,
+        DATE_FORMAT(REGISTRO_MOMENTO,'%H:%i:%s') as momento_grafico
+    from registros  
+    order by idRegistros desc limit 1` */
+
+            `select tempValor, hora_agr, date_format(hora_agr, '%H:%i') as horaTemp from Temperatura where fkMaquina between 50001 and 50004 order by id desc limit 1`
+
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 function buscarUltimasMedidasTEMPMK1(idAquario, limite_linhas) {
 
     instrucaoSql = ''
@@ -894,6 +965,75 @@ function scripts() {
     console.log(out);}
 }
 
+// listar processos
+function buscarProc(fkMaquina){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select idProcesso as 'ID', fkMaquina as 'Maquina', nome as 'Nome', pid as 'PID', status_proc as 'Status', cpu_percent as 'CPU %', ram_percent as 'RAM %' from Processos;`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select idProcesso, fkMaquina, nome, pid, status_proc, cpu_percent, ram_percent, data_hora from Processos where fkMaquina = ${fkMaquina};`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// listar 3 top proc CPU%
+function procCPU(){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 3 * from Processos order by cpu_percent desc;`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select * from Processos as t1 join (select distinct nome, max(idProcesso) as idProcesso from Processos group by nome) as t2 on t1.idProcesso = t2.idProcesso order by cpu_percent desc LIMIT 3`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// listar 3 top proc RAM%
+function procRAM(){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 3 * from Processos order by ram_percent desc`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select top 3 * from Processos as t1 join (select distinct nome, max(idProcesso) as idProcesso from Processos group by nome) as t2 on t1.idProcesso = t2.idProcesso order by ram_percent desc`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function lotethais(idLote){
+    
+    instrucaoSql = ''
+
+    if(process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select cpuAlerta, ramAlerta, discoAlerta from Alertas where fkLote = ${idLote} order by 
+        momento desc`;
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento"){
+        instrucaoSql = `select cpuAlerta, ramAlerta, discoAlerta from Alertas where fkLote = ${idLote} order by 
+        momento desc`; 
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     buscarUltimasMedidas,
@@ -902,6 +1042,8 @@ module.exports = {
     buscarMedidasEmTempoRealRAM,
     buscarUltimasMedidasTEMP,
     buscarMedidasEmTempoRealTEMP,
+    buscarUltimasMedidasTEMP1,
+    buscarMedidasEmTempoRealTEMP1,
     buscarUltimasMedidasTEMPMK1,
     buscarMedidasEmTempoRealTEMPMK1,
     buscarUltimasMedidasTEMPMK2,
@@ -925,5 +1067,9 @@ module.exports = {
     TempMin2,
     TempMax3,
     TempMin3,
-    scripts
+    scripts,
+    buscarProc,
+    procCPU,
+    procRAM,
+    lotethais
 }
