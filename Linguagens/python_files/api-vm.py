@@ -8,37 +8,37 @@ import pyodbc
 import textwrap
 
 
-# def Conexao():
+def Conexao():
     # variaveis de conexao
-    # driver ='{ODBC Driver 18 for SQL Server}'
-    # server_name = 'greeneye'
-    # database_name = 'greeneye'
-    # server = '{server_name}.database.windows.net,1433'.format(server_name=server_name)
-    # username = 'GreeneyeADM'
-    # password = 'Greeneye123@'
-    # # definindo banco url 
-    # connection_string = textwrap.dedent('''
-    # Driver={driver};
-    # Server={server};
-    # Database={database};
-    # Uid={username};
-    # Pwd={password};
-    # Encrypt=yes;
-    # TrustedServerCertificate=no;
-    # Connection Timeout=10;
-    # '''.format(
-    #     driver=driver,
-    #     server=server,
-    #     database=database_name,
-    #     username=username,
-    #     password=password
-    # )) 
+    driver ='{ODBC Driver 18 for SQL Server}'
+    server_name = 'greeneye'
+    database_name = 'greeneye'
+    server = '{server_name}.database.windows.net,1433'.format(server_name=server_name)
+    username = 'GreeneyeADM'
+    password = 'Greeneye123@'
+    # definindo banco url 
+    connection_string = textwrap.dedent('''
+    Driver={driver};
+    Server={server};
+    Database={database};
+    Uid={username};
+    Pwd={password};
+    Encrypt=yes;
+    TrustedServerCertificate=no;
+    Connection Timeout=10;
+    '''.format(
+        driver=driver,
+        server=server,
+        database=database_name,
+        username=username,
+        password=password
+    )) 
 
-    # cnxn:pyodbc.Connection = pyodbc.connect(connection_string) 
+    cnxn:pyodbc.Connection = pyodbc.connect(connection_string) 
 
-    # global crsr
-    # crsr = cnxn.cursor()
-    # print("Conectado ao banco de dados:")
+    global crsr
+    crsr = cnxn.cursor()
+    print("Conectado ao banco de dados:")
 
 
 try:
@@ -46,7 +46,7 @@ try:
                         database='greeneye', user='GreeneyeADM', password='Greeneye123@')
         print("Conectei no banco! (Azure)")
         db_connection = mysql.connector.connect(
-                host='localhost', user='aluno', password='sptech', database='greeneye')
+                host='localhost', user='Gabes', password='urubu100', database='greeneye')
         print("Conectei no banco! (Local)")
 except mysql.connector.Error as error:
         if error.errno == errorcode.ER_BAD_DB_ERROR:
