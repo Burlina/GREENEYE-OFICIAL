@@ -12,15 +12,6 @@ var indexRouter = require("./src/routes/index.cjs");
 var usuarioRouter = require("./src/routes/usuarios.cjs");
 var avisosRouter = require("./src/routes/avisos.cjs");
 var medidasRouter = require("./src/routes/medidas.cjs");
-// var scriptRouter = require("./src/routes/script.cjs");
-
-// const R = require("r-integration");
-// const shell = require("r-script")
-// let out = shell(
-//     R.executeRScript("./Linguagens/R_Files/ConexãoPipe.R")
-//     ).callSync();
-// console.log(out);
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +23,6 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
-// app.use("/script", scriptRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

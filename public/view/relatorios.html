@@ -914,20 +914,14 @@
   <script src="../assets2/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets2/js/plugins/chartjs.min.js"></script>
   <script>
-  
-    var btn = document.querySelector("#atualizar");
-    btn.addEventListener('click', function fnServiceStart() {
-      location.reload()
-    });
-
-    // const R = require("r-integration")
-    // const shell = require("r-script")
-    // let out = shell(
-    //   R.executeRScript("./Linguagens/R_Files/ConexãoPipe.R")
-    // ).callSync()
-    // console.log(out)
-
+    
+    function fnServiceStart(){
+      location.reload();
+    };
+    
     window.onload = [obterDadosGraficoRotulos(1), obterDadosGraficoFases(1), obterDadosGraficoPrincipais(1), cardsPorcent(1), cardsPorcentGerais(1)];
+    
+
 
     var ctxRotulo = document.getElementById("chart-Bar-Rotulo").getContext("2d");
     var ctxPrincipal = document.getElementById("chart-pie-CardsCount").getContext("2d");
