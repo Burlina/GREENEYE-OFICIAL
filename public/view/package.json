@@ -46,5 +46,8 @@
     "gulp-sourcemaps": "^2.6.5",
     "sass": "^1.49.9"
   },
-  "homepage": "http://creative-tim.com/product/soft-ui-dashboard"
+  "homepage": "http://creative-tim.com/product/soft-ui-dashboard",
+  "dependencies": {
+    "run": "^1.4.0"
+  }
 }
